@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS reviews CASCADE;
+CREATE TABLE reviews (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id REFERENECES users(id) ON DELETE CASCADE,
+  game_id REFERENECES games(id) ON DELETE CASCADE,
+  content TEXT,
+  rating INTEGER
+);
