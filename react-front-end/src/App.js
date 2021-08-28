@@ -1,38 +1,53 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      message: 'Click the button to load data!'
-    }
-  }
+import Navbar from "./components/navbar";
+import Home from "./components/home";
+import User from "./components/user";
+import Game from "./components/game";
 
-  fetchData = () => {
-    axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
-    .then((response) => {
-      // handle success
-      console.log(response.data) // The entire response from the Rails API
+// This site has 3 pages, all of which are rendered
+// dynamically in the browser (not server rendered).
+//
+// Although the page does not ever refresh, notice how
+// React Router keeps the URL up to date as you navigate
+// through the site. This preserves the browser history,
+// making sure things like the back button and bookmarks
+// work properly.
 
-      console.log(response.data.message) // Just the message
-      this.setState({
-        message: response.data.message
-      });
-    }) 
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <h1>{ this.state.message }</h1>
-        <button onClick={this.fetchData} >
-          Fetch Data
-        </button>        
+export default function App() {
+  return (
+    <Router>
+      <Navbar />
+      <hr />
+      <div>
+        {/*
+          A <Switch> looks through all its children <Route>
+          elements and renders the first one whose path
+          matches the current URL. Use a <Switch> any time
+          you have multiple routes, but you want only one
+          of them to render at a time
+        */}
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/game">
+            <Game />
+          </Route>
+          <Route path="/user">
+            <User />
+          </Route>
+        </Switch>
       </div>
-    );
-  }
+    </Router>
+  );
 }
 
-export default App;
+
+
+

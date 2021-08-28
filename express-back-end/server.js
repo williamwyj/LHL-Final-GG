@@ -14,12 +14,21 @@ const routes = require('./routes/routes');
 
 App.use("/api", routes(db));
 
-// Sample GET route
-// App.get('/api/data', (req, res) => res.json({
-//   message: "Seems to work!",
-// }));
+// Testing GET route
+App.get('/api/data', (req, res) => res.json({
+  message: "Seems to work!",
+}));
+
+App.get('/api/game', (req, res) => res.json({
+  message: "Nier Automata",
+}));
+
+App.get('/api/user', (req, res) => res.json({
+  message: "n0Sc0peG4MeR",
+}));
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`Express seems to be listening on port ${PORT} so that's pretty good 👍`);
 });
+
