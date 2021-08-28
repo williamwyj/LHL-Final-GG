@@ -1,7 +1,8 @@
+require("dotenv").config();
 const Express = require('express');
 const App = Express();
 const BodyParser = require('body-parser');
-const PORT = 8080;
+const PORT = 3003;
 
 // Express Configuration
 App.use(BodyParser.urlencoded({ extended: false }));
@@ -10,9 +11,17 @@ App.use(Express.static('public'));
 
 //connection to ElephantSQL
 const { Client } = require('pg')
+
 const dbParams = require('../lib/db.js');
+console.log('dbparams: ', dbParams)
 const db = new Client(dbParams);
-db.connect();
+db.connect()
+.then(res => {
+  console.log("connected")
+  console.log(res)
+})
+.catch(err => console.error('query error', err.stack));
+
 
 
 
