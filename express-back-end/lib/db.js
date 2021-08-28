@@ -1,6 +1,9 @@
+const dotenv = require('dotenv').config();
+
+console.log(process.env.PG_URL)
 let dbParams = {};
 if (process.env.PG_URL) {
-  dbParams.connectionString = process.env.DATABASE_URL;
+  dbParams.connectionString = process.env.PG_URL;
 } else {
   dbParams = {
     host: process.env.PG_HOST,
