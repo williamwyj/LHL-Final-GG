@@ -1,4 +1,4 @@
-const dotenv = require('dotenv').config();
+require('dotenv').config();
 
 console.log(process.env.PG_URL)
 let dbParams = {};

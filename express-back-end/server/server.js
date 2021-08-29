@@ -18,7 +18,7 @@ const db = new Client(dbParams);
 db.connect()
 .then(res => {
   console.log("connected")
-  console.log(res)
+  console.log(res.rows)
 })
 .catch(err => console.error('query error', err.stack));
 
