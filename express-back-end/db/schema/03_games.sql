@@ -3,8 +3,5 @@ CREATE TABLE games (
   id SERIAL PRIMARY KEY NOT NULL,
   title VARCHAR(255) NOT NULL,
   description TEXT,
-  platform VARCHAR(255) NOT NULL,
-  
-  -- cover_art IMAGE NOT NULL,
-
+  platform VARCHAR(255) NOT NULL
 );
