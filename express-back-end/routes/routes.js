@@ -4,10 +4,10 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
-    db.query("SELECT * FROM ;")
+  router.get("/games", (req, res) => {
+    db.query("SELECT * FROM games;")
       .then((data => {
-        res.json({ "data" : data.rows});
+        res.json(data.rows);
       }))
       .catch(err => {
         res

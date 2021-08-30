@@ -16,13 +16,15 @@ const dbParams = require('../lib/db.js');
 console.log('dbparams: ', dbParams)
 const db = new Client(dbParams);
 db.connect()
-.then(res => {
-  console.log("connected")
-  console.log(res.rows)
-})
-.catch(err => console.error('query error', err.stack));
+  .then(res => {
+    console.log("connected")
+    console.log(res.rows)
+  })
+  .catch(err => console.error('query error', err.stack));
 
+const routes = require('../routes/routes')
 
+App.use("/api", routes(db));
 
 
 
@@ -31,9 +33,10 @@ App.get('/api/data', (req, res) => res.json({
   message: "Seems to work!",
 }));
 
-App.get('/api/game', (req, res) => res.json({
-  message: "Nier Automata",
-}));
+// App.get('/api/games', (req, res) => {
+//   db.query('SELECT * FROM GAMES')
+//     .then(data => res.json(data.rows))
+// });
 
 App.get('/api/user', (req, res) => res.json({
   message: "n0Sc0peG4MeR",
