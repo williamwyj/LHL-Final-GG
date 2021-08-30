@@ -43,9 +43,9 @@ export default function Navigation() {
             <Button variant="outline-secondary" id="button-addon2">Search</Button>
           </Form>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Games</Nav.Link>
-            <Nav.Link href="#pricing">Members</Nav.Link>  
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/game">Games</Nav.Link>
+            <Nav.Link href="/user">Members</Nav.Link>  
           </Nav>
           <Nav className="me-auto">
             <Nav.Link href="#home">Create an Account</Nav.Link>
