@@ -5,6 +5,7 @@ import {
   Route
 } from "react-router-dom";
 
+import Navigation from './components/Navigation';
 import Navbar from "./components/navbar";
 import Home from "./components/home";
 import User from "./components/user";
@@ -22,6 +23,7 @@ import Game from "./components/game";
 export default function App() {
   return (
     <Router>
+      <Navigation></Navigation>
       <Navbar />
       <hr />
       <div>

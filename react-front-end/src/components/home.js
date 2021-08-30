@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import "./home.scss"
+import "./home.css"
 
 import GameBox from "./HomePage/GameBox/GameBox"
 
