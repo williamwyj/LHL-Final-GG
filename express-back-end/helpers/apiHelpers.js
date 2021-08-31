@@ -1,9 +1,8 @@
-const axios = require('axios')
+const axios = require('axios');
+require("dotenv").config();
 
-
-// function to receive the access token from Twitch
-// I read that it's good practice to leave the access token obscured
-const getToken = async function() {
+//to grab the access token from twitch
+const getToken = function() {
   axios({
     url: process.env.TOKEN_URL,
     method: "POST",
@@ -17,33 +16,12 @@ const getToken = async function() {
     .then((res) => {
       console.log("SUCCESS");
       const token = res.data.access_token;
-      console.log("!@#!@#!@", token);
       return token;
     })
     .catch((err) => {
       console.log(err.message);
     });
 };
-//pass in a game's 'cover' prop to find it's cover art
-const platformMatch = function (id) {
-  axios({
-    url: "https://api.igdb.com/v4/covers",
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Client-ID": process.env.CLIENT_ID,
-      Authorization: `Bearer ${res.body.access_token}`,
-    },
-    data: `fields url; where id = ${id};`,
-  })
-    .then((response) => {
-      console.log("><><><><", response.data);
-    })
-    .catch((err) => {
-      console.error(err.message);
-    });
-};
-
 /* size guide:
 name_____________|size_________|Extra_________________
 cover_small     	90 x 128    	Fit
@@ -57,37 +35,31 @@ micro           	35 x 35     	Thumb, Center gravity
 720p            	1280 x 720  	Fit, Center gravity
 1080p           	1920 x 1080 	Fit, Center gravity
 
+for image_id just pass the 'cover' value
 */
-const coverImageSizing = function(image_id, size) {
-  return `https://images.igdb.com/igdb/image/upload/t_${size}/${image_id}.png`
+const coverImageSizing = function(cover, size) {
+  return `https://images.igdb.com/igdb/image/upload/t_${size}/${cover}.png`
 }
 
 //pass in search input for a game
-const searchGame = async function(input) {
-  const token = await getToken() 
-  console.log('token:', token)
+const searchGame = function(input) {
     // const token = variable;
     axios({
       url: "https://api.igdb.com/v4/games",
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Client-ID": process.env.CLIENT_ID,
-        Authorization: `Bearer ${token}`,
+        'Client-ID': process.env.CLIENT_ID,
+        Authorization: `Bearer ${process.env.TOKEN}`,
       },
-      data: `search "${input}"; fields name, platforms ,cover; limit 5;`,
+      data: `search "${input}"; fields name, platforms.abbreviation, cover; limit 5;`,
     })
       .then((response) => {
-        response.data.map(arr => { return arr});
-        // console.log("?????????", response.data.map(arr => arr.cover));
-        // response.data.forEach(arr => coverFind(arr.cover));
-        // console.log('????????', response.data.forEach(arr => (console.log(arr.genres))));
+        response.data.map(arr => console.log(arr));
       })
       .catch((err) => {
         console.error(err.message);
       });
   };
-
-console.log(searchGame('mario'));
 
 // export { coverMatch, searchGame };

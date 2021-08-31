@@ -22,60 +22,33 @@ db.connect()
   })
   .catch(err => console.error('query error', err.stack));
 
-/* 
-function to receive the access token from Twitch
-good practice to leave the access token obscured
-I know request is deprecated now so it might be good to look over this and replace with
-something like axios
-*/
-// const getToken = function(callback) {
-//   const options = {
-//     url: process.env.TOKEN_URL,
-//     json: true,
-//     body: {
-//       client_id: process.env.CLIENT_ID,
-//       client_secret: process.env.CLIENT_SECRET,
-//       grant_type: "client_credentials",
-//     },
-//   };
-//   request.post(options, (err, res, body) => {
-//     if (err) {
-//       return console.log("err", err);
-//     } 
-//     callback(res)
-//   });
-// };
+const routes = require('../routes/routes')
+
+App.use("/api", routes(db));
 
 const getToken = function() {
   axios({
     url: process.env.TOKEN_URL,
     method: "POST",
-    headers: {'Content-Type': 'application/json'},
+    headers: { "Content-Type": "application/json" },
     data: {
-    client_id: process.env.CLIENT_ID,
-    client_secret: process.env.CLIENT_SECRET,
-    grant_type: "client_credentials",
-    }
+      client_id: process.env.CLIENT_ID,
+      client_secret: process.env.CLIENT_SECRET,
+      grant_type: "client_credentials",
+    },
   })
-  .then(res => {
-    console.log("SUCCESS")
-    const token = res.data.access_token
-    console.log("!@#!@#!@", token)
-    return token
-  })
-  .catch(err => {
-    console.log(err.message)
-  })
+    .then((res) => {
+      console.log("SUCCESS");
+      const token = res.data.access_token;
+      console.log("!@#!@#!@", token);
+      return token;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
 };
 
-console.log('CALLING FUNCTION', getToken())
-
-
-const routes = require('../routes/routes')
-
-App.use("/api", routes(db));
-
-
+getToken()
 
 // Sample GET route
 App.get('/api/data', (req, res) => res.json({
