@@ -3,7 +3,7 @@ const axios = require('axios')
 
 // function to receive the access token from Twitch
 // I read that it's good practice to leave the access token obscured
-const getToken = function () {
+const getToken = async function() {
   axios({
     url: process.env.TOKEN_URL,
     method: "POST",
@@ -25,7 +25,7 @@ const getToken = function () {
     });
 };
 //pass in a game's 'cover' prop to find it's cover art
-const coverMatch = function (id) {
+const platformMatch = function (id) {
   axios({
     url: "https://api.igdb.com/v4/covers",
     method: "POST",
@@ -44,11 +44,29 @@ const coverMatch = function (id) {
     });
 };
 
+/* size guide:
+name_____________|size_________|Extra_________________
+cover_small     	90 x 128    	Fit
+screenshot_med  	569 x 320   	Lfill, Center gravity
+cover_big       	264 x 374   	Fit
+logo_med        	284 x 160   	Fit
+screenshot_big  	889 x 500   	Lfill, Center gravity
+screenshot_huge 	1280 x 720  	Lfill, Center gravity
+thumb           	90 x 90     	Thumb, Center gravity
+micro           	35 x 35     	Thumb, Center gravity
+720p            	1280 x 720  	Fit, Center gravity
+1080p           	1920 x 1080 	Fit, Center gravity
+
+*/
+const coverImageSizing = function(image_id, size) {
+  return `https://images.igdb.com/igdb/image/upload/t_${size}/${image_id}.png`
+}
+
 //pass in search input for a game
-const searchGame = function (input) {
-  getToken().then((variable) => {
-    //grab our token
-    const token = variable;
+const searchGame = async function(input) {
+  const token = await getToken() 
+  console.log('token:', token)
+    // const token = variable;
     axios({
       url: "https://api.igdb.com/v4/games",
       method: "POST",
@@ -60,7 +78,7 @@ const searchGame = function (input) {
       data: `search "${input}"; fields name, platforms ,cover; limit 5;`,
     })
       .then((response) => {
-        console.log("!!!!!!!!", response.data);
+        response.data.map(arr => { return arr});
         // console.log("?????????", response.data.map(arr => arr.cover));
         // response.data.forEach(arr => coverFind(arr.cover));
         // console.log('????????', response.data.forEach(arr => (console.log(arr.genres))));
@@ -68,8 +86,7 @@ const searchGame = function (input) {
       .catch((err) => {
         console.error(err.message);
       });
-  });
-};
+  };
 
 console.log(searchGame('mario'));
 
