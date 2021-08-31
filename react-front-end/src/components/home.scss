@@ -1,16 +1,32 @@
-div.featured {
-  padding-top: 150px;
-  margin: auto;
-  width: 75%;
-  height: 265px;
-  display:flex;
-  justify-content: space-around;
-  align-items: center;
+div {
+  .featured {
+    padding-top: 50px;
+    margin: auto;
+    width: 75%;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .homePageGamesTitle {
+    padding-top: 100px;
+    text-align: center;
+    width: 100%;
+  }
+  .topReviews {
+    border: blue;
+    border-style: solid;
+    width: 53%;
+    height: 500px;
+  }
+  .topUsers {
+    border: red;
+    border-style: solid;
+    width: 20%;
+    height: 500px;
+  }
+  .topReviewsUsers {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
 }
-
-div.homePageGamesTitle {
-  padding-top: 100px;
-  text-align: center;
-  width: 100%;
-}
-

@@ -28,9 +28,15 @@ export default function Home() {
           return <GameBox key={game.id} id={game.id} title={game.title} description={game.description} platform={game.platform} cover={game.cover} />
         })}
       </div> 
-      <section className="topReviews">
+      <div className="topReviewsUsers">
+        <div className="topReviews">
 
-      </section>   
+        </div>
+        <div className="topUsers">
+        
+        </div>  
+      </div>
+       
     </div>
   );
   
