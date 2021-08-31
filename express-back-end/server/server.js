@@ -1,7 +1,8 @@
 require("dotenv").config();
-const request = require("request");
+const request = require('request');
 const Express = require('express');
 const App = Express();
+const axios = require('axios');
 const BodyParser = require('body-parser');
 const PORT = 3003;
 
@@ -14,36 +15,61 @@ App.use(Express.static('public'));
 const { Client } = require('pg')
 
 const dbParams = require('../lib/db.js');
-console.log('dbparams: ', dbParams)
 const db = new Client(dbParams);
 db.connect()
   .then(res => {
     console.log("connected")
-    console.log(res.rows)
   })
   .catch(err => console.error('query error', err.stack));
 
-// function to receive the access token from Twitch
-//good practice to leave the access token obscured
-const getToken = (callback) => {
-  const options = {
+/* 
+function to receive the access token from Twitch
+good practice to leave the access token obscured
+I know request is deprecated now so it might be good to look over this and replace with
+something like axios
+*/
+// const getToken = function(callback) {
+//   const options = {
+//     url: process.env.TOKEN_URL,
+//     json: true,
+//     body: {
+//       client_id: process.env.CLIENT_ID,
+//       client_secret: process.env.CLIENT_SECRET,
+//       grant_type: "client_credentials",
+//     },
+//   };
+//   request.post(options, (err, res, body) => {
+//     if (err) {
+//       return console.log("err", err);
+//     } 
+//     callback(res)
+//   });
+// };
+
+const getToken = function() {
+  axios({
     url: process.env.TOKEN_URL,
-    json: true,
-    body: {
-      client_id: process.env.CLIENT_ID,
-      client_secret: process.env.CLIENT_SECRET,
-      grant_type: "client_credentials",
-    },
-  };
-  request.post(options, (err, res, body) => {
-    if (err) {
-      return console.log("err", err);
+    method: "POST",
+    headers: {'Content-Type': 'application/json'},
+    data: {
+    client_id: process.env.CLIENT_ID,
+    client_secret: process.env.CLIENT_SECRET,
+    grant_type: "client_credentials",
     }
-    callback(res)
-  });
+  })
+  .then(res => {
+    console.log("SUCCESS")
+    const token = res.data.access_token
+    console.log("!@#!@#!@", token)
+    return token
+  })
+  .catch(err => {
+    console.log(err.message)
+  })
 };
 
-getToken(res => console.log('DIDIDIDID IT WORK', res.body.access_token))
+console.log('CALLING FUNCTION', getToken())
+
 
 const routes = require('../routes/routes')
 
