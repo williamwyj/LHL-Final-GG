@@ -1,4 +1,5 @@
 require("dotenv").config();
+const request = require("request");
 const Express = require('express');
 const App = Express();
 const BodyParser = require('body-parser');
@@ -21,6 +22,28 @@ db.connect()
     console.log(res.rows)
   })
   .catch(err => console.error('query error', err.stack));
+
+// function to receive the access token from Twitch
+//good practice to leave the access token obscured
+const getToken = (callback) => {
+  const options = {
+    url: process.env.TOKEN_URL,
+    json: true,
+    body: {
+      client_id: process.env.CLIENT_ID,
+      client_secret: process.env.CLIENT_SECRET,
+      grant_type: "client_credentials",
+    },
+  };
+  request.post(options, (err, res, body) => {
+    if (err) {
+      return console.log("err", err);
+    }
+    callback(res)
+  });
+};
+
+getToken(res => console.log('DIDIDIDID IT WORK', res.body.access_token))
 
 const routes = require('../routes/routes')
 
