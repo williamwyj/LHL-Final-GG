@@ -13,8 +13,8 @@ export default function TopReviews(props) {
     Game ID
     {props.gameId}
     Game Title
-    {props.gameTitle}
-    <img className="homePageReviewGameCover" src={props.gameCover} alt={props.gameTitle}/>
+    {props.gameName}
+    <img className="homePageReviewGameCover" src={props.gameCover} alt={props.gameName}/>
     Content
     {props.content}
     Rating
