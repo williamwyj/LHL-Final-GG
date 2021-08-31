@@ -4,6 +4,7 @@ import "./Home.scss"
 
 import GameBox from "./HomePage/GameBox/GameBox"
 import TopReviews from "./HomePage/TopReviews"
+import TopUsers from "./HomePage/TopUsers"
 
 import useApplicationData from './hooks/useApplicationData';
 
@@ -34,9 +35,12 @@ export default function Home() {
             return <TopReviews key={review.id} userId={review.user_id} username={review.username} gameId={review.game_id} gameTitle={review.title} gameCover={review.cover} content={review.content} rating={review.rating} like={review.like} hmm={review.hmm} haha={review.haha} />
           })}
         </ul>
-        <div className="topUsers">
-        
-        </div>  
+        <ul className="topUsers">
+          {state.users.map((user) => {
+            return <TopUsers key={user.id} userId={user.user_id} username={user.username} followers={user.count} />
+          }
+          )}
+        </ul>  
       </div>
        
     </div>

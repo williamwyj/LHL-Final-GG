@@ -6,13 +6,15 @@ import axios from 'axios';
 export default function useApplicationData() {
   const [state, setState] = useState({
     games: [],
-    reviews: []
+    reviews: [],
+    users: []
   })
 
-  const setHomeData = function(homePageGames, homepageReviews) {
+  const setHomeData = function(homePageGames, homepageReviews, homepageUsers) {
     const games = homePageGames;
     const reviews = homepageReviews
-    return {...state, games, reviews}
+    const users = homepageUsers
+    return {...state, games, reviews, users}
   }
 
   useEffect(()=>{
@@ -20,13 +22,17 @@ export default function useApplicationData() {
       axios
         .get('api/games'),
       axios
-        .get('api/topReviews')
+        .get('api/topReviews'),
+      axios
+        .get('api/mostFollowedUsers')
     ]).then((all) => {
       // get only first 4 games for home page display
       const homepageGames = all[0].data.slice(0,4)
       // get only first 3 top reviews for home page display
       const homepageReviews = all[1].data.slice(0,3)
-      setState(setHomeData(homepageGames, homepageReviews))
+      // get only first 3 most followed users for home page display
+      const homepageUsers = all[2].data.slice(0,3)
+      setState(setHomeData(homepageGames, homepageReviews, homepageUsers))
     })
   }, [])
 
