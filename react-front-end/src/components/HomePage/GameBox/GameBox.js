@@ -6,8 +6,8 @@ import "./GameBox.scss"
 export default function gameBox(props) {
   return (
   <Link to={`/game/${props.id}`}>
-    <div class="homePageFeaturedGame">
-      <img class="homePageGameCover" src={props.cover} alt={props.title} rounded />
+    <div className="homePageFeaturedGame">
+      <img className="homePageGameCover" src={props.cover} alt={props.title}/>
     </div>
   </Link>
   )
