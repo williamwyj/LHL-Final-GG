@@ -8,7 +8,7 @@ import {
 import Navigation from './components/Navigation';
 import Home from "./components/home";
 import User from "./components/user";
-import Game from "./components/game";
+import Game from "./components/Game";
 
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
@@ -23,7 +23,6 @@ export default function App() {
   return (
     <Router>
       <Navigation></Navigation>
-      <hr />
       <div>
         {/*
           A <Switch> looks through all its children <Route>
@@ -36,7 +35,7 @@ export default function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/game">
+          <Route path="/game/:id">
             <Game />
           </Route>
           <Route path="/user">
