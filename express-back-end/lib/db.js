@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 console.log(process.env.PG_URL)
 let dbParams = {};
 if (process.env.PG_URL) {
