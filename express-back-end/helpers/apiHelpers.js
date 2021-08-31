@@ -43,7 +43,6 @@ const coverImageSizing = function(cover, size) {
 
 //pass in search input for a game
 const searchGame = function(input) {
-    // const token = variable;
     axios({
       url: "https://api.igdb.com/v4/games",
       method: "POST",
@@ -62,4 +61,25 @@ const searchGame = function(input) {
       });
   };
 
-// export { coverMatch, searchGame };
+const grabGameById = function(id) {
+  axios({
+    url: "https://api.igdb.com/v4/games",
+    method: "POST",
+    headers: {
+      'Accept': "application/json",
+      'Client-ID': process.env.CLIENT_ID,
+      'Authorization': `Bearer ${process.env.TOKEN}`,
+    },
+    data: `where id = ${id}; fields name, platforms.abbreviation, cover;`,
+  })
+  .then((response) => {
+    response.data.map(arr => console.log(arr));
+  })
+  .catch((err) => {
+    console.error(err.message);
+  });
+} 
+
+
+
+// export { coverImageSizing, searchGame, grabGameById };
