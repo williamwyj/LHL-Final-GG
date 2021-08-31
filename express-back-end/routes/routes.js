@@ -37,10 +37,14 @@ module.exports = (db) => {
             reviews.id, reviews.user_id, reviews.game_id, reviews.content, reviews.rating, 
             COUNT(*) FILTER (WHERE likes.type = 'like') AS "like",
             COUNT(*) FILTER (WHERE likes.type = 'hmm') AS "hmm",
-            COUNT(*) FILTER (WHERE likes.type = 'haha') AS "haha" 
-          FROM reviews JOIN likes ON (reviews.id = likes.review_id)
+            COUNT(*) FILTER (WHERE likes.type = 'haha') AS "haha",
+            users.username, games.title, games.cover
+          FROM reviews 
+          JOIN likes ON (reviews.id = likes.review_id)
+          JOIN users ON (reviews.user_id = users.id)
+          JOIN games ON (reviews.game_id = games.id)
           WHERE likes.type IN ('like', 'hmm', 'haha') AND reviews.id IN (${reviewId})
-          GROUP BY reviews.id;`
+          GROUP BY reviews.id, users.username, games.title, games.cover;`
         )
           .then((data => {
             res.json(data.rows);
@@ -58,5 +62,21 @@ module.exports = (db) => {
           });
       
   })
+
+  //top user, users with the most followers
+  router.get('/mostFollowedUsers', (req,res) => {
+    db.query(
+      `SELECT user_id, users.username, count(*) FROM followers JOIN users ON user_id = users.id GROUP BY user_id, users.username ORDER BY count DESC;`
+    )
+      .then((data => {
+        res.json(data.rows);
+      }))
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  })
+
   return router  
 }
