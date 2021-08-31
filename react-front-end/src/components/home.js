@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import "./home.css"
+import "./home.scss"
 
 import GameBox from "./HomePage/GameBox/GameBox"
 
@@ -19,16 +19,15 @@ export default function Home() {
   
   return (
     <div className="App">
-      <h1>Home Page</h1>
-      <button>
-        Fetch Data Home Page
-      </button>    
-      <section className="topGames">
+      <div className="homePageGamesTitle">
+        What's Hot This Week
+      </div>
+      <div className="featured">
         {state.games.map((game) => {
           console.log(game);
-        return <GameBox key={game.id} id={game.id} title={game.title} description={game.description} platform={game.platform} cover={game.cover} />
+          return <GameBox key={game.id} id={game.id} title={game.title} description={game.description} platform={game.platform} cover={game.cover} />
         })}
-      </section> 
+      </div> 
       <section className="topReviews">
 
       </section>   
