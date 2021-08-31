@@ -38,13 +38,13 @@ module.exports = (db) => {
             COUNT(*) FILTER (WHERE likes.type = 'like') AS "like",
             COUNT(*) FILTER (WHERE likes.type = 'hmm') AS "hmm",
             COUNT(*) FILTER (WHERE likes.type = 'haha') AS "haha",
-            users.username, games.title, games.cover
+            users.username, games.name, games.cover
           FROM reviews 
           JOIN likes ON (reviews.id = likes.review_id)
           JOIN users ON (reviews.user_id = users.id)
           JOIN games ON (reviews.game_id = games.id)
           WHERE likes.type IN ('like', 'hmm', 'haha') AND reviews.id IN (${reviewId})
-          GROUP BY reviews.id, users.username, games.title, games.cover;`
+          GROUP BY reviews.id, users.username, games.name, games.cover;`
         )
           .then((data => {
             res.json(data.rows);
