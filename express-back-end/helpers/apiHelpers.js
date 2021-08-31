@@ -35,10 +35,10 @@ micro           	35 x 35     	Thumb, Center gravity
 720p            	1280 x 720  	Fit, Center gravity
 1080p           	1920 x 1080 	Fit, Center gravity
 
-for image_id just pass the 'cover' value
+for image_id pass the 'cover.image_id' or 'screenshots.image_id' value
 */
-const coverImageSizing = function(cover, size) {
-  return `https://images.igdb.com/igdb/image/upload/t_${size}/${cover}.png`
+const getImage = function(image_id, size) {
+  return `https://images.igdb.com/igdb/image/upload/t_${size}/${image_id}.png`
 }
 
 //pass in search input for a game
@@ -51,7 +51,7 @@ const searchGame = function(input) {
         'Client-ID': process.env.CLIENT_ID,
         Authorization: `Bearer ${process.env.TOKEN}`,
       },
-      data: `search "${input}"; fields name, platforms.abbreviation, cover; limit 5;`,
+      data: `search "${input}"; fields name, summary, platforms.abbreviation, cover.*, screenshots.*; limit 5;`,
     })
       .then((response) => {
         response.data.map(arr => console.log(arr));
@@ -70,7 +70,7 @@ const grabGameById = function(id) {
       'Client-ID': process.env.CLIENT_ID,
       'Authorization': `Bearer ${process.env.TOKEN}`,
     },
-    data: `where id = ${id}; fields name, platforms.abbreviation, cover;`,
+    data: `where id = ${id}; fields name, summary, platforms.abbreviation, cover, screenshots.*, cover.*;`,
   })
   .then((response) => {
     response.data.map(arr => console.log(arr));
@@ -82,4 +82,5 @@ const grabGameById = function(id) {
 
 
 
-// export { coverImageSizing, searchGame, grabGameById };
+
+export { coverImageSizing, searchGame, grabGameById };
