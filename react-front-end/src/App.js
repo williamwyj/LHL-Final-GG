@@ -6,8 +6,8 @@ import {
 } from "react-router-dom";
 
 import Navigation from './components/Navigation';
-import Home from "./components/home";
-import User from "./components/user";
+import Home from "./components/Home";
+import User from "./components/User";
 import Game from "./components/Game";
 
 // This site has 3 pages, all of which are rendered
