@@ -4,7 +4,7 @@ const Express = require('express');
 const App = Express();
 const axios = require('axios');
 const BodyParser = require('body-parser');
-const PORT = 3003;
+const PORT = 8000;
 
 // Express Configuration
 App.use(BodyParser.urlencoded({ extended: false }));
@@ -25,30 +25,6 @@ db.connect()
 const routes = require('../routes/routes')
 
 App.use("/api", routes(db));
-
-const getToken = function() {
-  axios({
-    url: process.env.TOKEN_URL,
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    data: {
-      client_id: process.env.CLIENT_ID,
-      client_secret: process.env.CLIENT_SECRET,
-      grant_type: "client_credentials",
-    },
-  })
-    .then((res) => {
-      console.log("SUCCESS");
-      const token = res.data.access_token;
-      console.log("!@#!@#!@", token);
-      return token;
-    })
-    .catch((err) => {
-      console.log(err.message);
-    });
-};
-
-getToken()
 
 // Sample GET route
 App.get('/api/data', (req, res) => res.json({
