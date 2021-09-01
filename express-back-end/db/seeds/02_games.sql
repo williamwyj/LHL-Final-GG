@@ -55,4 +55,4 @@ game published for a Nintendo home console.',
  780796800,
  'https://images.igdb.com/igdb/image/upload/t_original/co22lm.jpg',
  '{https://images.igdb.com/igdb/image/upload/t_original/jvolp5luzq5gwzakjrbd.jpg, https://images.igdb.com/igdb/image/upload/t_original/sc835c.jpg, https://images.igdb.com/igdb/image/upload/t_original/sc835e.jpg}'
-); 
+

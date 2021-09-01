@@ -1,6 +1,8 @@
 require("dotenv").config();
+const request = require('request');
 const Express = require('express');
 const App = Express();
+const axios = require('axios');
 const BodyParser = require('body-parser');
 const PORT = 3003;
 
@@ -13,12 +15,10 @@ App.use(Express.static('public'));
 const { Client } = require('pg')
 
 const dbParams = require('../lib/db.js');
-console.log('dbparams: ', dbParams)
 const db = new Client(dbParams);
 db.connect()
   .then(res => {
     console.log("connected")
-    console.log(res.rows)
   })
   .catch(err => console.error('query error', err.stack));
 
@@ -26,7 +26,29 @@ const routes = require('../routes/routes')
 
 App.use("/api", routes(db));
 
+const getToken = function() {
+  axios({
+    url: process.env.TOKEN_URL,
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    data: {
+      client_id: process.env.CLIENT_ID,
+      client_secret: process.env.CLIENT_SECRET,
+      grant_type: "client_credentials",
+    },
+  })
+    .then((res) => {
+      console.log("SUCCESS");
+      const token = res.data.access_token;
+      console.log("!@#!@#!@", token);
+      return token;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
 
+getToken()
 
 // Sample GET route
 App.get('/api/data', (req, res) => res.json({
