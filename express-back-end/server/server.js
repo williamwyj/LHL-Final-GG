@@ -64,6 +64,16 @@ App.get('/api/user', (req, res) => res.json({
   message: "n0Sc0peG4MeR",
 }));
 
+App.get('/api/login', (req, res) => {
+  console.log(req.query.user);
+  console.log(req.query.password);
+})
+
+App.get('/api/register', (req, res) => {
+  console.log(req.query.user);
+  console.log(req.query.password);
+})
+
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`Express seems to be listening on port ${PORT} so that's pretty good 👍`);
