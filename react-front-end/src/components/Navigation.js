@@ -6,6 +6,7 @@ import FormControl from 'react-bootstrap/FormControl'
 
 import logoName from './image/Logo-removebg-preview.png'
 import logoController from './image/controller.png'
+import './Navigation.scss'
 import Axios from 'axios';
 
 import useToken from './hooks/useToken'
@@ -30,7 +31,6 @@ export default function Navigation() {
       }
     })
     .then((token) => {
-      console.log(token.data[0].token)
       setToken(token.data[0])
     })
     .catch(err => {
@@ -41,11 +41,14 @@ export default function Navigation() {
   }
   const onRegisterSubmit = event => {
     event.preventDefault();
-    Axios.get("/api/register", {
+    Axios.post("/api/register", {
       params: {
         user,
         password
       }
+    })
+    .then((token)=>{
+      setToken(token.data[0])
     })
     .catch(err => {
       console.log(err);
@@ -93,24 +96,26 @@ export default function Navigation() {
           {!token ?
             <div>
               <Button variant="primary" onClick={() => setShowLogin(!showLogin)}>
-              Login
+                Login
               </Button>
               <Button variant="primary" onClick={() => setShowRegister(!showRegister)}>
-                  Sign up
+                Sign up
               </Button>
             </div>
-          :
-            <Button variant="primary" onClick={()=>removeToken()}>
-              Logout
-            </Button>
-          }
-          
-            <NavDropdown title="Profile" id="navbarScrollingDropdown">
+          : <div className="userButtons">
+              <Button variant="primary" onClick={()=>removeToken()}>
+                Logout
+              </Button>
+              <NavDropdown title="Profile" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">User Page</NavDropdown.Item>
               <NavDropdown.Item href="#action4">Settings</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action5">Logo Out</NavDropdown.Item>
-            </NavDropdown>  
+              </NavDropdown>
+            </div>
+          }
+          
+              
           </Nav>
         </Container>
       </Navbar>
