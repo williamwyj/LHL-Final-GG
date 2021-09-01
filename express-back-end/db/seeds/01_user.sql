@@ -3,4 +3,6 @@ VALUES
 
 ('Test', 'a'),
 ('gamer100', 'a'),
-('mario', 'a');
+('mario', 'a'),
+('peach', 'a'),
+('luigi', 'a');
