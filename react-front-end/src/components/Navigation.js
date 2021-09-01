@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
@@ -7,9 +8,26 @@ import FormControl from 'react-bootstrap/FormControl'
 import logoName from './image/Logo-removebg-preview.png'
 import logoController from './image/controller.png'
 
+//helper functions
+import { searchGame } from '../helpers/apiHelpers'; 
+
+//React components
+import Results from './SearchBar/Results';
+import SearchBar from './SearchBar/SearchBar';
+
 
   
 export default function Navigation() {
+  const [term, setTerm] = useState("");
+  const [results, setResults] = useState([]);
+
+  useEffect(() => {
+    searchGame(term).then((games) => {
+      console.log(games)
+      setResults(games)
+    })
+  }, []);
+  
   
 
   return (
@@ -33,15 +51,17 @@ export default function Navigation() {
             />{' '}
           Good Games
           </Navbar.Brand>
-          <Form className="d-flex">
-            <FormControl
-              type="search"
-              placeholder="Search"
-              className="mr-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-secondary" id="button-addon2">Search</Button>
-          </Form>
+          {/* <Form className="d-flex"> */}
+            <SearchBar onSearch={(term) => setTerm(term)}/>
+            <Results classname="results" results={ results }/>
+            {/* <FormControl
+            type="search"
+            placeholder="Search"
+            className="mr-2"
+            aria-label="Search"
+            /> */}
+            {/* <Button variant="outline-secondary" id="button-addon2">Search</Button>
+          </Form> */}
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/game">Games</Nav.Link>
