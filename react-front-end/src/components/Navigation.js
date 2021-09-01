@@ -8,9 +8,13 @@ import logoName from './image/Logo-removebg-preview.png'
 import logoController from './image/controller.png'
 import Axios from 'axios';
 
+import useToken from './hooks/useToken'
 
   
 export default function Navigation() {
+
+  const {token, setToken, removeToken} = useToken();
+
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
   const [user, setUser] = useState();
@@ -24,6 +28,10 @@ export default function Navigation() {
         user,
         password
       }
+    })
+    .then((token) => {
+      console.log(token.data[0].token)
+      setToken(token.data[0])
     })
     .catch(err => {
       console.log(err);
@@ -82,12 +90,21 @@ export default function Navigation() {
             <Nav.Link href="/user">Members</Nav.Link>  
           </Nav>
           <Nav className="me-auto">
-          <Button variant="primary" onClick={() => setShowLogin(!showLogin)}>
+          {!token ?
+            <div>
+              <Button variant="primary" onClick={() => setShowLogin(!showLogin)}>
               Login
+              </Button>
+              <Button variant="primary" onClick={() => setShowRegister(!showRegister)}>
+                  Sign up
+              </Button>
+            </div>
+          :
+            <Button variant="primary" onClick={()=>removeToken()}>
+              Logout
             </Button>
-          <Button variant="primary" onClick={() => setShowRegister(!showRegister)}>
-              Sign up
-            </Button>
+          }
+          
             <NavDropdown title="Profile" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">User Page</NavDropdown.Item>
               <NavDropdown.Item href="#action4">Settings</NavDropdown.Item>

@@ -23,8 +23,10 @@ db.connect()
   .catch(err => console.error('query error', err.stack));
 
 const routes = require('../routes/routes')
+const userAuthRoutes = require('../routes/userAuthRoutes')
 
 App.use("/api", routes(db));
+App.use("/api", userAuthRoutes(db));
 
 const getToken = function() {
   axios({
@@ -63,16 +65,6 @@ App.get('/api/data', (req, res) => res.json({
 App.get('/api/user', (req, res) => res.json({
   message: "n0Sc0peG4MeR",
 }));
-
-App.get('/api/login', (req, res) => {
-  console.log(req.query.user);
-  console.log(req.query.password);
-})
-
-App.get('/api/register', (req, res) => {
-  console.log(req.query.user);
-  console.log(req.query.password);
-})
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console
