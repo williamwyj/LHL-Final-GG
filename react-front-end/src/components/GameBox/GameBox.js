@@ -2,16 +2,24 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 import "./GameBox.scss"
-import useGameStats from "./hooks/useGameLikes"
+import useGameUserStats from "./hooks/useGameUserStats"
 
 export default function gameBox(props) {
 
-  const { state } = useGameStats(props.id)
-
+  const { state } = useGameUserStats(props.id)
+  console.log("State is", state);
+  console.log("Like is", state.like)
   return (
   <Link to={`/game/${props.id}`}>
-    <div className="homePageFeaturedGame">
-      <img className="homePageGameCover" src={props.cover} alt={props.name}/>
+    <div className="gameBox">
+      <img className="gameBox" src={props.cover} alt={props.name}/>
+      <div className="overlay">
+        <div className="gameStats">
+          <p>Likes : {state.liked}</p>
+          <p>Played : {state.played}</p>
+          <p>On Play List : {state.play_list}</p>
+        </div>
+      </div>
     </div>
   </Link>
   )
