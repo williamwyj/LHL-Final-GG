@@ -1,4 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { authContext } from "../providers/AuthProvider"
+
 import { Navbar, Container, Nav, NavDropdown, Modal } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
@@ -11,10 +14,17 @@ import Axios from 'axios';
 
 import useToken from './hooks/useToken'
 
-  
+//custom hook to toggle login/register and logout/Profile buttons
+import useLogin from './hooks/useLogin'
+//Login and Logout components
+import Login from './Login'
+import Logout from './Logout'
+
 export default function Navigation() {
 
-  const {token, setToken, removeToken} = useToken();
+  const { userInfo, login, logout } = useContext(authContext);
+  
+  const {token, getToken, username} = useToken();
 
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
@@ -24,18 +34,9 @@ export default function Navigation() {
   const onPasswordInput = ({target}) => setPassword(target.value);
   const onLoginSubmit = event => {
     event.preventDefault();
-    Axios.get("/api/login", {
-      params: {
-        user,
-        password
-      }
-    })
-    .then((token) => {
-      setToken(token.data[0])
-    })
-    .catch(err => {
-      console.log(err);
-    })
+    if(user) {
+      login(user, password).then(()=>transition("Logout"))
+    }
     setUser();
     setPassword();
   }
@@ -48,7 +49,7 @@ export default function Navigation() {
       }
     })
     .then((token)=>{
-      setToken(token.data[0])
+      login(user,password).then(()=>transition("Logout"))
     })
     .catch(err => {
       console.log(err);
@@ -56,6 +57,15 @@ export default function Navigation() {
     setUser();
     setPassword();
   }
+  //custom hook to toggle login/register and logout/Profile buttons
+  const {mode, transition} = useLogin(token ? "Login" : "Logout")
+  useEffect(()=>{
+    if(!token) {
+      transition("Login")
+    } else if (token) {
+      transition("Logout")
+    }
+  },[token])
 
   return (
     <div >
@@ -93,29 +103,8 @@ export default function Navigation() {
             <Nav.Link href="/user">Members</Nav.Link>  
           </Nav>
           <Nav className="me-auto">
-          {!token ?
-            <div>
-              <Button variant="primary" onClick={() => setShowLogin(!showLogin)}>
-                Login
-              </Button>
-              <Button variant="primary" onClick={() => setShowRegister(!showRegister)}>
-                Sign up
-              </Button>
-            </div>
-          : <div className="userButtons">
-              <Button variant="primary" onClick={()=>removeToken()}>
-                Logout
-              </Button>
-              <NavDropdown title="Profile" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">User Page</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">Settings</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">Logo Out</NavDropdown.Item>
-              </NavDropdown>
-            </div>
-          }
-          
-              
+          {mode === "Login" && (<Login Login={()=>setShowLogin(!showLogin)} Signup={()=>setShowRegister(!showRegister)} />)}
+          {mode === "Logout" && (<Logout Logout={()=>logout(username, token).then(()=>transition("Login"))}/>)}
           </Nav>
         </Container>
       </Navbar>

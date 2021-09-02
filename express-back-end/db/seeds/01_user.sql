@@ -1,8 +1,8 @@
-INSERT INTO users (username, password, token)
+INSERT INTO users (username, password)
 VALUES
 
-('Test', 'a', 'test1'),
-('gamer100', 'a', 'test2'),
-('mario', 'a', 'test3'),
-('peach', 'a', 'test4'),
-('luigi', 'a', 'test5');
+('Test', 'a'),
+('gamer100', 'a'),
+('mario', 'a'),
+('peach', 'a'),
+('luigi', 'a');

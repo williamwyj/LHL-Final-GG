@@ -17,7 +17,8 @@ module.exports = (db) => {
   router.get('/login', (req, res) => {
     const username = req.query.user;
     const password = req.query.password;
-    db.query(`SELECT token FROM users WHERE username='${username}' AND password='${password}';`)
+    const newToken = makeToken(5)
+    db.query(`UPDATE users SET token='${newToken}' WHERE username='${username}' AND password='${password}' RETURNING token;`)
       .then((token => {
         res.json(token.rows);
       }))
@@ -30,14 +31,27 @@ module.exports = (db) => {
     console.log(req.query.password);
   })
 
+  router.post('/logout', (req, res) => {
+    const token = req.body.params.token;
+    const username = req.body.params.user;
+    console.log("Token is ", token)
+    console.log("Username is", username)
+    db.query(`UPDATE users SET token=NULL WHERE token='${token}' AND username='${username}'`)
+      .then((data) => {
+        console.log('db updated')
+        res.status(201).json(data);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  })
+
   router.post('/register', (req, res) => {
-    console.log("username is ", req.body.params.user);
-    console.log("password is ", req.body.params.password);
     const username = req.body.params.user;
     const password = req.body.params.password;
-    const newToken = makeToken(5)
-    console.log("new token is ", newToken)
-    db.query(`INSERT INTO users (username, password, token) VALUES ('${username}', '${password}', '${newToken}') RETURNING token`)
+    db.query(`INSERT INTO users (username, password) VALUES ('${username}', '${password}')`)
       .then(token => {
         res.json(token.rows)
       })
