@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import "./Home.scss"
 
-import GameBox from "./HomePage/GameBox/GameBox"
+import FeaturedGame from './GameBox/FeaturedGames';
 import TopReviews from "./HomePage/TopReviews"
 import TopUsers from "./HomePage/TopUsers"
 
@@ -25,11 +25,7 @@ export default function Home() {
       <div className="homePageGamesTitle">
         What's Hot This Week
       </div>
-      <div className="featured">
-        {state.games.map((game) => {
-          return <GameBox key={game.id} id={game.id} title={game.name} description={game.summary} platform={game.platform} cover={game.cover} />
-        })}
-      </div> 
+        <FeaturedGame state={state} />
       <div className="topReviewsUsers">
         <ul className="topReviews">
           {state.reviews.map((review) => {
