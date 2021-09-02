@@ -6,9 +6,10 @@ const getImage = function(image_id, size) {
 
 const searchGame = function(text) {
   console.log("$$$TEXT$$$", text)
+  const value = text.toLowerCase()
   return axios.get("/api/search", {
     params: { 
-      input: text 
+      input: value 
     }
   })
     .then((res => {

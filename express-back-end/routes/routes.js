@@ -78,5 +78,19 @@ module.exports = (db) => {
       });
   })
 
+  //search
+  //easy refactor later on
+  router.get('/search', (req, res) => {
+    db.query(`SELECT * FROM games WHERE lower(name) LIKE ('%' || $1 || '%');`, [req.query.input])
+    .then((data => {
+      res.json(data.rows)
+    }))
+    .catch(err => {
+      console.log(err.message)
+        // .status(500)
+        // .json({ error: err.message });
+    });
+  })
+
   return router  
 }

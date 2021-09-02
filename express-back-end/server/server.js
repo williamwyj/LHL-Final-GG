@@ -45,3 +45,7 @@ App.listen(PORT, () => {
   console.log(`Express seems to be listening on port ${PORT} so that's pretty good 👍`);
 });
 
+// App.get('api/search', (req, res) => res.json({
+//   message: 'search',
+// }));
+

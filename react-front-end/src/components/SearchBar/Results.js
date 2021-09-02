@@ -9,9 +9,7 @@ export default function Results(props) {
 
   console.log("RESULTS JSX", results)
 
-  return (
-    <div>
-
-    </div>
-  )
+  return results.map(result => (
+    <NavDropdown.Item href="#action4">${result.name}</NavDropdown.Item>
+  ))
 }
