@@ -87,8 +87,7 @@ module.exports = (db) => {
     }))
     .catch(err => {
       console.log(err.message)
-        // .status(500)
-        // .json({ error: err.message });
+      res.json({ error: err.message})
     });
   })
 

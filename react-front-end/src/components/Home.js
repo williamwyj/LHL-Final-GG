@@ -9,6 +9,7 @@ import TopUsers from "./HomePage/TopUsers"
 import useApplicationData from './hooks/useApplicationData';
 
 export default function Home() {
+
   const { state } = useApplicationData();
   // const fetchData = () => {
   //   axios.get('/api/games') // You can simply make your requests to "/api/whatever you want"

@@ -23,8 +23,10 @@ db.connect()
   .catch(err => console.error('query error', err.stack));
 
 const routes = require('../routes/routes')
+const userAuthRoutes = require('../routes/userAuthRoutes')
 
 App.use("/api", routes(db));
+App.use("/api", userAuthRoutes(db));
 
 // Sample GET route
 App.get('/api/data', (req, res) => res.json({
