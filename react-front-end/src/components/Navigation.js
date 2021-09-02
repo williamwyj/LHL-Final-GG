@@ -35,7 +35,13 @@ export default function Navigation() {
   const onLoginSubmit = event => {
     event.preventDefault();
     if(user) {
-      login(user, password).then(()=>transition("Logout"))
+      login(user, password).then((message)=>{
+        if(message === "Wrong credentials!"){
+          setShowLogin(true)
+        } else if (!message){
+        transition("Logout")
+        }
+      })
     }
     setUser();
     setPassword();

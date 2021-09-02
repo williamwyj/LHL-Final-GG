@@ -18,12 +18,15 @@ export default function AuthProvider(props) {
       }
     })
     .then((token) => {
-      setToken(token.data[0])
-      setUsername({username: user})
-      setAuth(true);
-      setUserInfo({username})
-      console.log("user is ", user)
-      console.log("userInfo is", userInfo)
+      console.log("Token is", token.data[0])
+      if (token.data[0]){
+        setToken(token.data[0])
+        setUsername({username: user})
+        setAuth(true);
+        setUserInfo({username})
+      } else {
+        return 'Wrong credentials!'
+      }
     })
     .catch(err => {
       console.log(err);
