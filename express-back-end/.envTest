@@ -1,0 +1,16 @@
+PG_HOST=localhost
+PG_USER=labber
+PG_PASS=labber
+PG_NAME=finalproject
+PG_PORT=5432
+
+PG_HOST=kashin.db.elephantsql.com
+PG_NAME=yrvibrzl
+PG_USER=yrvibrzl
+PG_PASS=flifvtPJIqKDTa7PavcHpp2V5umV9u-w
+PG_URL=postgres://yrvibrzl:flifvtPJIqKDTa7PavcHpp2V5umV9u-w@kashin.db.elephantsql.com/yrvibrzl
+PG_PORT=3003
+CLIENT_ID=0a6f8fltfn5q9zo7kufqbvkk4gznqr
+CLIENT_SECRET=78t8lsq92k29s6ihx135yzd41u3laf
+TOKEN_URL=https://id.twitch.tv/oauth2/token
+TOKEN=j65yqp4aw6fk9891adpviv1anumglv
