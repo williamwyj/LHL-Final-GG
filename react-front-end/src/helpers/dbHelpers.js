@@ -1,19 +1,26 @@
+const axios = require('axios');
+
 const getImage = function(image_id, size) {
   return `https://images.igdb.com/igdb/image/upload/t_${size}/${image_id}.png`
 }
 
-const searchGame = function(input) {
-  return router.get("/games", (req, res) => {
-    db.query(`SELECT * FROM games WHERE name LIKE %${input}%;`)
-      .then((data => {
-        res.json(data.rows);
-      }))
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
+const searchGame = function(text) {
+  console.log("$$$TEXT$$$", text)
+  return axios.get("/api/search", {
+    params: { 
+      input: text 
+    }
   })
-};
+    .then((res => {
+      return res.data
+    }))
+    .catch(err => {
+      console.log(err)// .json({ error: err.message });
+    });
+  };
+
+
+  export { searchGame, getImage }
+
 
 

@@ -79,4 +79,4 @@ const grabGameById = function(id) {
   });
 } 
 
-export { getImage, searchGame, grabGameById };
+// export { getImage, searchGame, grabGameById };

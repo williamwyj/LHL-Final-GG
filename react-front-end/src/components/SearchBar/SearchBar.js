@@ -2,15 +2,18 @@ import React from 'react';
 import { useState, useCallback, useEffect } from 'react';
 
 import useDebounce from '../hooks/useDebounce'
-import { searchGame } from '../../helpers/apiHelpers';
+import { searchGame } from '../../helpers/dbHelpers';
 
 export default function SearchBar(props) {
   const [value, setValue] = useState('')
   const term = useDebounce(value, 400)
 
   const onSearch = useCallback(props.onSearch, [term]);
+  //look into this useCallback shit
 
   useEffect(() => {
+    console.log("SEARCH BAR COMPONENT TERM:", term)
+    console.log("SEARCH BAR COMPONENT VALUE:", value)
     onSearch(term);
   }, [term, onSearch]);
 
