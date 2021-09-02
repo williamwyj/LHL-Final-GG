@@ -12,4 +12,6 @@ export default function Game(props) {
       <h1>Game ID is { id }</h1>     
     </div>
   );
+
 }
+
