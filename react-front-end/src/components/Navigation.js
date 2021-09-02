@@ -17,7 +17,7 @@ import Axios from 'axios';
 import { searchGame } from "../helpers/dbHelpers";
 
 //React components
-import Results from "./SearchBar/Results";
+import Results from "./SearchPage/Results";
 import SearchBar from "./SearchBar/SearchBar";
 
 //custom hooks to toggle login/register and logout/Profile buttons
@@ -118,8 +118,8 @@ export default function Navigation() {
             Good Games
           </Navbar.Brand>
           <Form className="d-flex">
-            <SearchBar onSearch={(term) => setTerm(term)}/>
-            <Results classname="results" results={ results }/>
+            <SearchBar onSearch={(term) => setTerm(term)}
+            />
             {/* <FormControl
               type="search"
               placeholder="Search"

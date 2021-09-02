@@ -1,5 +1,7 @@
 import React from 'react';
 import { useState, useCallback, useEffect } from 'react';
+import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import useDebounce from '../hooks/useDebounce'
 import { searchGame } from '../../helpers/dbHelpers';
@@ -30,6 +32,14 @@ export default function SearchBar(props) {
           onChange={event => setValue(event.target.value)}
           autoComplete="off"
         />
+        <Link to='/search'>
+          <Button 
+          type="submit"
+          variant="outline-secondary" 
+          id="button-addon2">
+            🔍
+          </Button>
+        </Link>
       </form>
     </section>
   );
