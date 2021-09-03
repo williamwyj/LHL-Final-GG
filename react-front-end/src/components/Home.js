@@ -31,11 +31,8 @@ export default function Home() {
         })}
       </div> 
       <div className="topReviewsUsers">
-        <ul className="topReviews">
-          {state.reviews.map((review) => {
-            return <TopReviews key={review.id} userId={review.user_id} username={review.username} gameId={review.game_id} gameName={review.name} gameCover={review.cover} content={review.content} rating={review.rating} like={review.like} hmm={review.hmm} haha={review.haha} />
-          })}
-        </ul>
+        <TopReviews reviews={state.reviews}/>
+        
         <ul className="topUsers">
           {state.users.map((user) => {
             return <TopUsers key={user.user_id} userId={user.user_id} username={user.username} followers={user.count} />

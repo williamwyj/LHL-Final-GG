@@ -25,7 +25,10 @@ export default function App() {
 
   const { token } = useContext(authContext);
   return (
+    
+
     <Router>
+      <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"/>
       <Navigation></Navigation>
       <div>
         {/*
