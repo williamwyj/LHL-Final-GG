@@ -7,6 +7,6 @@ import ResultItem from "./ResultItem";
 export default function Results(props) {
   
   return props.game.map(game => (
-    <ResultItem cover={game.cover} platforms={game.platforms} summary={game.summary} name={game.name}/>
+    <ResultItem cover={game.cover} platforms={game.platforms} summary={game.summary} name={game.name} id={game.id}/>
   ));
 }
