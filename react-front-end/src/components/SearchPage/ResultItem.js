@@ -1,5 +1,6 @@
 import React from "react";
 import { NavDropdown, Navbar } from "react-bootstrap";
+import './ResultItem.scss'
 
 import { searchGame } from "../../helpers/dbHelpers";
 
@@ -11,10 +12,10 @@ export default function ResultItem(props) {
       className="cover"
       src={props.cover}
       />
-      <article>
+      <article classname="writeup">
         <title>{props.name}</title>
         {props.summary}
-        <footer>{props.platforms}</footer>
+        <footer classname="platforms--footer">{props.platforms}</footer>
       </article>
       
     </section> 

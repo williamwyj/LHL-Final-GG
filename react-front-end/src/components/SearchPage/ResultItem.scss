@@ -2,8 +2,29 @@
   display: flex;
   width: 90%;
   flex-direction: row;
-  
+  justify-content: space-between;
+  border-radius: 4px;
+  border: 10px solid purple;
+  margin: 3vh
+
 
 }
 
-.cover
+.cover {
+  width: 16vw;
+  height: fit-content;
+  margin-right: 1vw;
+
+}
+
+.writeup{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.gameResult.writeup footer{
+  border-top: 1px solid black;
+  color: gray;
+  background-color: yellow;
+}
