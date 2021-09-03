@@ -1,8 +1,7 @@
 import React, {useState, useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { authContext } from "../providers/AuthProvider"
 
-import { Navbar, Container, Nav, NavDropdown, Modal } from 'react-bootstrap'
+import { Navbar, Container, Nav, Modal } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
@@ -22,9 +21,9 @@ import Logout from './Logout'
 
 export default function Navigation() {
 
-  const { userInfo, login, logout } = useContext(authContext);
+  const { login, logout } = useContext(authContext);
   
-  const {token, getToken, username} = useToken();
+  const {token, username} = useToken();
 
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
