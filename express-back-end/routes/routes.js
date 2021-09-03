@@ -91,5 +91,19 @@ module.exports = (db) => {
     });
   })
   
+  //get specific game by Id 
+  router.get("/gameId", (req, res) => {
+    db.query("SELECT * FROM games WHERE id = $1;", [req.query.input])
+      .then((data) => {
+        console.log("ROUTES", data.rows)
+        res.json(data.rows);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  })
+  
   return router  
 }

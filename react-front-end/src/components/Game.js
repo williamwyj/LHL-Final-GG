@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "./Game.scss"
 import { useParams } from 'react-router-dom';
@@ -12,7 +12,6 @@ export default function Game(props) {
   useEffect(() => {
     grabGameById(id)
     .then((result) => {
-      console.log('GAMEPAGE', result[0])
       setGame(result[0])
     });
   }, []);
