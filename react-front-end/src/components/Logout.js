@@ -5,7 +5,7 @@ import { NavDropdown} from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 
 export default function Logout(props) {
-  const {token, getToken, username} = useToken();
+  const {username} = useToken();
   
   return (
     <div className="userButtons">

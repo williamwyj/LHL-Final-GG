@@ -1,30 +1,53 @@
 import React, {useState, useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { authContext } from "../providers/AuthProvider"
 
-import { Navbar, Container, Nav, NavDropdown, Modal } from 'react-bootstrap'
+import { Navbar, Container, Nav, Modal } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
 
-import logoName from './image/Logo-removebg-preview.png'
-import logoController from './image/controller.png'
+
+import logoName from "./image/Logo-removebg-preview.png";
+import logoController from "./image/controller.png";
 import './Navigation.scss'
 import Axios from 'axios';
 
-import useToken from './hooks/useToken'
 
-//custom hook to toggle login/register and logout/Profile buttons
+//helper functions
+import { searchGame } from "../helpers/dbHelpers";
+
+//React components
+import Results from "./SearchPage/Results";
+import SearchBar from "./SearchBar/SearchBar";
+
+//custom hooks to toggle login/register and logout/Profile buttons
+import useToken from './hooks/useToken'
 import useLogin from './hooks/useLogin'
+
 //Login and Logout components
 import Login from './Login'
 import Logout from './Logout'
 
 export default function Navigation() {
 
-  const { userInfo, login, logout } = useContext(authContext);
+  //Code for livesearch
+  const [term, setTerm] = useState("");
+  const [results, setResults] = useState([]);
+
+  useEffect(() => {
+    if (term != "") {
+      searchGame(term)
+      .then((games) => {
+        console.log('Navigation', games)
+        setResults(games)
+      });
+    };
+  }, [term]);
+
+  /* Code for user Auth */
+  const { login, logout } = useContext(authContext);
   
-  const {token, getToken, username} = useToken();
+  const {token, username} = useToken();
 
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
@@ -74,7 +97,7 @@ export default function Navigation() {
   },[token])
 
   return (
-    <div >
+    <div>
       <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="#home">
@@ -84,29 +107,35 @@ export default function Navigation() {
               width="60"
               height="30"
               className="d-inline-block align-top"
-            />{' '}
+            />{" "}
             <img
               alt="logo"
               src={logoController}
               width="30"
               height="30"
               className="d-inline-block align-top"
-            />{' '}
-          Good Games
+            />{" "}
+            Good Games
           </Navbar.Brand>
           <Form className="d-flex">
-            <FormControl
+            <SearchBar onSearch={(term) => setTerm(term)}
+            />
+            {/* <FormControl
               type="search"
               placeholder="Search"
               className="mr-2"
               aria-label="Search"
+              // onSearch={(term) => setTerm(term)}
+              onChange={(event) => setTerm(event.target.value)}
             />
-            <Button variant="outline-secondary" id="button-addon2">Search</Button>
+            <Button variant="outline-secondary" id="button-addon2">
+              Search
+            </Button> */}
           </Form>
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/game">Games</Nav.Link>
-            <Nav.Link href="/user">Members</Nav.Link>  
+            <Nav.Link href="/user">Members</Nav.Link>
           </Nav>
           <Nav className="me-auto">
           {mode === "Login" && (<Login Login={()=>setShowLogin(!showLogin)} Signup={()=>setShowRegister(!showRegister)} />)}

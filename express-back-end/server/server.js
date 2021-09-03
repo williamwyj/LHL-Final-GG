@@ -28,30 +28,6 @@ const userAuthRoutes = require('../routes/userAuthRoutes')
 App.use("/api", routes(db));
 App.use("/api", userAuthRoutes(db));
 
-const getToken = function() {
-  axios({
-    url: process.env.TOKEN_URL,
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    data: {
-      client_id: process.env.CLIENT_ID,
-      client_secret: process.env.CLIENT_SECRET,
-      grant_type: "client_credentials",
-    },
-  })
-    .then((res) => {
-      console.log("SUCCESS");
-      const token = res.data.access_token;
-      console.log("!@#!@#!@", token);
-      return token;
-    })
-    .catch((err) => {
-      console.log(err.message);
-    });
-};
-
-getToken()
-
 // Sample GET route
 App.get('/api/data', (req, res) => res.json({
   message: "Seems to work!",
@@ -70,4 +46,8 @@ App.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`Express seems to be listening on port ${PORT} so that's pretty good 👍`);
 });
+
+// App.get('api/search', (req, res) => res.json({
+//   message: 'search',
+// }));
 

@@ -1,15 +1,23 @@
 import React from 'react';
-import axios from 'axios';
+
+import UserProfile from './ProfilePage/UserProfile'
+import FeaturedGame from './GameBox/FeaturedGames';
+import useUserInfo from './hooks/useUserInfo';
+
 import "./Profile.scss"
 import { useParams } from 'react-router-dom';
 
-export default function Profile(props) {
+
+
+
+export default function Profile() {
   //get the id from url
   const { name } = useParams();
-  
+  const {state} = useUserInfo(name);
   return (
     <div>
-      <h1>Profile is { name }</h1>     
+      <UserProfile thumbnail={state.thumbnail} id={state.id} username={state.username} followers={state.followers} followerNames={state.followerNames} followed={state.followed} reviews={state.reviews}/>
+      <FeaturedGame state={state} />     
     </div>
   );
 }

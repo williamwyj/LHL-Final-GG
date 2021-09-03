@@ -1,17 +1,16 @@
-import React, { useContext } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Redirect
+  Route
 } from "react-router-dom";
 
 import Navigation from './components/Navigation';
 import Home from "./components/Home";
-import User from "./components/User";
+
 import Game from "./components/Game";
 import Profile from "./components/Profile";
-import { authContext } from "./providers/AuthProvider";
+
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
 //
@@ -23,7 +22,7 @@ import { authContext } from "./providers/AuthProvider";
 
 export default function App() {
 
-  const { token } = useContext(authContext);
+  
   return (
     
 
@@ -46,11 +45,7 @@ export default function App() {
             <Game />
           </Route>
           <Route path="/user/:name">
-            {token && <Profile />}
-            {!token && <Redirect to="/" />}
-          </Route>
-          <Route path="/user">
-            <User />
+            <Profile />
           </Route>
         </Switch>
       </div>
