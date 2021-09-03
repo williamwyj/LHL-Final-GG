@@ -63,6 +63,53 @@ module.exports = (db) => {
       
   })
 
+  router.get('/topReviews/game', (req,res) => {
+    const gameId = req.query.gameId
+    db.query(
+    `SELECT id, "like" + "hmm" + "haha" AS total FROM (
+      SELECT 
+        reviews.id AS review_id, reviews.game_id AS game_id,
+        COUNT(*) FILTER (WHERE likes.type = 'like') AS "like",
+        COUNT(*) FILTER (WHERE likes.type = 'hmm') AS "hmm",
+        COUNT(*) FILTER (WHERE likes.type = 'haha') AS "haha"
+      FROM reviews JOIN likes ON (reviews.id = likes.review_id)
+      WHERE likes.type IN ('like', 'hmm', 'haha') AND game_id = ${gameId}
+      GROUP BY reviews.id
+      ORDER BY reviews.id
+    ) AS reviewlikes ORDER BY total DESC;`)
+      .then((data => {
+        const reviewId = data.rows.map(element => element.id).toString()
+        db.query(
+          `SELECT 
+            reviews.id, reviews.user_id, reviews.game_id, reviews.content, reviews.rating, 
+            COUNT(*) FILTER (WHERE likes.type = 'like') AS "like",
+            COUNT(*) FILTER (WHERE likes.type = 'hmm') AS "hmm",
+            COUNT(*) FILTER (WHERE likes.type = 'haha') AS "haha",
+            users.username, games.name, games.cover
+          FROM reviews 
+          JOIN likes ON (reviews.id = likes.review_id)
+          JOIN users ON (reviews.user_id = users.id)
+          JOIN games ON (reviews.game_id = games.id)
+          WHERE likes.type IN ('like', 'hmm', 'haha') AND reviews.id IN (${reviewId})
+          GROUP BY reviews.id, users.username, games.name, games.cover;`
+        )
+          .then((data => {
+            res.json(data.rows);
+          }))
+          .catch(err => {
+            res
+              .status(500)
+              .json({ error: err.message });
+          });
+      }))
+          .catch(err => {
+            res
+              .status(500)
+              .json({ error: err.message });
+          });
+      
+  })
+
   //top user, users with the most followers
   router.get('/mostFollowedUsers', (req,res) => {
     db.query(
@@ -82,7 +129,7 @@ module.exports = (db) => {
   //get userID from username to be used in profile page
   router.get('/userId', (req,res)=>{
     const username = req.query.username
-    console.log("username is ", username)
+    
     db.query(`SELECT users.id FROM users WHERE users.username = '${username}';`)
       .then((data => {
         res.json(data.rows);
@@ -148,7 +195,6 @@ module.exports = (db) => {
   router.get("/gameId", (req, res) => {
     db.query("SELECT * FROM games WHERE id = $1;", [req.query.input])
       .then((data) => {
-        console.log("ROUTES", data.rows)
         res.json(data.rows);
       })
       .catch(err => {

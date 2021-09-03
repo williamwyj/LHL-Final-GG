@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "./Game.scss"
 import { useParams } from 'react-router-dom';
-import { grabGameById } from '../helpers/dbHelpers';
+import { grabGameById, grabTopReviewsById } from '../helpers/dbHelpers';
 
 export default function Game(props) {
   const [game, setGame] = useState("")
@@ -10,12 +10,21 @@ export default function Game(props) {
   // let game = ''
 
   useEffect(() => {
-    grabGameById(id)
-    .then((result) => {
-      setGame(result[0])
-    });
+    Promise.all([
+      grabGameById(id),
+      grabTopReviewsById(id)
+    ]).then((all)=>{
+      const gameData = all[0].data
+      const reviewsData = all[0].data
+      setGame({gameData, reviewsData})
+    })
+    
+    // grabGameById(id)
+    // .then((result) => {
+    //   setGame(result[0])
+    // });
   }, []);
-
+  console.log("Game data, ", game)
   return (
     <div>
       <h1>Game ID is { id }</h1>     

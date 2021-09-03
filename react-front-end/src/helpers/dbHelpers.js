@@ -19,25 +19,38 @@ const searchGame = function(text) {
     });
   };
   
-  const grabGameById = function(id) {
-    return axios.get(`/api/gameId`, {
-      params: { 
-        input: id 
-      }
-    })
-      .then((res => {
-        console.log("DBHELPERS GRABGAMEFUNCTION", res.data)
-        return res.data
-      }))
-      .catch(err => {
-        console.log("ERROR", err.message)// .json({ error: err.message });
-      });
-    }; 
+const grabGameById = function(id) {
+  return axios.get(`/api/gameId`, {
+    params: { 
+      input: id 
+    }
+  })
+    .then((res => {
+      return res.data
+    }))
+    .catch(err => {
+      console.log("ERROR", err.message)// .json({ error: err.message });
+    });
+  }; 
+
+const grabTopReviewsById = function(gameId) {
+  return axios.get('/api/topReviews/game', {
+    params: {
+      gameId
+    }
+  })
+    .then((res => {
+      return res.data
+    }))
+    .catch(err => {
+      console.log("ERROR", err.message)// .json({ error: err.message });
+    });
+}
 
     // grabGameById(2928)
 
 
-  export { searchGame, getImage, grabGameById }
+  export { searchGame, getImage, grabGameById, grabTopReviewsById }
 
 
 
