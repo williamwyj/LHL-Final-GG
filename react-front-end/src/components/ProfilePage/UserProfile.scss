@@ -1,0 +1,21 @@
+section.container.userprofile {
+  width: 75%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 2.5%;
+}
+
+img.profileimg {
+  width: 150px;
+  height:auto;
+  border-radius: 50%;
+}
+
+div.profilestats {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 30%;
+}

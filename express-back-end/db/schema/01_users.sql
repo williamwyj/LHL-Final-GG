@@ -3,5 +3,6 @@ CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
   username VARCHAR(255) NOT NULL,
   password TEXT NOT NULL,
-  token VARCHAR(255)
+  token VARCHAR(255),
+  thumbnail VARCHAR
 );
