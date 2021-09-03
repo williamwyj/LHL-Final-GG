@@ -66,7 +66,7 @@ module.exports = (db) => {
   router.get('/topReviews/game', (req,res) => {
     const gameId = req.query.gameId
     db.query(
-    `SELECT id, "like" + "hmm" + "haha" AS total FROM (
+    `SELECT review_id, game_id, "like" + "hmm" + "haha" AS total FROM (
       SELECT 
         reviews.id AS review_id, reviews.game_id AS game_id,
         COUNT(*) FILTER (WHERE likes.type = 'like') AS "like",
@@ -78,7 +78,7 @@ module.exports = (db) => {
       ORDER BY reviews.id
     ) AS reviewlikes ORDER BY total DESC;`)
       .then((data => {
-        const reviewId = data.rows.map(element => element.id).toString()
+        const reviewId = data.rows.map(element => element.review_id).toString()
         db.query(
           `SELECT 
             reviews.id, reviews.user_id, reviews.game_id, reviews.content, reviews.rating, 

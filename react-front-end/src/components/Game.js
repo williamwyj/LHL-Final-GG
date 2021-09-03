@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import "./Game.scss"
 import { useParams } from 'react-router-dom';
 import { grabGameById, grabTopReviewsById } from '../helpers/dbHelpers';
 
 export default function Game(props) {
-  const [game, setGame] = useState("")
+  const [game, setGame] = useState({
+    gameData : {},
+    reviewsData: []
+
+  })
   const { id } = useParams();
   // let game = ''
 
@@ -14,21 +17,23 @@ export default function Game(props) {
       grabGameById(id),
       grabTopReviewsById(id)
     ]).then((all)=>{
-      const gameData = all[0].data
-      const reviewsData = all[0].data
+      const gameData = all[0][0]
+      const reviewsData = all[1]
       setGame({gameData, reviewsData})
     })
-    
-    // grabGameById(id)
-    // .then((result) => {
-    //   setGame(result[0])
-    // });
   }, []);
   console.log("Game data, ", game)
   return (
     <div>
       <h1>Game ID is { id }</h1>     
-      <h2>Game name is { game.name }</h2>
+      <h2>Game name is { game.gameData.name }</h2>
+      {game.reviewsData.map(review => {
+        return <div>
+          <p>{review.username}</p>
+          <p>{review.content}</p>
+          <p>{review.rating}</p>
+          </div>
+      })}
     </div>
   )
 }
