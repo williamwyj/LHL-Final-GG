@@ -78,6 +78,20 @@ module.exports = (db) => {
       });
   })
 
+  //search
+  //easy refactor later on
+  router.get('/search', (req, res) => {
+    db.query(`SELECT * FROM games WHERE lower(name) LIKE ('%' || $1 || '%');`, [req.query.input])
+    .then((data => {
+      res.json(data.rows)
+    }))
+    .catch(err => {
+      console.log(err.message)
+      res.json({ error: err.message})
+    });
+  })
+  
+
   //user_game_relationship stats based on games, liked, played, play_list
   router.get('/gameuserstats', (req,res)=> {
     const gameId = req.query.gameId

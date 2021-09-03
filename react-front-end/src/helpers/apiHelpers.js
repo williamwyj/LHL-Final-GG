@@ -1,5 +1,6 @@
 const axios = require('axios');
 require("dotenv").config();
+const corsProxy = require('cors-anywhere')
 
 //to grab the access token from twitch
 const getToken = function() {
@@ -22,6 +23,8 @@ const getToken = function() {
       console.log(err.message);
     });
 };
+
+
 /* size guide:
 name_____________|size_________|Extra_________________
 cover_small     	90 x 128    	Fit
@@ -43,7 +46,7 @@ const getImage = function(image_id, size) {
 
 //pass in search input for a game
 const searchGame = function(input) {
-    axios({
+    return axios({
       url: "https://api.igdb.com/v4/games",
       method: "POST",
       headers: {
@@ -53,16 +56,12 @@ const searchGame = function(input) {
       },
       data: `search "${input}"; fields name, summary, platforms.abbreviation, cover.*, screenshots.*; limit 5;`,
     })
-      .then((response) => {
-        response.data.map(arr => console.log(arr));
-      })
-      .catch((err) => {
-        console.error(err.message);
-      });
+      .then((response) => response.data)
+      .catch((err) => err.message);
   };
 
 const grabGameById = function(id) {
-  axios({
+  return axios({
     url: "https://api.igdb.com/v4/games",
     method: "POST",
     headers: {
@@ -80,7 +79,4 @@ const grabGameById = function(id) {
   });
 } 
 
-
-
-
-export { coverImageSizing, searchGame, grabGameById };
+// export { getImage, searchGame, grabGameById };
