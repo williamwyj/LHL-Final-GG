@@ -133,7 +133,7 @@ export default function Navigation() {
             </Button> */}
           </Form>
           <Nav className="me-auto">
-            <Na href="/">Home</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/game">Games</Nav.Link>
             <Nav.Link href="/user">Members</Nav.Link>
           </Nav>
