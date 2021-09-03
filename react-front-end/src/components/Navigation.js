@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Link } from 'react-router-dom';
+import React, {useState, useContext, useEffect } from 'react';
 import { authContext } from "../providers/AuthProvider"
 
-import { Navbar, Container, Nav, NavDropdown, Modal } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import FormControl from "react-bootstrap/FormControl";
+import { Navbar, Container, Nav, Modal } from 'react-bootstrap'
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
+import FormControl from 'react-bootstrap/FormControl'
+
 
 import logoName from "./image/Logo-removebg-preview.png";
 import logoController from "./image/controller.png";
@@ -45,9 +45,9 @@ export default function Navigation() {
   }, [term]);
 
   /* Code for user Auth */
-  const { userInfo, login, logout } = useContext(authContext);
+  const { login, logout } = useContext(authContext);
   
-  const {token, getToken, username} = useToken();
+  const {token, username} = useToken();
 
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);

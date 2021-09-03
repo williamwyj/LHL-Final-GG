@@ -6,7 +6,7 @@ import useToken from "../components/hooks/useToken";
 export default function AuthProvider(props) {
   const [auth, setAuth] = useState(false);
   const [userInfo, setUserInfo] = useState({ username: "" });
-  const {token, setToken, removeToken, setUsername, removeUsername} = useToken();
+  const {token, setToken, removeToken, setUsername, removeUsername, username} = useToken();
 
   const login = function (username, password) {
     const user = username;
@@ -53,7 +53,7 @@ export default function AuthProvider(props) {
     
   }
 
-  const userData = {token, auth, userInfo, login, logout}
+  const userData = {token, auth, userInfo, login, logout, username}
 
   return (
     <authContext.Provider value={userData}>
