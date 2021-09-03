@@ -78,6 +78,7 @@ module.exports = (db) => {
       });
   })
 
+
   //get userID from username to be used in profile page
   router.get('/userId', (req,res)=>{
     const username = req.query.username
@@ -120,6 +121,33 @@ module.exports = (db) => {
       WHERE users.id = ${userId}
       GROUP BY users.id;
       `)
+
+  //search
+  //easy refactor later on
+  router.get('/search', (req, res) => {
+    db.query(`SELECT * FROM games WHERE lower(name) LIKE ('%' || $1 || '%');`, [req.query.input])
+    .then((data => {
+      res.json(data.rows)
+    }))
+    .catch(err => {
+      console.log(err.message)
+      res.json({ error: err.message})
+    });
+  })
+  
+
+  //user_game_relationship stats based on games, liked, played, play_list
+  router.get('/gameuserstats', (req,res)=> {
+    const gameId = req.query.gameId
+    db.query(`
+      SELECT 
+      game_id AS id,
+      COUNT(*) FILTER (WHERE liked = 'TRUE') AS "liked",
+      COUNT(*) FILTER (WHERE played = 'TRUE') AS "played",
+      COUNT(*) FILTER (WHERE play_list = 'TRUE') AS "play_list"
+      FROM user_game_relationships WHERE game_id = ${gameId}
+      GROUP BY game_id;
+    `)
       .then((data => {
         res.json(data.rows);
       }))
