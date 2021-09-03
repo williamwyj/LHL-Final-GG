@@ -121,6 +121,15 @@ module.exports = (db) => {
       WHERE users.id = ${userId}
       GROUP BY users.id;
       `)
+      .then((data => {
+        res.json(data.rows);
+      }))
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  })
 
   //search
   //easy refactor later on
