@@ -151,7 +151,12 @@ module.exports = (db) => {
         console.log("ROUTES", data.rows)
         res.json(data.rows);
       })
-
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  })
 
   //user_game_relationship stats based on games, liked, played, play_list
   router.get('/gameuserstats', (req,res)=> {
