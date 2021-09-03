@@ -5,7 +5,7 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.get("/games", (req, res) => {
-    db.query("SELECT * FROM games;")
+    db.query("SELECT * FROM games LIMIT 10;")
       .then((data => {
         res.json(data.rows);
       }))
@@ -78,5 +78,88 @@ module.exports = (db) => {
       });
   })
 
+  //get userID from username to be used in profile page
+  router.get('/userId', (req,res)=>{
+    const username = req.query.username
+    console.log("username is ", username)
+    db.query(`SELECT users.id FROM users WHERE users.username = '${username}';`)
+      .then((data => {
+        res.json(data.rows);
+      }))
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  })
+
+
+  router.get('/user', (req,res) => {
+    const userId = req.query.userId
+    db.query(
+      `SELECT users.id, users.username, users.thumbnail,
+      COUNT(*) FILTER (WHERE ${userId} = reviews.user_id) AS reviews
+      FROM users
+      JOIN reviews ON users.id = reviews.user_id
+      WHERE users.id = ${userId}
+      GROUP BY users.id;
+      `)
+      .then((data => {
+        res.json(data.rows);
+      }))
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  })
+
+  router.get('/user/follow', (req, res) => {
+    const userId = req.query.userId
+    Promise.all([
+      db.query(
+        `SELECT user_id,
+        COUNT(*) AS followers
+        FROM followers
+        WHERE user_id = ${userId}
+        GROUP BY user_id;
+        `
+      ),
+      db.query(
+        `SELECT follower_id,
+        COUNT(*) AS followed
+        FROM followers
+        WHERE follower_id = ${userId}
+        GROUP BY follower_id;
+        `
+      )
+    ]).then((all => {
+      res.json(all);
+      }))
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+    
+  })
+
+  router.get('/user/favoritegames', (req, res) => {
+    const userId = req.query.userId
+    db.query(`
+      SELECT user_id, games.id, games.name, games.cover
+      FROM games
+      JOIN user_game_relationships ON games.id = user_game_relationships.game_id
+      WHERE user_id = ${userId} AND user_game_relationships.liked = TRUE;
+    `).then((data => {
+      res.json(data.rows);
+      }))
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  })
   return router  
 }
+
