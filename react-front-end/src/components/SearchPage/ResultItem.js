@@ -1,7 +1,6 @@
 import React from "react";
 import { NavDropdown, Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import './ResultItem.scss'
 
 export default function ResultItem(props) {
 
@@ -10,23 +9,20 @@ export default function ResultItem(props) {
   const putInPlace = function(array){
     return array.map(value => `${value} `)
   }
-  console.log('RESULT ITEM props.name:', props.name);
 
   return (
+    <nav className="gameResult">
       <Nav.Link href={`/game/${props.id}`}>
-    <article className="gameResult">
       <img 
       className="cover"
       src={props.cover}
       />
-      <div>
-      <article classname="writeup">
-        <h4>{props.name}</h4>
+      <article>
+        <title>{props.name}</title>
         {props.summary}
+        <footer>{putInPlace(props.platforms)}</footer>
       </article>
-        <footer id="platforms" classname="platforms--footer">{putInPlace(props.platforms)}</footer>
-      </div>
-    </article> 
       </Nav.Link>
+    </nav> 
   )
 }
