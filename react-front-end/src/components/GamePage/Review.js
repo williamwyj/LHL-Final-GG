@@ -33,6 +33,7 @@ export default function Review(props) {
       console.log("GameId ", props.gameId)
       const userId = data[0].id
       submitReview(props.gameId, userId, review, rating)
+      props.setReviewInputMode("GameDescription")
     })
   }
 

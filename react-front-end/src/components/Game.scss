@@ -1,0 +1,33 @@
+div.GamePage {
+  width: 75%;
+  margin: auto;
+}
+
+section.GameInformation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+div.GameCover {
+  width:25%
+}
+
+div.GameDescriptionReview {
+  width: 50%;
+}
+
+div.UserButtons {
+  width: 25%
+}
+
+img.gameCover {
+  width: 30%;
+  height:auto;
+}
+
+div.GameReview {
+  border-style: solid;
+  border-width: 1px;
+  border-color: blue;
+}
