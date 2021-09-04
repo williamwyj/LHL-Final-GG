@@ -25,17 +25,16 @@ export default function Game() {
       setGame({gameData, reviewsData})
     })
   }, []);
-
+  console.log(game)
   return (
     <div>
       <h1>Game ID is { id }</h1>     
       <h2>Game name is { game.gameData.name }</h2>
       {game.reviewsData.map(review => {
-        return <div key={review.id}>
-            
-            <p>{review.username}</p>
-            <p>{review.content}</p>
-            <p>{review.rating}</p>
+        return <div key={review.review_id}>
+            <p>User {review.username}</p>
+            <p>Review {review.content}</p>
+            <p>Rating {review.rating}</p>
           </div>
       })}
       Review

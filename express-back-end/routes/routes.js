@@ -66,32 +66,37 @@ module.exports = (db) => {
   router.get('/topReviews/game', (req,res) => {
     const gameId = req.query.gameId
     db.query(
-    `SELECT review_id, game_id, "like" + "hmm" + "haha" AS total FROM (
-      SELECT 
-        reviews.id AS review_id, reviews.game_id AS game_id,
+    `SELECT reviews.id AS review_id, reviews.game_id AS game_id, COALESCE(tab.like + tab.hmm + tab.haha, 0) AS total
+      FROM reviews
+      LEFT JOIN (
+      SELECT review_id,
         COUNT(*) FILTER (WHERE likes.type = 'like') AS "like",
         COUNT(*) FILTER (WHERE likes.type = 'hmm') AS "hmm",
         COUNT(*) FILTER (WHERE likes.type = 'haha') AS "haha"
-      FROM reviews JOIN likes ON (reviews.id = likes.review_id)
-      WHERE likes.type IN ('like', 'hmm', 'haha') AND game_id = ${gameId}
-      GROUP BY reviews.id
-      ORDER BY reviews.id
-    ) AS reviewlikes ORDER BY total DESC;`)
+      FROM likes
+      GROUP BY review_id
+      ) tab
+      ON reviews.id = tab.review_id
+      WHERE reviews.game_id = ${gameId}
+      ORDER BY total DESC;`)
       .then((data => {
         const reviewId = data.rows.map(element => element.review_id).toString()
         db.query(
-          `SELECT 
-            reviews.id, reviews.user_id, reviews.game_id, reviews.content, reviews.rating, 
-            COUNT(*) FILTER (WHERE likes.type = 'like') AS "like",
-            COUNT(*) FILTER (WHERE likes.type = 'hmm') AS "hmm",
-            COUNT(*) FILTER (WHERE likes.type = 'haha') AS "haha",
-            users.username, games.name, games.cover
-          FROM reviews 
-          JOIN likes ON (reviews.id = likes.review_id)
-          JOIN users ON (reviews.user_id = users.id)
-          JOIN games ON (reviews.game_id = games.id)
-          WHERE likes.type IN ('like', 'hmm', 'haha') AND reviews.id IN (${reviewId})
-          GROUP BY reviews.id, users.username, games.name, games.cover;`
+          `SELECT reviews.id AS review_id, reviews.game_id AS game_id, reviews.content, reviews.rating, COALESCE(tab.like, 0) AS like, COALESCE(tab.hmm, 0) AS hmm, COALESCE(tab.haha, 0) AS haha, COALESCE(tab.like+tab.hmm+tab.haha, 0) AS total
+            FROM reviews
+            LEFT JOIN (
+            SELECT review_id,
+              COUNT(*) FILTER (WHERE likes.type = 'like') AS "like",
+              COUNT(*) FILTER (WHERE likes.type = 'hmm') AS "hmm",
+              COUNT(*) FILTER (WHERE likes.type = 'haha') AS "haha"
+            FROM likes
+            GROUP BY review_id
+            ) tab ON reviews.id = tab.review_id
+            JOIN games on (reviews.game_id = games.id)
+            JOIN users ON (reviews.user_id = users.id)
+            WHERE reviews.game_id = 2928 AND reviews.id IN (${reviewId})
+            GROUP BY reviews.id, users.username, games.name, games.cover, tab.like, tab.hmm, tab.haha
+            ORDER BY total DESC;`
         )
           .then((data => {
             res.json(data.rows);
@@ -322,5 +327,24 @@ module.exports = (db) => {
       });
   })
 
+  //route to add new review
+
+  router.post('/review/new', (req, res)=>{
+    const gameId = req.body.params.gameId;
+    const userId = req.body.params.userId;
+    const review = req.body.params.review;
+    const rating = req.body.params.rating;
+
+    db.query(`
+      INSERT INTO reviews (user_id, game_id, content, rating) VALUES (${userId}, ${gameId}, '${review}', ${rating})
+    `).then((data => {
+      res.json(data.rows);
+      }))
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  })
   return router  
 }

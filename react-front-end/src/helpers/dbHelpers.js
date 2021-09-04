@@ -62,13 +62,26 @@ const getUserId = function(username) {
 }
 
 const submitReview = function(gameId, userId, review, rating) {
-  
+  return axios.post('/api/review/new', {
+    params: {
+      gameId,
+      userId,
+      review,
+      rating
+    }
+  })
+    .then((res => {
+      return res.data
+    }))
+    .catch(err => {
+      console.log("ERROR", err.message)// .json({ error: err.message });
+    });
 }
 
     // grabGameById(2928)
 
 
-  export { searchGame, getImage, grabGameById, grabTopReviewsById, getUserId }
+  export { searchGame, getImage, grabGameById, grabTopReviewsById, getUserId, submitReview }
 
 
 

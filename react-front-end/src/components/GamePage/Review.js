@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 //import dbhelper function
-import { getUserId } from "../../helpers/dbHelpers"
+import { getUserId, submitReview } from "../../helpers/dbHelpers"
 
 //import context
 import { authContext } from "../../providers/AuthProvider";
@@ -31,6 +31,8 @@ export default function Review(props) {
       console.log("Review content ", review)
       console.log("Rating ", rating)
       console.log("GameId ", props.gameId)
+      const userId = data[0].id
+      submitReview(props.gameId, userId, review, rating)
     })
   }
 
