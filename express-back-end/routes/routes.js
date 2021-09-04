@@ -80,32 +80,34 @@ module.exports = (db) => {
       WHERE reviews.game_id = ${gameId}
       ORDER BY total DESC;`)
       .then((data => {
+        !data.rows[0] && res.json(data.rows)
         const reviewId = data.rows.map(element => element.review_id).toString()
-        db.query(
-          `SELECT reviews.id AS review_id, reviews.game_id AS game_id, reviews.content, reviews.rating, COALESCE(tab.like, 0) AS like, COALESCE(tab.hmm, 0) AS hmm, COALESCE(tab.haha, 0) AS haha, COALESCE(tab.like+tab.hmm+tab.haha, 0) AS total
-            FROM reviews
-            LEFT JOIN (
-            SELECT review_id,
-              COUNT(*) FILTER (WHERE likes.type = 'like') AS "like",
-              COUNT(*) FILTER (WHERE likes.type = 'hmm') AS "hmm",
-              COUNT(*) FILTER (WHERE likes.type = 'haha') AS "haha"
-            FROM likes
-            GROUP BY review_id
-            ) tab ON reviews.id = tab.review_id
-            JOIN games on (reviews.game_id = games.id)
-            JOIN users ON (reviews.user_id = users.id)
-            WHERE reviews.game_id = 2928 AND reviews.id IN (${reviewId})
-            GROUP BY reviews.id, users.username, games.name, games.cover, tab.like, tab.hmm, tab.haha
-            ORDER BY total DESC;`
-        )
-          .then((data => {
-            res.json(data.rows);
-          }))
-          .catch(err => {
-            res
-              .status(500)
-              .json({ error: err.message });
-          });
+        data.rows[0] && 
+          db.query(
+            `SELECT reviews.id AS review_id, reviews.game_id AS game_id, reviews.content, reviews.rating, COALESCE(tab.like, 0) AS like, COALESCE(tab.hmm, 0) AS hmm, COALESCE(tab.haha, 0) AS haha, COALESCE(tab.like+tab.hmm+tab.haha, 0) AS total
+              FROM reviews
+              LEFT JOIN (
+              SELECT review_id,
+                COUNT(*) FILTER (WHERE likes.type = 'like') AS "like",
+                COUNT(*) FILTER (WHERE likes.type = 'hmm') AS "hmm",
+                COUNT(*) FILTER (WHERE likes.type = 'haha') AS "haha"
+              FROM likes
+              GROUP BY review_id
+              ) tab ON reviews.id = tab.review_id
+              JOIN games on (reviews.game_id = games.id)
+              JOIN users ON (reviews.user_id = users.id)
+              WHERE reviews.game_id = 2928 AND reviews.id IN (${reviewId})
+              GROUP BY reviews.id, users.username, games.name, games.cover, tab.like, tab.hmm, tab.haha
+              ORDER BY total DESC;`
+          )
+            .then((data => {
+              res.json(data.rows);
+            }))
+            .catch(err => {
+              res
+                .status(500)
+                .json({ error: err.message });
+            });
       }))
           .catch(err => {
             res

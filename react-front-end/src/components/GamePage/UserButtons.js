@@ -29,9 +29,6 @@ export default function UserButtons(props) {
 
     })
   },[props.userLiked, props.userPlayed  ])
-  console.log("UserButton props", props.userLiked)
-
-  console.log("UserButton state, ", state)
   //Function to switch on write review and switch button to Hide Write Review
   const writeReviewState = () => {
     props.writeReview()

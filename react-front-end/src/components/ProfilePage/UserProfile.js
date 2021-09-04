@@ -1,8 +1,5 @@
-import React, {useContext,useEffect} from 'react';
+import React, {useContext} from 'react';
 import { authContext } from "../../providers/AuthProvider";
-import { Button } from 'react-bootstrap';
-import Form from 'react-bootstrap/Form'
-import FormControl from 'react-bootstrap/FormControl'
 
 import useFollow from '../hooks/useFollow';
 import FollowButton from './FollowButton';

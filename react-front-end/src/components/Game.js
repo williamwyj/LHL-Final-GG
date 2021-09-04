@@ -28,31 +28,40 @@ export default function Game() {
   // state of star rating
   
   useEffect(() => {
-    getUserId(username).then((data)=>{
-      const userId = data[0].id
-      console.log("UserId, ", userId)
-      Promise.all([
-        grabGameById(id),
-        grabTopReviewsById(id),
-        grabUserGameLikeFollow(userId,id),
-      ]).then((all)=>{
-        const gameData = all[0][0]
-        const reviewsData = all[1]
-        console.log("user game relationship", all[2][0])
-        const {liked, played, user_id} = all[2][0]
-        setGame({gameData, reviewsData, userGameData : {liked, played, user_id}})
+    if (username) {
+      getUserId(username).then((data)=>{
+        const userId = data[0].id
+        Promise.all([
+          grabGameById(id),
+          grabTopReviewsById(id),
+          grabUserGameLikeFollow(userId,id),
+        ]).then((all)=>{
+          const gameData = all[0][0]
+          const reviewsData = all[1]
+          const {liked, played, user_id} = all[2][0] ? all[2][0] : {liked:false, played:false, user_id : userId}
+  
+          setGame({gameData, reviewsData, userGameData : {liked, played, user_id}})
+        }).catch(err => {
+          console.log("ERROR", err.message)// .json({ error: err.message });
+        });
       }).catch(err => {
         console.log("ERROR", err.message)// .json({ error: err.message });
       });
-    }).catch(err => {
-      console.log("ERROR", err.message)// .json({ error: err.message });
-    });
+    } else if (!username) {
+      Promise.all([
+        grabGameById(id),
+        grabTopReviewsById(id),
+      ]).then((all)=>{
+        const gameData = all[0][0]
+        const reviewsData = all[1]
 
-    
+        setGame({gameData, reviewsData})
+      }).catch(err => {
+        console.log("ERROR", err.message)// .json({ error: err.message });
+      });
+    }
+
   }, [reviewInputMode]);
-
-  console.log(game)
-  console.log("userGameData.liked, ", game.userGameData.liked)
 
   return (
     <div className="GamePage">
@@ -67,7 +76,7 @@ export default function Game() {
           {reviewInputMode === "GameDescription" && <GameDescription gameDescription={game.gameData.summary} />}
         </div>
         <div className="UserButtons">
-          <UserButtons 
+          {token && <UserButtons 
             token={token}
             userId={game.userGameData.user_id}
             gameId={id}
@@ -76,7 +85,7 @@ export default function Game() {
             userLiked={game.userGameData.liked}
             userPlayed={game.userGameData.played}
 
-          />
+          />}
         </div>
       </section>
       {game.reviewsData.map(review => {
