@@ -1,11 +1,34 @@
-@import'../../public/scss_styles/style';
+@import "../../public/scss_styles/style";
 
 div.game-info {
-  div.imgGallery{
-    gallery-img{
-      @include game-cover
-    }
-  } 
   @include flex-spaced-row;
-  background-color: yellow 
+  margin: 3vw;
+  background-color: $dark;
+  border-radius: 1.5vw;
+  div {
+    margin-left: 1vw;
+    margin-right: 1vw;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+  }
+  div.imgGallery {
+    justify-self: flex-start;
+    .gallery-img {
+      @include game-cover;
+    }
+  }
+  div.game-details {
+    @include box;
+    width: 80%;
+    div.top {
+      @include flex-article;
+      h2 {
+        border-bottom: 4px solid $grey;
+      }
+    }
+  }
+  div.user-game-interactions {
+    @include box;
+    width: 10%;
+  }
 }

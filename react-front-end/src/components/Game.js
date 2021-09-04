@@ -35,11 +35,11 @@ export default function Game(props) {
             <span>{ game.summary }</span>
           </div>
           <div className="bottom">
-            <Button> submit review </Button> 
           </div>
         </div>
         <div className = "user-game-interactions">
           buttons to like/review/follow the GAME
+            <Button> submit review </Button> 
         </div>
       </div>
     </div>
