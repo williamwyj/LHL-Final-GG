@@ -1,28 +1,82 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect, useContext } from 'react';
 import "./Game.scss"
 import { useParams } from 'react-router-dom';
-import { grabGameById } from '../helpers/dbHelpers';
 import { Button, Carousel } from 'react-bootstrap'
+import { getUserId, grabGameById, grabTopReviewsById, grabUserGameLikeFollow } from '../helpers/dbHelpers';
+
+//import context
+import { authContext } from "../providers/AuthProvider";
+
+//components for the GameInformation container
+import Review from "./GamePage/Review"
+import GameDescription from './GamePage/GameDescription';
+import UserButtons from './GamePage/UserButtons';
+
 import Screenshots from './GamePageComponents/Screenshots';
 
 export default function Game(props) {
-  const [game, setGame] = useState("")
+
+  //import context
+  const { username, token } = useContext(authContext)
+
+  const [game, setGame] = useState({
+    gameData : {},
+    reviewsData: [],
+    userGameData : {}
+
+  })
+  
   const [date, setDate] = useState('')
   const [shots, setShots] = useState([1])
-  const { id } = useParams();
-  // let game = ''
 
+  const { id } = useParams();
+  const [reviewInputMode, setReviewInputMode] = useState("GameDescription")
+  // let game = ''
+  // state of star rating
+  
   useEffect(() => {
-    grabGameById(id)
-    .then((result) => {
-      setGame(result[0])
-      const date = new Date(result[0].first_release_date * 1000)
-      const year = date.getFullYear()
-      setDate(year)
-      setShots(result[0].screenshots)
-    })
-  }, []);
+
+    if (username) {
+      getUserId(username).then((data)=>{
+        const userId = data[0].id
+        Promise.all([
+          grabGameById(id),
+          grabTopReviewsById(id),
+          grabUserGameLikeFollow(userId,id),
+        ]).then((all)=>{
+          const gameData = all[0][0]
+          const reviewsData = all[1]
+          const {liked, played, user_id} = all[2][0] ? all[2][0] : {liked:false, played:false, user_id : userId}
+          const date = new Date(all[0][0].first_release_date * 1000)
+          const year = date.getFullYear()
+          setDate(year)
+          setShots(all[0][0].screenshots)
+          setGame({gameData, reviewsData, userGameData : {liked, played, user_id}})
+        }).catch(err => {
+          console.log("ERROR", err.message)// .json({ error: err.message });
+        });
+      }).catch(err => {
+        console.log("ERROR", err.message)// .json({ error: err.message });
+      });
+    } else if (!username) {
+      Promise.all([
+        grabGameById(id),
+        grabTopReviewsById(id),
+      ]).then((all)=>{
+        const gameData = all[0][0]
+        const reviewsData = all[1]
+        const date = new Date(all[0][0].first_release_date * 1000)
+        const year = date.getFullYear()
+        setDate(year)
+        setShots(all[0][0].screenshots)
+        setGame({gameData, reviewsData})
+      }).catch(err => {
+        console.log("ERROR", err.message)// .json({ error: err.message });
+      });
+    }
+
+  }, [reviewInputMode]);
+
 
   if(typeof game != 'object'){
     return null
@@ -31,23 +85,35 @@ export default function Game(props) {
 
 
   return (
+
     <div className="main-container">
       <div className="game-info">
         <div className="cover">
-          <img className="cover-img" src={game.cover}/>
+          <img className="cover-img" src={game.gameData.cover} alt={game.gameData.name}/>
         </div>
         <div className="game-details">
           <div className="top">
-            <h2 >{ game.name }</h2>
+            <h2 >{ game.gameData.name }</h2>
             <h4>{date}</h4>
           </div>
-            <span>{ game.summary }</span>
+            <span>
+              {reviewInputMode === "WriteReview" && <Review gameId={id} setReviewInputMode={setReviewInputMode}/>}
+              {reviewInputMode === "GameDescription" && <GameDescription gameDescription={game.gameData.summary} />}
+            </span>
           <div className="bottom">
           </div>
         </div>
         <div className = "user-game-interactions">
-          <span>buttons to like/review/follow the GAME</span>
-            <Button className="btn"> submit review </Button> 
+          <div className="UserButtons">
+          {token && <UserButtons 
+            token={token}
+            userId={game.userGameData.user_id}
+            gameId={id}
+            writeReview={()=>setReviewInputMode("WriteReview")} 
+            hideWriteReview={()=>setReviewInputMode("GameDescription")}
+            userLiked={game.userGameData.liked}
+            userPlayed={game.userGameData.played}
+          />}
         </div>
       </div>
       <div className="carousel">
@@ -73,7 +139,13 @@ export default function Game(props) {
     </Carousel>
     </div>
       <div>
-        {/* plug in reviews component */}
+        {game.reviewsData.map(review => {
+        return <div className="GameReview" key={review.review_id}>
+            <p>User {review.username}</p>
+            <p>Review {review.content}</p>
+            <p>Rating {review.rating}</p>
+          </div>
+      })}
       </div>
     </div>
   )
