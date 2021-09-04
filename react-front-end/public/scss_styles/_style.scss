@@ -8,9 +8,15 @@ $apricot: #FFC6AD;
 $light-blue: #90FCF9;
 
 @mixin game-cover { 
-  width: 16vw;
+  width: 17vw;
   height: fit-content;
   border-radius: 5%;
+}
+
+@mixin box($color: $light) {
+  border-radius: 1.5vw;
+  margin: 1%;
+  background-color: $color;
 }
 
 @mixin game-cover-feature { 
