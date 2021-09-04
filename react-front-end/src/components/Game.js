@@ -96,10 +96,8 @@ export default function Game(props) {
             <h2 >{ game.gameData.name }</h2>
             <h4>{date}</h4>
           </div>
-            
               {reviewInputMode === "WriteReview" && <Review gameId={id} setReviewInputMode={setReviewInputMode}/>}
               {reviewInputMode === "GameDescription" && <GameDescription gameDescription={game.gameData.summary} />}
-            
           <div className="bottom">
           </div>
         </div>

@@ -3,8 +3,8 @@ import "./GameDescription.scss"
 
 export default function GameDescription(props) {
   return (
-    <div>
+    <span>
       {props.gameDescription}
-    </div>
+    </span>
   )
 }
