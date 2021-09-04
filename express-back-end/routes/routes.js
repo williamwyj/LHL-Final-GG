@@ -365,9 +365,39 @@ module.exports = (db) => {
   })
 
 
-  //route to like game
-  router.post('/user/likeGame', (req,res)=>{
-
+  //route to like or unlike game
+  router.post('/user/likeUnlikeGame', (req,res)=>{
+    const gameId = req.body.params.gameId;
+    const userId = req.body.params.userId;
+    const likeUnlike = req.body.params.likeUnlike;
+    db.query(`
+      UPDATE user_game_relationships SET liked=${likeUnlike} WHERE user_id=${userId} AND game_id=${gameId}
+    `)
+      .then((data => {
+        res.json(data.rows);
+        }))
+        .catch(err => {
+          res
+            .status(500)
+            .json({ error: err.message });
+        });
+  })
+  //route to played or not played game
+  router.post('/user/playedNotPlayedGame', (req,res)=>{
+    const gameId = req.body.params.gameId;
+    const userId = req.body.params.userId;
+    const playedNotPlayed = req.body.params.playedNotPlayed;
+    db.query(`
+      UPDATE user_game_relationships SET played=${playedNotPlayed} WHERE user_id=${userId} AND game_id=${gameId}
+    `)
+      .then((data => {
+        res.json(data.rows);
+        }))
+        .catch(err => {
+          res
+            .status(500)
+            .json({ error: err.message });
+        });
   })
   return router  
 }

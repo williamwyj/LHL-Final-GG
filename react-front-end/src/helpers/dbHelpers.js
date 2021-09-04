@@ -93,14 +93,42 @@ const grabUserGameLikeFollow = function(userId, gameId) {
     });
 }
 
-const likeGame = function(userId, gameId) {
+const likeUnlikeGame = function(userId, gameId, likeUnlike) {
+  return axios.post('/api/user/likeUnlikeGame', {
+    params: {
+      userId,
+      gameId,
+      likeUnlike
+    }
+  })
+    .then((res => {
+      return res.data
+    }))
+    .catch(err => {
+      console.log("ERROR", err.message)// .json({ error: err.message });
+    });
+}
 
+const playedNotPlayedGame = function(userId, gameId, playedNotPlayed) {
+  return axios.post('/api/user/playedNotPlayedGame', {
+    params: {
+      userId,
+      gameId,
+      playedNotPlayed
+    }
+  })
+    .then((res => {
+      return res.data
+    }))
+    .catch(err => {
+      console.log("ERROR", err.message)// .json({ error: err.message });
+    });
 }
 
     // grabGameById(2928)
 
 
-  export { searchGame, getImage, grabGameById, grabTopReviewsById, getUserId, submitReview, grabUserGameLikeFollow }
+  export { searchGame, getImage, grabGameById, grabTopReviewsById, getUserId, submitReview, grabUserGameLikeFollow, likeUnlikeGame, playedNotPlayedGame }
 
 
 

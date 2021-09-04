@@ -14,7 +14,7 @@ import UserButtons from './GamePage/UserButtons';
 export default function Game() {
 
   //import context
-  const { username } = useContext(authContext)
+  const { username, token } = useContext(authContext)
 
   const [game, setGame] = useState({
     gameData : {},
@@ -38,8 +38,9 @@ export default function Game() {
       ]).then((all)=>{
         const gameData = all[0][0]
         const reviewsData = all[1]
-        const {liked, played} = all[2][0]
-        setGame({gameData, reviewsData, userGameData : {liked: liked, played: played}})
+        console.log("user game relationship", all[2][0])
+        const {liked, played, user_id} = all[2][0]
+        setGame({gameData, reviewsData, userGameData : {liked, played, user_id}})
       }).catch(err => {
         console.log("ERROR", err.message)// .json({ error: err.message });
       });
@@ -67,6 +68,9 @@ export default function Game() {
         </div>
         <div className="UserButtons">
           <UserButtons 
+            token={token}
+            userId={game.userGameData.user_id}
+            gameId={id}
             writeReview={()=>setReviewInputMode("WriteReview")} 
             hideWriteReview={()=>setReviewInputMode("GameDescription")}
             userLiked={game.userGameData.liked}
@@ -82,9 +86,6 @@ export default function Game() {
             <p>Rating {review.rating}</p>
           </div>
       })}
-      Review
-      
-      
     </div>
   )
 }
