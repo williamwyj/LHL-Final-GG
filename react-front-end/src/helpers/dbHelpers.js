@@ -125,10 +125,23 @@ const playedNotPlayedGame = function(userId, gameId, playedNotPlayed) {
     });
 }
 
+  const getUserId = function(username) {
+    return axios.get('/api/userId', {
+      params: {
+        username
+      }
+    })
+      .then((res => {
+        return res.data
+      }))
+      .catch(err => {
+        console.log("ERROR", err.message)// .json({ error: err.message });
+      });
+  }
     // grabGameById(2928)
 
-
   export { searchGame, getImage, grabGameById, grabTopReviewsById, getUserId, submitReview, grabUserGameLikeFollow, likeUnlikeGame, playedNotPlayedGame }
+
 
 
 
