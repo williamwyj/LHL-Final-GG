@@ -11,10 +11,7 @@ div.main-container{
 div.game-info {
   @include flex-spaced-row;
   div {
-    margin-left: 1vw;
-    margin-right: 1vw;
-    margin-top: 3vh;
-    margin-bottom: 3vh;
+    @include margin-ratio;
   }
   div.cover {
     justify-self: flex-start;
@@ -47,13 +44,15 @@ div.game-info {
 }
 
 div.carousel{
-  margin-bottom: 3vw;
+  @include margin-ratio;
+  margin-top: 1vh;
   display: flex;
   justify-content: center;
-  width: auto;
-  height: 50vh;
   div.carousel-item-start{
     display: flex;
     justify-content: center;
+  }
+  img{
+    border-radius: 1.5vw;
   }
 }
