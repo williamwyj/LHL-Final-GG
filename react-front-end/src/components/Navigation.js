@@ -4,8 +4,6 @@ import { authContext } from "../providers/AuthProvider"
 import { Navbar, Container, Nav, Modal } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-import FormControl from 'react-bootstrap/FormControl'
-
 
 import logoName from "./image/Logo-removebg-preview.png";
 import logoController from "./image/controller.png";
