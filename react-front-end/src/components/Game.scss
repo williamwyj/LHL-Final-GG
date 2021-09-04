@@ -1,29 +1,38 @@
 @import "../../public/scss_styles/style";
 
-div.game-info {
-  @include flex-spaced-row;
+body{
+  background: linear-gradient($dark, $grey)
+}
+div.main-container{
   margin: 3vw;
   background-color: $dark;
   border-radius: 1.5vw;
+}
+div.game-info {
+  @include flex-spaced-row;
   div {
     margin-left: 1vw;
     margin-right: 1vw;
     margin-top: 3vh;
     margin-bottom: 3vh;
   }
-  div.imgGallery {
+  div.cover {
     justify-self: flex-start;
-    .gallery-img {
+    .cover-img {
       @include game-cover;
     }
   }
   div.game-details {
     @include box;
     width: 80%;
+    color: $text-color;
     div.top {
-      @include flex-article;
-      h2 {
-        border-bottom: 4px solid $grey;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 4px solid $grey;
+      h4{
+        align-self: flex-end;
+        margin-bottom: 0;
       }
     }
   }
@@ -34,5 +43,17 @@ div.game-info {
     Button.btn{
       @include flex-article-footer;
     }
+  }
+}
+
+div.carousel{
+  margin-bottom: 3vw;
+  display: flex;
+  justify-content: center;
+  width: auto;
+  height: 50vh;
+  div.carousel-item-start{
+    display: flex;
+    justify-content: center;
   }
 }
