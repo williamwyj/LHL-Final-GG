@@ -28,7 +28,11 @@ div.game-info {
     }
   }
   div.user-game-interactions {
+    @include flex-article;
     @include box;
     width: 10%;
+    Button.btn{
+      @include flex-article-footer;
+    }
   }
 }

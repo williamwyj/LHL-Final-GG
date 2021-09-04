@@ -38,9 +38,12 @@ export default function Game(props) {
           </div>
         </div>
         <div className = "user-game-interactions">
-          buttons to like/review/follow the GAME
-            <Button> submit review </Button> 
+          <span>buttons to like/review/follow the GAME</span>
+            <Button className="btn"> submit review </Button> 
         </div>
+      </div>
+      <div>
+        {/* plug in reviews component */}
       </div>
     </div>
   )
