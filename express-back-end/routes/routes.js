@@ -63,6 +63,60 @@ module.exports = (db) => {
       
   })
 
+  router.get('/topReviews/game', (req,res) => {
+    const gameId = req.query.gameId
+    db.query(
+    `SELECT reviews.id AS review_id, reviews.game_id AS game_id, COALESCE(tab.like + tab.hmm + tab.haha, 0) AS total
+      FROM reviews
+      LEFT JOIN (
+      SELECT review_id,
+        COUNT(*) FILTER (WHERE likes.type = 'like') AS "like",
+        COUNT(*) FILTER (WHERE likes.type = 'hmm') AS "hmm",
+        COUNT(*) FILTER (WHERE likes.type = 'haha') AS "haha"
+      FROM likes
+      GROUP BY review_id
+      ) tab
+      ON reviews.id = tab.review_id
+      WHERE reviews.game_id = ${gameId}
+      ORDER BY total DESC;`)
+      .then((data => {
+        !data.rows[0] && res.json(data.rows)
+        const reviewId = data.rows.map(element => element.review_id).toString()
+        data.rows[0] && 
+          db.query(
+            `SELECT reviews.id AS review_id, reviews.game_id AS game_id, reviews.content, reviews.rating, COALESCE(tab.like, 0) AS like, COALESCE(tab.hmm, 0) AS hmm, COALESCE(tab.haha, 0) AS haha, COALESCE(tab.like+tab.hmm+tab.haha, 0) AS total
+              FROM reviews
+              LEFT JOIN (
+              SELECT review_id,
+                COUNT(*) FILTER (WHERE likes.type = 'like') AS "like",
+                COUNT(*) FILTER (WHERE likes.type = 'hmm') AS "hmm",
+                COUNT(*) FILTER (WHERE likes.type = 'haha') AS "haha"
+              FROM likes
+              GROUP BY review_id
+              ) tab ON reviews.id = tab.review_id
+              JOIN games on (reviews.game_id = games.id)
+              JOIN users ON (reviews.user_id = users.id)
+              WHERE reviews.game_id = 2928 AND reviews.id IN (${reviewId})
+              GROUP BY reviews.id, users.username, games.name, games.cover, tab.like, tab.hmm, tab.haha
+              ORDER BY total DESC;`
+          )
+            .then((data => {
+              res.json(data.rows);
+            }))
+            .catch(err => {
+              res
+                .status(500)
+                .json({ error: err.message });
+            });
+      }))
+          .catch(err => {
+            res
+              .status(500)
+              .json({ error: err.message });
+          });
+      
+  })
+
   //top user, users with the most followers
   router.get('/mostFollowedUsers', (req,res) => {
     db.query(
@@ -82,7 +136,7 @@ module.exports = (db) => {
   //get userID from username to be used in profile page
   router.get('/userId', (req,res)=>{
     const username = req.query.username
-    console.log("username is ", username)
+    
     db.query(`SELECT users.id FROM users WHERE users.username = '${username}';`)
       .then((data => {
         res.json(data.rows);
@@ -148,7 +202,6 @@ module.exports = (db) => {
   router.get("/gameId", (req, res) => {
     db.query("SELECT * FROM games WHERE id = $1;", [req.query.input])
       .then((data) => {
-        console.log("ROUTES", data.rows)
         res.json(data.rows);
       })
       .catch(err => {
@@ -276,5 +329,77 @@ module.exports = (db) => {
       });
   })
 
+  //route to add new review
+
+  router.post('/review/new', (req, res)=>{
+    const gameId = req.body.params.gameId;
+    const userId = req.body.params.userId;
+    const review = req.body.params.review;
+    const rating = req.body.params.rating;
+
+    db.query(`
+      INSERT INTO reviews (user_id, game_id, content, rating) VALUES (${userId}, ${gameId}, '${review}', ${rating})
+    `).then((data => {
+      res.json(data.rows);
+      }))
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  })
+
+  //route to retrieve user like and follow game data
+  router.get('/user/gameLikeFollow', (req, res)=>{
+    const userId = req.query.userId
+    const gameId = req.query.gameId
+    db.query(`
+      SELECT * FROM user_game_relationships WHERE user_id = ${userId} AND game_id=${gameId}
+    `)
+      .then((data => {
+        res.json(data.rows);
+        }))
+        .catch(err => {
+          res
+            .status(500)
+            .json({ error: err.message });
+        });
+  })
+
+
+  //route to like or unlike game
+  router.post('/user/likeUnlikeGame', (req,res)=>{
+    const gameId = req.body.params.gameId;
+    const userId = req.body.params.userId;
+    const likeUnlike = req.body.params.likeUnlike;
+    db.query(`
+      UPDATE user_game_relationships SET liked=${likeUnlike} WHERE user_id=${userId} AND game_id=${gameId}
+    `)
+      .then((data => {
+        res.json(data.rows);
+        }))
+        .catch(err => {
+          res
+            .status(500)
+            .json({ error: err.message });
+        });
+  })
+  //route to played or not played game
+  router.post('/user/playedNotPlayedGame', (req,res)=>{
+    const gameId = req.body.params.gameId;
+    const userId = req.body.params.userId;
+    const playedNotPlayed = req.body.params.playedNotPlayed;
+    db.query(`
+      UPDATE user_game_relationships SET played=${playedNotPlayed} WHERE user_id=${userId} AND game_id=${gameId}
+    `)
+      .then((data => {
+        res.json(data.rows);
+        }))
+        .catch(err => {
+          res
+            .status(500)
+            .json({ error: err.message });
+        });
+  })
   return router  
 }
