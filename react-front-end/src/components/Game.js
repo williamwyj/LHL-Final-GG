@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import "./Game.scss"
 import { useParams } from 'react-router-dom';
-import { grabGameById, grabTopReviewsById } from '../helpers/dbHelpers';
+import { getUserId, grabGameById, grabTopReviewsById, grabUserGameLikeFollow } from '../helpers/dbHelpers';
+
+//import context
+import { authContext } from "../providers/AuthProvider";
 
 //components for the GameInformation container
 import Review from "./GamePage/Review"
@@ -9,9 +12,14 @@ import GameDescription from './GamePage/GameDescription';
 import UserButtons from './GamePage/UserButtons';
 
 export default function Game() {
+
+  //import context
+  const { username } = useContext(authContext)
+
   const [game, setGame] = useState({
     gameData : {},
-    reviewsData: []
+    reviewsData: [],
+    userGameData : {}
 
   })
   const { id } = useParams();
@@ -20,16 +28,31 @@ export default function Game() {
   // state of star rating
   
   useEffect(() => {
-    Promise.all([
-      grabGameById(id),
-      grabTopReviewsById(id)
-    ]).then((all)=>{
-      const gameData = all[0][0]
-      const reviewsData = all[1]
-      setGame({gameData, reviewsData})
-    })
+    getUserId(username).then((data)=>{
+      const userId = data[0].id
+      console.log("UserId, ", userId)
+      Promise.all([
+        grabGameById(id),
+        grabTopReviewsById(id),
+        grabUserGameLikeFollow(userId,id),
+      ]).then((all)=>{
+        const gameData = all[0][0]
+        const reviewsData = all[1]
+        const {liked, played} = all[2][0]
+        setGame({gameData, reviewsData, userGameData : {liked: liked, played: played}})
+      }).catch(err => {
+        console.log("ERROR", err.message)// .json({ error: err.message });
+      });
+    }).catch(err => {
+      console.log("ERROR", err.message)// .json({ error: err.message });
+    });
+
+    
   }, [reviewInputMode]);
+
   console.log(game)
+  console.log("userGameData.liked, ", game.userGameData.liked)
+
   return (
     <div className="GamePage">
       <h1>Game ID is { id }</h1>     
@@ -43,7 +66,13 @@ export default function Game() {
           {reviewInputMode === "GameDescription" && <GameDescription gameDescription={game.gameData.summary} />}
         </div>
         <div className="UserButtons">
-          <UserButtons writeReview={()=>setReviewInputMode("WriteReview")}/>
+          <UserButtons 
+            writeReview={()=>setReviewInputMode("WriteReview")} 
+            hideWriteReview={()=>setReviewInputMode("GameDescription")}
+            userLiked={game.userGameData.liked}
+            userPlayed={game.userGameData.played}
+
+          />
         </div>
       </section>
       {game.reviewsData.map(review => {

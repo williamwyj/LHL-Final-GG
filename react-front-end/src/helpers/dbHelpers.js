@@ -78,10 +78,29 @@ const submitReview = function(gameId, userId, review, rating) {
     });
 }
 
+const grabUserGameLikeFollow = function(userId, gameId) {
+  return axios.get('/api/user/gameLikeFollow', {
+    params: {
+      userId,
+      gameId,
+    }
+  })
+    .then((res => {
+      return res.data
+    }))
+    .catch(err => {
+      console.log("ERROR", err.message)// .json({ error: err.message });
+    });
+}
+
+const likeGame = function(userId, gameId) {
+
+}
+
     // grabGameById(2928)
 
 
-  export { searchGame, getImage, grabGameById, grabTopReviewsById, getUserId, submitReview }
+  export { searchGame, getImage, grabGameById, grabTopReviewsById, getUserId, submitReview, grabUserGameLikeFollow }
 
 
 

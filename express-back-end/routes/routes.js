@@ -346,5 +346,28 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   })
+
+  //route to retrieve user like and follow game data
+  router.get('/user/gameLikeFollow', (req, res)=>{
+    const userId = req.query.userId
+    const gameId = req.query.gameId
+    db.query(`
+      SELECT * FROM user_game_relationships WHERE user_id = ${userId} AND game_id=${gameId}
+    `)
+      .then((data => {
+        res.json(data.rows);
+        }))
+        .catch(err => {
+          res
+            .status(500)
+            .json({ error: err.message });
+        });
+  })
+
+
+  //route to like game
+  router.post('/user/likeGame', (req,res)=>{
+
+  })
   return router  
 }
