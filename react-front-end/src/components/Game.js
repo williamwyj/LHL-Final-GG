@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import "./Game.scss"
 import { useParams } from 'react-router-dom';
 import { grabGameById, grabTopReviewsById } from '../helpers/dbHelpers';
+import StarRating from './ProfilePage/StarRating';
 
-export default function Game(props) {
+
+export default function Game() {
   const [game, setGame] = useState({
     gameData : {},
     reviewsData: []
@@ -11,6 +13,13 @@ export default function Game(props) {
   })
   const { id } = useParams();
   // let game = ''
+  // state of star rating
+  const [rating, setRating] = useState(0);
+  // color of star rating
+  const color = {
+    filled : "#f5eb3b",
+    unfilled: "#DCDCDC"
+  }
 
   useEffect(() => {
     Promise.all([
@@ -23,6 +32,7 @@ export default function Game(props) {
     })
   }, []);
   console.log("Game data, ", game)
+
   return (
     <div>
       <h1>Game ID is { id }</h1>     
@@ -34,6 +44,7 @@ export default function Game(props) {
           <p>{review.rating}</p>
           </div>
       })}
+      <StarRating count={10} rating={rating} onRating={rate => setRating(rate)} color={color}/>
     </div>
   )
 }
