@@ -1,7 +1,9 @@
 @import "../../public/scss_styles/style";
 
 body{
-  background: linear-gradient($dark, $grey)
+  background: linear-gradient($dark, $grey);
+  background-repeat:no-repeat;
+  background-attachment: fixed;
 }
 div.main-container{
   margin: 3vw;
