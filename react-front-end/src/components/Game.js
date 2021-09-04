@@ -4,9 +4,12 @@ import "./Game.scss"
 import { useParams } from 'react-router-dom';
 import { grabGameById } from '../helpers/dbHelpers';
 import { Button, Carousel } from 'react-bootstrap'
+import Screenshots from './GamePageComponents/Screenshots';
 
 export default function Game(props) {
   const [game, setGame] = useState("")
+  const [date, setDate] = useState('')
+  const [shots, setShots] = useState([1])
   const { id } = useParams();
   // let game = ''
 
@@ -14,17 +17,41 @@ export default function Game(props) {
     grabGameById(id)
     .then((result) => {
       setGame(result[0])
-    });
+      const date = new Date(result[0].first_release_date * 1000)
+      const year = date.getFullYear()
+      setDate(year)
+      setShots(result[0].screenshots)
+    })
   }, []);
 
-  // const screenshots = game.screenshots.map((img) =>
-  //   <Carousel.Item interval={1000}>
-  //     <img className="slideshow-image "src={game.screenshots[0]}/>
-  //   </Carousel.Item>
-  // )
+  if(typeof game != 'object'){
+    return null
+  }
+  
+
 
   return (
     <div className="main-container">
+    <Carousel fade interval={750}>
+    <Carousel.Item>
+        <img
+          className="slideshow-image"
+          src={shots[0]}
+        />
+      </Carousel.Item>
+    <Carousel.Item>
+        <img
+          className="slideshow-image"
+          src={shots[1]}
+        />
+      </Carousel.Item>
+    <Carousel.Item>
+        <img
+          className="slideshow-image"
+          src={shots[2]}
+        />
+      </Carousel.Item>
+    </Carousel>
       <div className="game-info">
         <div className="imgGallery">
           <img className="gallery-img" src={game.cover}/>
@@ -32,8 +59,9 @@ export default function Game(props) {
         <div className="game-details">
           <div className="top">
             <h2 >{ game.name }</h2>
-            <span>{ game.summary }</span>
+            <h4>{date}</h4>
           </div>
+            <span>{ game.summary }</span>
           <div className="bottom">
           </div>
         </div>
