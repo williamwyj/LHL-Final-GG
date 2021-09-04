@@ -1,0 +1,11 @@
+@import'../../public/scss_styles/style';
+
+div.game-info {
+  div.imgGallery{
+    gallery-img{
+      @include game-cover
+    }
+  } 
+  @include flex-spaced-row;
+  background-color: yellow 
+}

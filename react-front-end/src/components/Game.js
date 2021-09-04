@@ -27,7 +27,7 @@ export default function Game(props) {
     <div className="main-container">
       <div className="game-info">
         <div className="imgGallery">
-          <img src={game.cover}/>
+          <img className="gallery-img" src={game.cover}/>
         </div>
         <div className="game-details">
           <div className="top">
