@@ -1,33 +1,34 @@
 @import "../../public/scss_styles/style";
 
+@keyframes coming {
+  from {transform: translateY(0%)}
+  to {transform: translateY(-130%)}
+}
+
 div.home-intro-heading{
   display: flex;
   flex-direction: column;
-  color: pink;
-  padding-top: 56px;
   height: 66vh;
   .title-line-left{
-    background-color: orange;
-    display: block;
+    background-color: saddlebrown;
     overflow: hidden;
+    display: flex;
     width: 100%;
-    margin-top: -8%;
-    margin-bottom: -8%;
-    padding-top: 4%;
-    padding-bottom: 4%;
-    text-align: left;
+    .word-holder{
+      font-size: 10em;
+      background-color: orange;
+    }
   }
   .title-line-right{
-    background-color: orange;
-    
-    display: block;
+    background-color: purple;
+    display: flex;
     overflow: hidden;
     width: 100%;
-    margin-top: -8%;
-    margin-bottom: -8%;
-    padding-top: 4%;
-    padding-bottom: 4%;
-    text-align: right;
+    justify-content: flex-end;
+    .word-holder{
+      font-size: 10em;
+      background-color: orange;
+    }
   }
 }
 

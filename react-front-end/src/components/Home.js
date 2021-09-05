@@ -21,8 +21,12 @@ export default function Home() {
   return (
     <div className="App">
       <div className="home-intro-heading">
-        <div className="title-line-left">Good games are</div>
-        <div className="title-line-right">Trash</div>
+        <div className="title-line-left">
+          <div className="word-holder">Good games are...</div>
+        </div>
+        <div className="title-line-right">
+          <div className="word-holder">Trash</div>
+          </div>
         <div className="title-line-right delayed"></div>
         <div className="title-line-right delayed"></div>
       </div>
