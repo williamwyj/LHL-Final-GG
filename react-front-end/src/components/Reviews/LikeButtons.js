@@ -26,7 +26,6 @@ export default function LikeButtons(props) {
             likes.push(element.type);
           });
           setLiked(likes);
-          console.log(liked);
           
         })
       }
