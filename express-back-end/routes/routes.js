@@ -423,8 +423,10 @@ module.exports = (db) => {
     const gameId = req.body.params.gameId;
     const userId = req.body.params.userId;
     const likeUnlike = req.body.params.likeUnlike;
+    //update the db, if this row does not exist, the update will not work and then insert will work, insert will not work if row already exist
     db.query(`
-      UPDATE user_game_relationships SET liked=${likeUnlike} WHERE user_id=${userId} AND game_id=${gameId}
+      UPDATE user_game_relationships SET liked=${likeUnlike} WHERE user_id=${userId} AND game_id=${gameId};
+      INSERT INTO user_game_relationships (user_id, game_id, liked, played, play_list) SELECT ${userId}, ${gameId}, ${likeUnlike}, false, false WHERE NOT EXISTS (SELECT * FROM user_game_relationships WHERE user_id=${userId} AND game_id=${gameId});
     `)
       .then((data => {
         res.json(data.rows);
@@ -441,7 +443,8 @@ module.exports = (db) => {
     const userId = req.body.params.userId;
     const playedNotPlayed = req.body.params.playedNotPlayed;
     db.query(`
-      UPDATE user_game_relationships SET played=${playedNotPlayed} WHERE user_id=${userId} AND game_id=${gameId}
+      UPDATE user_game_relationships SET played=${playedNotPlayed} WHERE user_id=${userId} AND game_id=${gameId};
+      INSERT INTO user_game_relationships (user_id, game_id, liked, played, play_list) SELECT ${userId}, ${gameId}, false, ${playedNotPlayed}, false WHERE NOT EXISTS (SELECT * FROM user_game_relationships WHERE user_id=${userId} AND game_id=${gameId});
     `)
       .then((data => {
         res.json(data.rows);
