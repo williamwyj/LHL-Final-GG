@@ -10,9 +10,11 @@ export default function LikeButtons(props) {
   const [liked, setLiked] = useState([]);
   const {token, username} = useContext(authContext);
   if (token && !user_id) {
+    console.log("getting userid");
     getUserId(username)
     .then(res => {
       if (res.length > 0) {
+        console.log("setting userid = ", res[0].id);
         setUserId(res[0].id);
         Axios.get("/api/comment/like", {
           params: {
@@ -25,6 +27,7 @@ export default function LikeButtons(props) {
           response.data.forEach(element => {
             likes.push(element.type);
           });
+          console.log("user's likes are ", likes);
           setLiked(likes);
           
         })
@@ -87,24 +90,29 @@ export default function LikeButtons(props) {
       setLiked(likes);
     })
   }
-  let likeButton, hmmButton, hahaButton;
-  if (liked.includes("like")) {
-    likeButton = <ButtonLike type="like" likes={props.like} action={onLike} />
-  } else {
-    likeButton = <ButtonUnlike type="like" likes={props.like} action={onLike} />
-  }
+  let likeButton = <ButtonLike type="like" likes={props.like} />
+  let hmmButton = <ButtonLike type="hmm" likes={props.hmm} /> 
+  let hahaButton = <ButtonLike type="haha" likes={props.haha} />
+  if (token) {
+    if (liked.includes("like")) {
+      likeButton = <ButtonUnlike type="like" likes={props.like} action={onLike} />
+    } else {
+      likeButton = <ButtonLike type="like" likes={props.like} action={onLike} />
+    }
 
-  if (liked.includes("hmm")) {
-    hmmButton = <ButtonLike type="hmm" likes={props.hmm} action={onHmm} />
-  } else {
-    hmmButton = <ButtonUnlike type="hmm" likes={props.hmm} action={onHmm} />
-  }
+    if (liked.includes("hmm")) {
+      hmmButton = <ButtonUnlike type="hmm" likes={props.hmm} action={onHmm} />
+    } else {
+      hmmButton = <ButtonLike type="hmm" likes={props.hmm} action={onHmm} />
+    }
 
-  if (liked.includes("haha")) {
-    hahaButton = <ButtonLike type="haha" likes={props.haha} action={onHaha} />
-  } else {
-    hahaButton = <ButtonUnlike type="haha" likes={props.haha} action={onHaha} />
+    if (liked.includes("haha")) {
+      hahaButton = <ButtonUnlike type="haha" likes={props.haha} action={onHaha} />
+    } else {
+      hahaButton = <ButtonLike type="haha" likes={props.haha} action={onHaha} />
+    }
   }
+ 
 
   return (
     <div class='likes'>
