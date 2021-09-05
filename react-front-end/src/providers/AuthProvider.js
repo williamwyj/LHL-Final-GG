@@ -18,7 +18,7 @@ export default function AuthProvider(props) {
       }
     })
     .then((token) => {
-      console.log("Token is", token.data[0])
+      
       if (token.data[0]){
         setToken(token.data[0])
         setUsername({username: user})
