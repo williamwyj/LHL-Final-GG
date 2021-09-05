@@ -114,6 +114,7 @@ export default function Game(props) {
           />}
         </div>
       </div>
+      </div>
       <div className="carousel">
     <Carousel fade interval={1000} controls={false}>
     <Carousel.Item>
@@ -145,6 +146,7 @@ export default function Game(props) {
           </div>
       })}
       </div>
+      
     </div>
   </div>
   )

@@ -125,11 +125,4 @@ const playedNotPlayedGame = function(userId, gameId, playedNotPlayed) {
     });
 }
 
-
-    // grabGameById(2928)
-
   export { searchGame, getImage, grabGameById, grabTopReviewsById, getUserId, submitReview, grabUserGameLikeFollow, likeUnlikeGame, playedNotPlayedGame }
-
-
-
-
