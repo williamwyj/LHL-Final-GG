@@ -24,7 +24,10 @@ export default function App() {
 
   
   return (
+    
+
     <Router>
+      <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"/>
       <Navigation></Navigation>
       <div>
         {/*
