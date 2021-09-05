@@ -81,8 +81,6 @@ export default function Game(props) {
   if(typeof game != 'object'){
     return null
   }
-  
-
 
   return (
 
@@ -105,7 +103,7 @@ export default function Game(props) {
         </div>
         <div className = "user-game-interactions">
           <div className="UserButtons">
-          {token && <UserButtons 
+          {username && <UserButtons 
             token={token}
             userId={game.userGameData.user_id}
             gameId={id}
@@ -150,6 +148,7 @@ export default function Game(props) {
       </div>
       
     </div>
+  </div>
   )
 }
 

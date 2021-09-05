@@ -7,8 +7,7 @@ import useGameUserStats from "./hooks/useGameUserStats"
 export default function gameBox(props) {
 
   const { state } = useGameUserStats(props.id)
-  console.log("State is", state);
-  console.log("Like is", state.like)
+  
   return (
   <Link to={`/game/${props.id}`}>
     <div className="gameBox">

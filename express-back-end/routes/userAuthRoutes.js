@@ -27,15 +27,11 @@ module.exports = (db) => {
           .status(500)
           .json({ error: err.message });
       });
-    console.log(req.query.user);
-    console.log(req.query.password);
   })
 
   router.post('/logout', (req, res) => {
     const token = req.body.params.token;
     const username = req.body.params.user;
-    console.log("Token is ", token)
-    console.log("Username is", username)
     db.query(`UPDATE users SET token=NULL WHERE token='${token}' AND username='${username}'`)
       .then((data) => {
         console.log('db updated')

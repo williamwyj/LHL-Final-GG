@@ -125,9 +125,4 @@ const playedNotPlayedGame = function(userId, gameId, playedNotPlayed) {
     });
 }
 
-
   export { searchGame, getImage, grabGameById, grabTopReviewsById, getUserId, submitReview, grabUserGameLikeFollow, likeUnlikeGame, playedNotPlayedGame }
-
-
-
-
