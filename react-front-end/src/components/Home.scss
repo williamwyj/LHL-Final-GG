@@ -15,16 +15,16 @@ div {
     width: 100%;
   }
   .topReviews {
-    border: blue;
-    border-style: solid;
+    @include box($dark)
     width: 53%;
-    height: 500px;
+    height: auto;
+    @include margin-ratio;
   }
   .topUsers {
-    border: red;
-    border-style: solid;
+    @include box($dark);
     width: 20%;
-    height: 500px;
+    height: auto;
+    @include margin-ratio;
   }
   .topReviewsUsers {
     display: flex;

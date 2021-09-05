@@ -1,5 +1,9 @@
+@import "../../../public/scss_styles/style";
+
+li{
+    @include box($grey);
+    @include flex-article;
+}
 img.homePageReviewGameCover {
-    border-style: solid;
-    border-color: red;
-    width: 70px;
+    width: 8vw
 }
