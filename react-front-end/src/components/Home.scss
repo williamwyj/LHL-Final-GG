@@ -14,8 +14,9 @@ div {
     text-align: center;
     width: 100%;
   }
+  
   .topReviews {
-    @include box($dark)
+    @include box($dark);
     width: 53%;
     height: auto;
     @include margin-ratio;
