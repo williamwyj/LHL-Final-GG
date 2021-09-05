@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./TopReviews.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { faStar as emptyStar }  from "@fortawesome/free-regular-svg-icons";
+import LikeButtons from "./LikeButtons";
 
- 
 export default function TopReviews(props) {
-  
 
   return (
     <div class="allReviewsBox">
@@ -42,18 +41,7 @@ export default function TopReviews(props) {
                 }
               })}
             </div>
-            <div class="rating">
-              👍
-              {review.like}
-            </div>
-            <div class="rating">
-              🤔  
-              {review.hmm}
-            </div>
-            <div class="rating">
-              🤣
-              {review.haha}
-            </div>
+            <LikeButtons reviewId={review.id} like={review.like} haha={review.haha} hmm={review.hmm}/>
           </div>    
         </div>
 

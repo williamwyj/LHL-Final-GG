@@ -157,6 +157,7 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   })
+
   //user_game_relationship stats based on games, liked, played, play_list
   router.get('/gameuserstats', (req,res)=> {
     const gameId = req.query.gameId
@@ -243,6 +244,56 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   })
+
+  router.get('/comment/like', (req, res) => {
+    const reviewId = req.query.review_id;
+    const userId = req.query.user_id;
+    db.query(`SELECT type FROM likes WHERE (review_id = ${reviewId} AND user_id = ${userId});`)
+    .then(data => {
+      res.json(data.rows);
+    })
+  })
+
+  // route for like buttons
+  router.post('/comment/like', (req, res) => {
+    const reviewId = req.body.params.review_id;
+    const userId = req.body.params.user_id;
+    const likeType = req.body.params.likeType;
+    let query = `INSERT INTO likes (user_id, review_id, type) VALUES (${userId}, ${reviewId}, '${likeType}');`;
+    let findid = `SELECT id FROM likes WHERE (user_id = ${userId} AND review_id = ${reviewId} AND type = '${likeType}');`;
+    
+    db.query(findid)
+    .then((data => {
+      if (data.rows.length === 0) {
+        db.query(query)
+        .then((data) => {
+          db.query(`SELECT type FROM likes WHERE (review_id = ${reviewId} AND user_id = ${userId});`)
+          .then(data => {
+            res.json(data.rows);
+          })
+        })    
+      } else {
+        let repeatsArray = [];
+        data.rows.forEach(element => {
+          repeatsArray.push(element.id);
+        });
+        console.log(repeatsArray);
+        db.query(`DELETE FROM likes WHERE id IN (${repeatsArray });`)
+        .then((data) => {
+          db.query(`SELECT type FROM likes WHERE (review_id = ${reviewId} AND user_id = ${userId});`)
+          .then(data => {
+            res.json(data.rows);
+          })
+        })      
+      }}))
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+  })
+
+
   //route to add follower
   router.post('/user/follow', (req, res) => {
     const mainUserId = req.body.params.mainUserId;

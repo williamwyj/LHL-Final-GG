@@ -3,10 +3,10 @@ import axios from 'axios';
 import "./Home.scss"
 
 import FeaturedGame from './GameBox/FeaturedGames';
-import TopReviews from "./HomePage/TopReviews"
 import TopUsers from "./HomePage/TopUsers"
 
 import useApplicationData from './hooks/useApplicationData';
+import TopReviews from './Reviews/TopReviews';
 
 export default function Home() {
 
