@@ -146,7 +146,6 @@ export default function Game(props) {
       </div>
       
     </div>
-  </div>
   )
 }
 
