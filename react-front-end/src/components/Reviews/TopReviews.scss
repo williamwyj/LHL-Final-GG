@@ -1,0 +1,54 @@
+.allReviewsBox {
+    border: blueviolet;
+    border-style: solid;
+    width: 60%;
+    height: fit-content;    
+}
+
+.singleReviewBox {
+    background-color: rgba(9, 230, 9, 0.199);
+    border: green;
+    border-style: solid;
+    padding: 1em 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;   
+}
+
+.reviewInfo {
+    width: 75%;
+}
+
+.reviewContent {
+    background-color: honeydew;
+    padding: 1em;
+    margin: 1em 0em;
+
+}
+
+.gameDisplay {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ratings {
+    display: flex;
+    flex-direction: row;
+}
+
+.rating {
+    margin-right: 1.5em;
+}
+
+.ratingStars {
+    margin-right: 1.5em;
+    color: gold;
+}
+
+img.homePageReviewGameCover {
+    border-style: dashed;
+    border-color: red;
+    width: 90px;
+}
