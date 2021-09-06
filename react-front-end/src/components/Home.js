@@ -25,10 +25,14 @@ export default function Home() {
           <div className="word-holder">Good games are...</div>
         </div>
         <div className="title-line-right">
-          <div className="word-holder">Trash</div>
+          <div className="word-holder">Trash </div>
           </div>
-        <div className="title-line-right delayed"></div>
-        <div className="title-line-right delayed"></div>
+        <div className="title-line-right delayed">
+          <div className="word-holder">Indie</div>
+        </div>
+        <div className="title-line-right delayed">
+          <div className="word-holder">Indie</div>
+          </div>
       </div>
       <div className="home-body">
         <div className="homePageGamesTitle">What's Hot This Week</div>
