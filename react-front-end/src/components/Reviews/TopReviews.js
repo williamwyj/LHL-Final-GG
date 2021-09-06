@@ -6,38 +6,41 @@ import { faStar as emptyStar } from "@fortawesome/free-regular-svg-icons";
 import LikeButtons from "./LikeButtons";
 
 export default function TopReviews(props) {
+
   return (
-    <div class="allReviewsBox">
-      {props.reviews.map((review) => {
-        const userLink = `/user/${review.user_id}`;
-        const gameLink = `/game/${review.game_id}`;
-        let ratingStars = [];
-        for (let i = 0; i < 10; i++) {
-          if (i < review.rating) {
-            ratingStars.push(true);
-          } else {
-            ratingStars.push(false);
-          }
+    <div className="allReviewsBox">
+    {!props.reviews[0] && <p>You have not written any reviews! Write a review to feature on your profile page!</p>}
+    {props.reviews[0] && props.reviews.map(review => {
+      const userLink = `/user/${review.username}`;
+      const gameLink = `/game/${review.game_id}`;  
+      let ratingStars = [];
+      for (let i = 0; i < 10; i++) {
+        if (i < review.rating) {
+          ratingStars.push(true);
+        } else {
+          ratingStars.push(false);
         }
-        return (
-          <div class="singleReviewBox">
-            <div class="reviewInfo">
-              <div className="review-info-top">
-                <a class="username"href={userLink}> {review.username}</a>
-
-                <div class="reviewContent">{review.content}</div>
-              </div>
-
-              {/* <hr /> */}
-              <div class="ratings">
-                <div class="ratingStars">
-                  {ratingStars.map((isFilled) => {
-                    if (isFilled) {
-                      return <FontAwesomeIcon icon={faStar} />;
-                    } else {
-                      return <FontAwesomeIcon icon={emptyStar} />;
-                    }
-                  })}
+      }
+      return (
+        <div className="singleReviewBox">
+        <div className="reviewInfo">
+          <div> 
+            <a href={userLink}> {review.username}</a>
+          </div>
+          
+          <div className="reviewContent"> 
+            {review.content}
+          </div>
+          <hr />
+          <div className="ratings"> 
+            <div className="ratingStars">
+              {ratingStars.map(isFilled => {
+                if (isFilled) {
+                  return <FontAwesomeIcon icon={faStar} />
+                } else {
+                  return <FontAwesomeIcon icon={emptyStar}/>
+                }
+              })}
                 </div>
                 <LikeButtons
                   reviewId={review.id}
@@ -48,11 +51,11 @@ export default function TopReviews(props) {
               </div>
             </div>
 
-            <div class="gameDisplay">
+            <div className="gameDisplay">
               <div>
                 <a href={gameLink}>
                   <img
-                    class="homePageReviewGameCover"
+                    className="homePageReviewGameCover"
                     src={review.cover}
                     alt={review.name}
                   />

@@ -12,13 +12,13 @@ export default function gameBox(props) {
   <Link to={`/game/${props.id}`}>
     <div className="gameBox">
       <img className="gameBox" src={props.cover} alt={props.name}/>
-      <div className="overlay">
+      {props.name!== "noGame" && <div className="overlay">
         <div className="gameStats">
           <p>Likes : {state.liked}</p>
           <p>Played : {state.played}</p>
           <p>On Play List : {state.play_list}</p>
         </div>
-      </div>
+      </div>}
     </div>
   </Link>
   )

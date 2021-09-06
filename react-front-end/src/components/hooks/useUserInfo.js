@@ -19,35 +19,39 @@ export default function useUserInfo(username) {
         username
       }
     }).then((data)=>{
-      console.log('useUserInfo', data.data[0].id)
-      const userIdData = data.data[0].id
+      const userId = data.data[0].id
       Promise.all([
         //get username information including name, thumbnail, # of reviews
         axios.get("/api/user", {
           params: {
-            userId : userIdData
+            userId
           }
         }),
         //get user number of followers, how many others the user follows
         axios.get("/api/user/followStats", {
           params: {
-            userId : userIdData
+            userId
           }
         }),
         // get user liked games
         axios.get("/api/user/favoritegames", {
           params: {
-            userId : userIdData
+            userId
           }
         }),
         axios.get("/api/user/followers", {
           params: {
-            userId : userIdData
+            userId
           }
         }),
         axios.get("/api/user/reviewStats", {
           params: {
-            userId : userIdData
+            userId
+          }
+        }),
+        axios.get("/api/user/topReviews", {
+          params: {
+            userId
           }
         })
       ]).then((all)=>{
@@ -57,7 +61,7 @@ export default function useUserInfo(username) {
         const games = all[2].data;
         const followerNames = all[3].data[0] ? all[3].data : [];
         const {reviews} = all[4].data[0] ? all[4].data[0] : {reviews : 0};
-        
+        const topReviews = all[5].data
         if (games.length < 4) {
           //if user liked less than 4 games, fill in with prompt to add games
           for (let i = games.length; i < 4 ; i++) {
@@ -68,7 +72,7 @@ export default function useUserInfo(username) {
             });
           }
         }
-        setState({...state, id, thumbnail, reviews, followers, followed, games, followerNames})
+        setState({...state, id, thumbnail, reviews, followers, followed, games, followerNames, topReviews})
       }).catch(err => {
         console.log(err);
       })

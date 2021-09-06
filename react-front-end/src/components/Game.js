@@ -14,6 +14,8 @@ import UserButtons from './GamePage/UserButtons';
 
 import Screenshots from './GamePageComponents/Screenshots';
 
+import TopReviews from './Reviews/TopReviews';
+
 export default function Game(props) {
 
   //import context
@@ -81,7 +83,7 @@ export default function Game(props) {
   if(typeof game != 'object'){
     return null
   }
-
+  
   return (
 
     <div className="main-container">
@@ -135,15 +137,9 @@ export default function Game(props) {
       </Carousel.Item>
     </Carousel>
     </div>
-      <div>
-        {game.reviewsData.map(review => {
-        return <div className="GameReview" key={review.review_id}>
-            <p>User {review.username}</p>
-            <p>Review {review.content}</p>
-            <p>Rating {review.rating}</p>
-          </div>
-      })}
-      </div>
+      {!game.reviewsData[0] && <p>No reviews for this game have been made yet</p>}
+      {game.reviewsData[0] && <TopReviews reviews={game.reviewsData} />}
+      
       
     </div>
   )

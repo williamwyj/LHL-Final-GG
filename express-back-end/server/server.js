@@ -24,9 +24,11 @@ db.connect()
 
 const routes = require('../routes/routes')
 const userAuthRoutes = require('../routes/userAuthRoutes')
+const userRoutes = require('../routes/userRoutes')
 
 App.use("/api", routes(db));
 App.use("/api", userAuthRoutes(db));
+App.use("/user/api", userRoutes(db))
 
 // Sample GET route
 App.get('/api/data', (req, res) => res.json({
