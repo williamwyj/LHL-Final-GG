@@ -64,6 +64,8 @@ module.exports = (db) => {
   })
 
   router.get('/topReviews/game', (req,res) => {
+    const gameId = req.query.gameId
+
     db.query(
     `SELECT reviews.id AS review_id, reviews.game_id AS game_id, COALESCE(tab.like + tab.hmm + tab.haha, 0) AS total
       FROM reviews
@@ -83,7 +85,7 @@ module.exports = (db) => {
         const reviewId = data.rows.map(element => element.review_id).toString()
         data.rows[0] && 
           db.query(
-            `SELECT reviews.id AS review_id, reviews.game_id AS game_id, reviews.content, reviews.rating, COALESCE(tab.like, 0) AS like, COALESCE(tab.hmm, 0) AS hmm, COALESCE(tab.haha, 0) AS haha, COALESCE(tab.like+tab.hmm+tab.haha, 0) AS total
+            `SELECT reviews.id AS review_id, reviews.game_id AS game_id, reviews.content, reviews.rating, users.username AS username, games.name AS name, games.cover AS cover, COALESCE(tab.like, 0) AS like, COALESCE(tab.hmm, 0) AS hmm, COALESCE(tab.haha, 0) AS haha, COALESCE(tab.like+tab.hmm+tab.haha, 0) AS total
               FROM reviews
               LEFT JOIN (
               SELECT review_id,
@@ -95,7 +97,7 @@ module.exports = (db) => {
               ) tab ON reviews.id = tab.review_id
               JOIN games on (reviews.game_id = games.id)
               JOIN users ON (reviews.user_id = users.id)
-              WHERE reviews.game_id = 2928 AND reviews.id IN (${reviewId})
+              WHERE reviews.game_id = ${gameId} AND reviews.id IN (${reviewId})
               GROUP BY reviews.id, users.username, games.name, games.cover, tab.like, tab.hmm, tab.haha
               ORDER BY total DESC;`
           )
@@ -304,6 +306,11 @@ module.exports = (db) => {
     .then(data => {
       res.json(data.rows);
     })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
   })
 
   // route for like buttons
@@ -323,7 +330,17 @@ module.exports = (db) => {
           .then(data => {
             res.json(data.rows);
           })
-        })    
+          .catch(err => {
+            res
+              .status(500)
+              .json({ error: err.message });
+          });
+        })
+        .catch(err => {
+          res
+            .status(500)
+            .json({ error: err.message });
+        });    
       } else {
         let repeatsArray = [];
         data.rows.forEach(element => {
@@ -336,6 +353,11 @@ module.exports = (db) => {
           .then(data => {
             res.json(data.rows);
           })
+          .catch(err => {
+            res
+              .status(500)
+              .json({ error: err.message });
+          });
         })      
       }}))
     .catch(err => {
