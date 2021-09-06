@@ -61,7 +61,6 @@ export default function useUserInfo(username) {
         const games = all[2].data;
         const followerNames = all[3].data[0] ? all[3].data : [];
         const {reviews} = all[4].data[0] ? all[4].data[0] : {reviews : 0};
-        console.log("Topreviews, ", all[5].data)
         const topReviews = all[5].data
         if (games.length < 4) {
           //if user liked less than 4 games, fill in with prompt to add games

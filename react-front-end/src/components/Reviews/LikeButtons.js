@@ -115,7 +115,7 @@ export default function LikeButtons(props) {
  
 
   return (
-    <div class='likes'>
+    <div className='likes'>
       {likeButton}
       {hmmButton}
       {hahaButton}

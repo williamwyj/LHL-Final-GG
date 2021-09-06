@@ -6,13 +6,12 @@ import { faStar as emptyStar }  from "@fortawesome/free-regular-svg-icons";
 import LikeButtons from "./LikeButtons";
 
 export default function TopReviews(props) {
-  console.log("Top Reviews props: ", props)
-  console.log("First review data, ", props.reviews[0])
+  console.log("TopReviews props, ", props)
   return (
     <div className="allReviewsBox">
     {!props.reviews[0] && <p>You have not written any reviews! Write a review to feature on your profile page!</p>}
     {props.reviews[0] && props.reviews.map(review => {
-      const userLink = `/user/${review.user_id}`;
+      const userLink = `/user/${review.username}`;
       const gameLink = `/game/${review.game_id}`;  
       let ratingStars = [];
       for (let i = 0; i < 10; i++) {
@@ -23,18 +22,18 @@ export default function TopReviews(props) {
         }
       }
       return (
-        <div class="singleReviewBox">
-        <div class="reviewInfo">
+        <div className="singleReviewBox">
+        <div className="reviewInfo">
           <div> 
             <a href={userLink}> {review.username}</a>
           </div>
           
-          <div class="reviewContent"> 
+          <div className="reviewContent"> 
             {review.content}
           </div>
           <hr />
-          <div class="ratings"> 
-            <div class="ratingStars">
+          <div className="ratings"> 
+            <div className="ratingStars">
               {ratingStars.map(isFilled => {
                 if (isFilled) {
                   return <FontAwesomeIcon icon={faStar} />
@@ -47,9 +46,9 @@ export default function TopReviews(props) {
           </div>    
         </div>
 
-        <div class="gameDisplay">
+        <div className="gameDisplay">
           <div> 
-            <img class="homePageReviewGameCover" src={review.cover} alt={review.name}/>
+            <img className="homePageReviewGameCover" src={review.cover} alt={review.name}/>
           </div>
           <div> 
             <a href={gameLink}> {review.name} </a>
