@@ -22,6 +22,7 @@ export default function Profile() {
       <UserProfile thumbnail={state.thumbnail} id={state.id} username={state.username} followers={state.followers} followerNames={state.followerNames} followed={state.followed} reviews={state.reviews}/>
       <FeaturedGame state={state} /> 
       {state.topReviews && <TopReviews reviews={state.topReviews} />}
+      {!state.topReviews[0] && <p>You have not written any reviews! Write a review to feature on your profile page!</p>}
     </div>
   );
 }

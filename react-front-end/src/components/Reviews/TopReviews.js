@@ -9,7 +9,6 @@ export default function TopReviews(props) {
 
   return (
     <div className="allReviewsBox">
-    {!props.reviews[0] && <p>You have not written any reviews! Write a review to feature on your profile page!</p>}
     {props.reviews[0] && props.reviews.map(review => {
       const userLink = `/user/${review.username}`;
       const gameLink = `/game/${review.game_id}`;  

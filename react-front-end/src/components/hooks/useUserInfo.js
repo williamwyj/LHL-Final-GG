@@ -11,7 +11,8 @@ export default function useUserInfo(username) {
     followers: 0,
     followerNames: [],
     followed: 0,
-    games: []
+    games: [],
+    topReviews: []
   })
   useEffect(()=>{
     axios.get('/api/userId', {

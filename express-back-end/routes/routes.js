@@ -85,7 +85,7 @@ module.exports = (db) => {
         const reviewId = data.rows.map(element => element.review_id).toString()
         data.rows[0] && 
           db.query(
-            `SELECT reviews.id AS review_id, reviews.game_id AS game_id, reviews.content, reviews.rating, users.username AS username, games.name AS name, games.cover AS cover, COALESCE(tab.like, 0) AS like, COALESCE(tab.hmm, 0) AS hmm, COALESCE(tab.haha, 0) AS haha, COALESCE(tab.like+tab.hmm+tab.haha, 0) AS total
+            `SELECT reviews.id, reviews.game_id AS game_id, reviews.content, reviews.rating, users.username AS username, games.name AS name, games.cover AS cover, COALESCE(tab.like, 0) AS like, COALESCE(tab.hmm, 0) AS hmm, COALESCE(tab.haha, 0) AS haha, COALESCE(tab.like+tab.hmm+tab.haha, 0) AS total
               FROM reviews
               LEFT JOIN (
               SELECT review_id,
@@ -140,7 +140,6 @@ module.exports = (db) => {
     
     db.query(`SELECT users.id FROM users WHERE users.username = '${username}';`)
       .then((data => {
-        console.log(data)
         res.json(data.rows);
       }))
       .catch(err => {
@@ -321,7 +320,6 @@ module.exports = (db) => {
     const likeType = req.body.params.likeType;
     let query = `INSERT INTO likes (user_id, review_id, type) VALUES (${userId}, ${reviewId}, '${likeType}');`;
     let findid = `SELECT id FROM likes WHERE (user_id = ${userId} AND review_id = ${reviewId} AND type = '${likeType}');`;
-    
     db.query(findid)
     .then((data => {
       if (data.rows.length === 0) {
@@ -347,7 +345,6 @@ module.exports = (db) => {
         data.rows.forEach(element => {
           repeatsArray.push(element.id);
         });
-        console.log(repeatsArray);
         db.query(`DELETE FROM likes WHERE id IN (${repeatsArray });`)
         .then((data) => {
           db.query(`SELECT type FROM likes WHERE (review_id = ${reviewId} AND user_id = ${userId});`)
