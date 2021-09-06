@@ -6,8 +6,7 @@ import "./TopUsers.scss"
 export default function TopUsers(props) {
   return (
   <li className="homePageTopUsers">
-    User ID
-    {props.user_id}
+    <img src ={props.thumbnail}/>
     User Name
     {props.username}
     Followers

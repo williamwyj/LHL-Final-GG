@@ -1,0 +1,9 @@
+@import "../../../public/scss_styles/style";
+
+li{
+    @include box($grey);
+    @include flex-article;
+}
+img.homePageReviewGameCover {
+    width: 8vw
+}

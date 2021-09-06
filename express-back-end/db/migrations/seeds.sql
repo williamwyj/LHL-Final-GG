@@ -1,9 +1,11 @@
-INSERT INTO users (username, password)
+INSERT INTO users (username, password, thumbnail)
 VALUES
 
-('Test', 'a'),
-('gamer100', 'a'),
-('mario', 'a');
+('wario', 'a', 'http://www.newdesignfile.com/postpic/2014/07/generic-user-icon-windows_352871.png'),
+('bowser', 'a', 'http://www.newdesignfile.com/postpic/2014/07/generic-user-icon-windows_352871.png'),
+('mario', 'a', 'http://www.newdesignfile.com/postpic/2014/07/generic-user-icon-windows_352871.png'),
+('peach', 'a', 'http://www.newdesignfile.com/postpic/2014/07/generic-user-icon-windows_352871.png'),
+('luigi', 'a', 'http://www.newdesignfile.com/postpic/2014/07/generic-user-icon-windows_352871.png');
 
 INSERT INTO games (id, name, summary, platforms, first_release_date, cover, screenshots)
 VALUES 
@@ -68,7 +70,10 @@ INSERT INTO reviews (user_id, game_id, content, rating)
 VALUES 
 (2, 2579, 'This game sucks!', 1),
 (3, 11208, 'This game rules!', 10),
-(3, 2928, 'Althought flawed this game has some real potential behind it', 5);
+(3, 2928, 'Althought flawed this game has some real potential behind it', 5), 
+(1, 2928, 'Not bad, look out for the cake', 5),
+(1, 11208, 'Great game, great dev, great support', 4);
+
 
 
 INSERT INTO likes (user_id, review_id, type)
@@ -76,9 +81,18 @@ VALUES
 
 (1, 3, 'like'),
 (1, 2, 'hmm'),
+(1, 1, 'like'),
+(1, 2, 'like'),
 (1, 1, 'haha'),
 (2, 3, 'like'),
-(2, 2, 'haha');
+(2, 2, 'like'),
+(2, 2, 'haha'),
+(3, 1, 'like'),
+(3, 3, 'like'),
+(2, 4, 'hmm'),
+(3, 4, 'haha'),
+(4, 5, 'like');
+
 
 INSERT INTO user_game_relationships (user_id, game_id, liked, played, play_list)
 VALUES
@@ -86,12 +100,15 @@ VALUES
 (3, 2928, TRUE, TRUE, FALSE),
 (3, 2927, TRUE, FALSE, TRUE),
 (2, 2928, FALSE, FALSE, TRUE),
-(1, 2928, FALSE, TRUE, FALSE);
+(1, 2928, FALSE, TRUE, FALSE),
+(1, 115, TRUE, TRUE, FALSE);
 
 INSERT INTO followers (user_id, follower_id)
 VALUES
 (3, 2),
 (3, 1),
+(1, 3),
+(1, 4),
 (2, 1),
-(1, 2),
-(1, 3);
+(1, 2);
+

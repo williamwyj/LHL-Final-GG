@@ -23,7 +23,7 @@ export default function useUserInfo(username) {
         //get username information including name, thumbnail, # of reviews
         axios.get("/api/user", {
           params: {
-            userId : data.data[0].id
+            userId : data[0].data.id
           }
         }),
         //get user number of followers, how many others the user follows
