@@ -14,6 +14,7 @@ export default function Profile() {
   //get the id from url
   const { name } = useParams();
   const {state} = useUserInfo(name);
+  console.log("Profile state is ", state)
   return (
     <div>
       <UserProfile thumbnail={state.thumbnail} id={state.id} username={state.username} followers={state.followers} followerNames={state.followerNames} followed={state.followed} reviews={state.reviews}/>
