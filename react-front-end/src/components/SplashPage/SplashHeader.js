@@ -9,10 +9,15 @@ export default function SplashHeader() {
   });
 
   useEffect(() => {
+    const initialState = {
+      class: "active",
+      value: "talked about.",
+      counter: 0,
+    };
     if (state.class === "coming") {
       setTimeout(() => {
         setState((state) => ({ ...state, class: "active" }));
-      }, 2000);
+      }, 1000);
     }
     if (state.class === "active") {
       setTimeout(() => {
@@ -23,43 +28,43 @@ export default function SplashHeader() {
       const count = state.counter + 1;
       setTimeout(() => {
         setState((state) => ({ ...state, class: "coming", counter: count }));
-      }, 2000);
+      }, 2002);
     }
     if (state.class === "going" && state.counter === 0) {
       setTimeout(() => {
         setState((state) => ({
           class: "coming",
           value: "online.",
-          counter: 1,
+          counter: 1
         }));
-      }, 2000);
+      }, 2002);
     }
     if (state.class === "going" && state.counter === 1) {
       setTimeout(() => {
         setState((state) => ({
           class: "coming",
-          counter: 2,
           value: "intriguing.",
+          counter: 2
         }));
-      }, 2000);
+      }, 2002);
     }
     if (state.class === "going" && state.counter === 2) {
       setTimeout(() => {
         setState((state) => ({
           class: "coming",
-          counter: 3,
-          value: "here",
+          value: "here.",
+          counter: 3
         }));
-      }, 2000);
+      }, 2002);
     }
     if (state.class === "going" && state.counter === 3) {
       setTimeout(() => {
         setState((state) => ({
-          value: "talked about.",
           class: "coming",
-          counter: 0,
+          value: "talked about.",
+          counter: 0
         }));
-      }, 2000);
+      }, 2002);
     }
   }, [state]);
 
