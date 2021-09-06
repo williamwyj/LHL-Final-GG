@@ -83,7 +83,7 @@ export default function Game(props) {
   if(typeof game != 'object'){
     return null
   }
-  
+
   return (
 
     <div className="main-container">

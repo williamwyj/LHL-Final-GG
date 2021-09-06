@@ -10,11 +10,9 @@ export default function LikeButtons(props) {
   const [liked, setLiked] = useState([]);
   const {token, username} = useContext(authContext);
   if (token && !user_id) {
-    console.log("getting userid");
     getUserId(username)
     .then(res => {
       if (res.length > 0) {
-        console.log("setting userid = ", res[0].id);
         setUserId(res[0].id);
         Axios.get("/api/comment/like", {
           params: {
@@ -27,7 +25,6 @@ export default function LikeButtons(props) {
           response.data.forEach(element => {
             likes.push(element.type);
           });
-          console.log("user's likes are ", likes);
           setLiked(likes);
           
         })
