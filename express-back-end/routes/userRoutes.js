@@ -6,7 +6,6 @@ module.exports = (db) => {
   //user_game_relationship stats based on games, liked, played, play_list
   router.get('/gameuserstats', (req,res)=> {
     const gameId = req.query.gameId
-    console.log("GameId ", gameId)
     db.query(`
       SELECT 
       game_id AS id,
@@ -26,6 +25,8 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   })
+
+  
 
   return router  
 }

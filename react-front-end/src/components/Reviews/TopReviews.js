@@ -6,10 +6,12 @@ import { faStar as emptyStar }  from "@fortawesome/free-regular-svg-icons";
 import LikeButtons from "./LikeButtons";
 
 export default function TopReviews(props) {
-
+  console.log("Top Reviews props: ", props)
+  console.log("First review data, ", props.reviews[0])
   return (
-    <div class="allReviewsBox">
-    {props.reviews.map(review => {
+    <div className="allReviewsBox">
+    {!props.reviews[0] && <p>You have not written any reviews! Write a review to feature on your profile page!</p>}
+    {props.reviews[0] && props.reviews.map(review => {
       const userLink = `/user/${review.user_id}`;
       const gameLink = `/game/${review.game_id}`;  
       let ratingStars = [];
