@@ -19,33 +19,35 @@ export default function useUserInfo(username) {
         username
       }
     }).then((data)=>{
+      console.log('useUserInfo', data.data[0].id)
+      const userIdData = data.data[0].id
       Promise.all([
         //get username information including name, thumbnail, # of reviews
         axios.get("/api/user", {
           params: {
-            userId : data[0].data.id
+            userId : userIdData
           }
         }),
         //get user number of followers, how many others the user follows
         axios.get("/api/user/followStats", {
           params: {
-            userId : data.data[0].id
+            userId : userIdData
           }
         }),
         // get user liked games
         axios.get("/api/user/favoritegames", {
           params: {
-            userId : data.data[0].id
+            userId : userIdData
           }
         }),
         axios.get("/api/user/followers", {
           params: {
-            userId : data.data[0].id
+            userId : userIdData
           }
         }),
         axios.get("/api/user/reviewStats", {
           params: {
-            userId : data.data[0].id
+            userId : userIdData
           }
         })
       ]).then((all)=>{
