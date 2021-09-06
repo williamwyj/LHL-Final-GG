@@ -1,14 +1,15 @@
-$text-color: 13212A;
+$text-color: #13212A;
 $primary-grey: #56638A;
 
+$line: #6d7786;
 $light: #EDF2F4;
 $grey: #8D99AE;
 $dark: #2B2D42;
 $apricot: #FFC6AD;
 $light-blue: #90FCF9;
 
-@mixin game-cover { 
-  width: 17vw;
+@mixin game-cover($width: 17vw) { 
+  width: $width;
   height: fit-content;
   border-radius: 5%;
 }
