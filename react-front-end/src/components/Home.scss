@@ -1,7 +1,9 @@
 @import "../../public/scss_styles/style";
 
-div {
+
+div.home-body {
   .featured {
+    z-index: 2;
     padding-top: 50px;
     margin: auto;
     width: 75%;
@@ -10,15 +12,23 @@ div {
     align-items: center;
   }
   .homePageGamesTitle {
-    padding-top: 100px;
+    
+    height: fit-content;
     text-align: center;
     width: 100%;
   }
+  
+  .topReviews {
+    @include box($dark);
+    width: 53%;
+    height: auto;
+    @include margin-ratio;
+  }
   .topUsers {
-    border: red;
-    border-style: solid;
+    @include box($dark);
     width: 20%;
-    height: 500px;
+    height: auto;
+    @include margin-ratio;
   }
   .topReviewsUsers {
     display: flex;

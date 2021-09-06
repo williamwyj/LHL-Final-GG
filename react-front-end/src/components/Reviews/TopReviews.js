@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import "./TopReviews.scss";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
-import { faStar as emptyStar }  from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar as emptyStar } from "@fortawesome/free-regular-svg-icons";
 import LikeButtons from "./LikeButtons";
 
 export default function TopReviews(props) {
-  console.log("TopReviews props, ", props)
+
   return (
     <div className="allReviewsBox">
     {!props.reviews[0] && <p>You have not written any reviews! Write a review to feature on your profile page!</p>}
@@ -41,22 +41,33 @@ export default function TopReviews(props) {
                   return <FontAwesomeIcon icon={emptyStar}/>
                 }
               })}
+                </div>
+                <LikeButtons
+                  reviewId={review.id}
+                  like={review.like}
+                  haha={review.haha}
+                  hmm={review.hmm}
+                />
+              </div>
             </div>
-            <LikeButtons reviewId={review.id} like={review.like} haha={review.haha} hmm={review.hmm}/>
-          </div>    
-        </div>
 
-        <div className="gameDisplay">
-          <div> 
-            <img className="homePageReviewGameCover" src={review.cover} alt={review.name}/>
+            <div className="gameDisplay">
+              <div>
+                <a href={gameLink}>
+                  <img
+                    className="homePageReviewGameCover"
+                    src={review.cover}
+                    alt={review.name}
+                  />
+                </a>
+              </div>
+              <div>
+                <a href={gameLink}> {review.name} </a>
+              </div>
+            </div>
           </div>
-          <div> 
-            <a href={gameLink}> {review.name} </a>
-          </div>
-        </div>
-        </div>
-      )
-    })}
+        );
+      })}
     </div>
-  )
+  );
 }

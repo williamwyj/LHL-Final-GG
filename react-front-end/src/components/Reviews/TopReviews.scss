@@ -1,39 +1,65 @@
+@import "../../../public/scss_styles/style";
+
 .allReviewsBox {
-    border: blueviolet;
-    border-style: solid;
+    @include box($dark);
     width: 60%;
     height: fit-content;    
+    .singleReviewBox {
+        @include box($grey);
+        padding: 1em 2em;
+        @include margin-ratio;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;   
+        .reviewContent {
+            @include box ($light);
+            padding: 1em;
+            margin: 1em 0em;
+        }
+    }
 }
 
-.singleReviewBox {
-    background-color: rgba(9, 230, 9, 0.199);
-    border: green;
-    border-style: solid;
-    padding: 1em 2em;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;   
-}
 
 .reviewInfo {
     width: 75%;
+    @include flex-article;
+    justify-content: space-between;
+    .review-info-top{
+        .username{
+            @include box($light-blue);
+            border: 0.5vw solid $light-blue;
+            text-decoration: none;
+            color: $text-color;
+            margin: 0;
+        }
+    }
+
 }
 
-.reviewContent {
-    background-color: honeydew;
-    padding: 1em;
-    margin: 1em 0em;
-
-}
 
 .gameDisplay {
     width: 25%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
+    justify-content: space-around;
+    img.homePageReviewGameCover {
+        @include game-cover(9.5vw);
+    }
+    div{
+        a{
+            display: flex;
+            flex-direction: column;
+            align-self:center;
+            color: $text-color;
+            text-decoration: none;
+        }
+    }
 }
 
 .ratings {
+    border-top: solid 1px $line;
+    padding-top: 1vh;
     display: flex;
     flex-direction: row;
 }
@@ -44,11 +70,5 @@
 
 .ratingStars {
     margin-right: 1.5em;
-    color: gold;
-}
-
-img.homePageReviewGameCover {
-    border-style: dashed;
-    border-color: red;
-    width: 90px;
+    color: $apricot;
 }

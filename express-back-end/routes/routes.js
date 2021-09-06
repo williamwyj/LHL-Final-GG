@@ -140,6 +140,7 @@ module.exports = (db) => {
     
     db.query(`SELECT users.id FROM users WHERE users.username = '${username}';`)
       .then((data => {
+        console.log(data)
         res.json(data.rows);
       }))
       .catch(err => {
