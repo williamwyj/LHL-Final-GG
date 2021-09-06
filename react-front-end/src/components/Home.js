@@ -7,6 +7,7 @@ import TopUsers from "./HomePage/TopUsers";
 
 import useApplicationData from "./hooks/useApplicationData";
 import TopReviews from "./Reviews/TopReviews";
+import SplashHeader from "./SplashPage/SplashHeader";
 
 export default function Home() {
   const { state } = useApplicationData();
@@ -20,20 +21,7 @@ export default function Home() {
 
   return (
     <div className="App">
-      <div className="home-intro-heading">
-        <div className="title-line-left">
-          <div className="word-holder">Good games are...</div>
-        </div>
-        <div className="title-line-right">
-          <div className="word-holder">Trash </div>
-          </div>
-        <div className="title-line-right delayed">
-          <div className="word-holder">Indie</div>
-        </div>
-        <div className="title-line-right delayed">
-          <div className="word-holder">Indie</div>
-          </div>
-      </div>
+      <SplashHeader/>
       <div className="home-body">
         <div className="homePageGamesTitle">What's Hot This Week</div>
         <FeaturedGame state={state} />

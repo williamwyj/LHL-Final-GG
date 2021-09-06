@@ -1,53 +1,5 @@
 @import "../../public/scss_styles/style";
 
-@keyframes going {
-  from {transform: translateY(0%)}
-  to {transform: translateY(-130%)}
-}
-
-@keyframes coming{
-  from {transform: translateY(130%)}
-  to {transform: translateY(0%)}
-}
-
-div.home-intro-heading{
-  display: flex;
-  flex-direction: column;
-  // height: 66vh;
-  .title-line-left{
-    background-color: saddlebrown;
-    overflow: hidden;
-    display: flex;
-    width: 100%;
-    .word-holder{
-      font-size: 10em;
-      background-color: orange;
-    }
-  }
-  .title-line-right{
-    background-color: purple;
-    display: flex;
-    overflow: hidden;
-    width: 100%;
-    justify-content: flex-end;
-    height: 15em;
-    animation-duration: 3s;
-    .word-holder{
-      animation-name: coming;
-      animation-duration: 3s;
-      font-size: 10em;
-      background-color: orange;
-    }
-  }
-  div.delayed{
-    .word-holder{
-      animation-name: going;
-      animation-duration: 3s;
-      font-size: 10em;
-
-    }
-  }
-}
 
 div.home-body {
   .featured {
