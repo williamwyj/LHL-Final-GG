@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./TopReviews.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";

@@ -3,15 +3,21 @@ import {  } from 'react-bootstrap';
 import Results from './Results';
 import SearchBar from '../SearchBar/SearchBar';
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { searchGame } from '../../helpers/dbHelpers';
 
 export default function SearchPage(props){
-  const [term, setTerm] = useState("");
+  const passProp = () => {
+    let location = useLocation();
+    return location.state
+  }
+
+  const [term, setTerm] = useState('')//passProp());
   const [results, setResults] = useState([]);
 
   useEffect(() => {
-    if (term != "") {
+    if (term !== "") {
       searchGame(term)
       .then((games) => {
         console.log('Navigation', games)

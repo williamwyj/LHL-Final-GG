@@ -1,7 +1,7 @@
 import React, {useState, useContext, useEffect } from 'react';
 import { authContext } from "../providers/AuthProvider"
 
-import { Navbar, Container, Nav, Modal } from 'react-bootstrap'
+import { Navbar, Container, Nav, Modal, NavDropdown } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 
@@ -115,30 +115,24 @@ export default function Navigation() {
             />{" "}
             Good Games
           </Navbar.Brand>
-          <Form className="d-flex">
-            <SearchBar onSearch={(term) => setTerm(term)}
-            />
-            {/* <FormControl
-              type="search"
-              placeholder="Search"
-              className="mr-2"
-              aria-label="Search"
-              // onSearch={(term) => setTerm(term)}
-              onChange={(event) => setTerm(event.target.value)}
-            />
-            <Button variant="outline-secondary" id="button-addon2">
-              Search
-            </Button> */}
-          </Form>
+      
           <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/game">Games</Nav.Link>
-            <Nav.Link href="/user">Members</Nav.Link>
+            <Nav.Link href="/search">Discover</Nav.Link>
+            <NavDropdown title="Games" id="navbarScrollingDropdown" >
+            <NavDropdown.Item href="#action4">PS4</NavDropdown.Item>
+            <NavDropdown.Item href="#action4">XBOne</NavDropdown.Item>
+            <NavDropdown.Item href="#action4">Switch</NavDropdown.Item>
+            <NavDropdown.Item href="#action4">PC</NavDropdown.Item>
+            <NavDropdown.Item href="#action4">N64</NavDropdown.Item>
+            <NavDropdown.Item href="#action4">PS3</NavDropdown.Item>
+            <NavDropdown.Item href="#action4">PS2</NavDropdown.Item>
+            <NavDropdown.Item href="#action4">PS2</NavDropdown.Item>
+            </NavDropdown>
           </Nav>
-          <Nav className="me-auto">
+      
           {mode === "Login" && (<Login Login={()=>setShowLogin(!showLogin)} Signup={()=>setShowRegister(!showRegister)} />)}
           {mode === "Logout" && (<Logout Logout={()=>logout(username, token).then(()=>transition("Login"))}/>)}
-          </Nav>
+      
         </Container>
       </Navbar>
 
