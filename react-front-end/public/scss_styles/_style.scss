@@ -1,0 +1,52 @@
+$text-color: #13212A;
+$primary-grey: #56638A;
+
+$line: #6d7786;
+$light: #EDF2F4;
+$grey: #8D99AE;
+$dark: #2B2D42;
+$apricot: #FFC6AD;
+$light-blue: #90FCF9;
+
+@mixin game-cover($width: 17vw) { 
+  width: $width;
+  height: fit-content;
+  border-radius: 5%;
+}
+
+@mixin margin-ratio{
+  margin-left: 1vw;
+  margin-right: 1vw;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+}
+
+@mixin box($color: $light) {
+  border-radius: 1.5vw;
+  margin: 1%;
+  background-color: $color;
+}
+
+@mixin game-cover-feature { 
+  width: 20vw;
+  height: fit-content;
+  border-radius: 5%;
+}
+
+@mixin flex-article {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+@mixin flex-article-footer {
+  display: flex;
+  flex-direction: column;
+  justify-self: flex-end;
+}
+
+@mixin flex-spaced-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

@@ -1,0 +1,12 @@
+div {
+  .featured {
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 3vw;
+    a {
+      padding-left: 1vw;
+      padding-right: 1vw;
+    }
+  }
+}

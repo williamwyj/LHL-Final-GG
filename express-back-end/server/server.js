@@ -4,7 +4,7 @@ const Express = require('express');
 const App = Express();
 const axios = require('axios');
 const BodyParser = require('body-parser');
-const PORT = 3003;
+const PORT = 8000;
 
 // Express Configuration
 App.use(BodyParser.urlencoded({ extended: false }));
@@ -23,32 +23,12 @@ db.connect()
   .catch(err => console.error('query error', err.stack));
 
 const routes = require('../routes/routes')
+const userAuthRoutes = require('../routes/userAuthRoutes')
+const userRoutes = require('../routes/userRoutes')
 
 App.use("/api", routes(db));
-
-const getToken = function() {
-  axios({
-    url: process.env.TOKEN_URL,
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    data: {
-      client_id: process.env.CLIENT_ID,
-      client_secret: process.env.CLIENT_SECRET,
-      grant_type: "client_credentials",
-    },
-  })
-    .then((res) => {
-      console.log("SUCCESS");
-      const token = res.data.access_token;
-      console.log("!@#!@#!@", token);
-      return token;
-    })
-    .catch((err) => {
-      console.log(err.message);
-    });
-};
-
-getToken()
+App.use("/api", userAuthRoutes(db));
+App.use("/user/api", userRoutes(db))
 
 // Sample GET route
 App.get('/api/data', (req, res) => res.json({
@@ -64,18 +44,12 @@ App.get('/api/user', (req, res) => res.json({
   message: "n0Sc0peG4MeR",
 }));
 
-App.get('/api/login', (req, res) => {
-  console.log(req.query.user);
-  console.log(req.query.password);
-})
-
-App.get('/api/register', (req, res) => {
-  console.log(req.query.user);
-  console.log(req.query.password);
-})
-
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`Express seems to be listening on port ${PORT} so that's pretty good 👍`);
 });
+
+// App.get('api/search', (req, res) => res.json({
+//   message: 'search',
+// }));
 

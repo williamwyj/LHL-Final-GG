@@ -7,8 +7,9 @@ import {
 
 import Navigation from './components/Navigation';
 import Home from "./components/Home";
-import User from "./components/User";
+
 import Game from "./components/Game";
+import Profile from "./components/Profile";
 
 // This site has 3 pages, all of which are rendered
 // dynamically in the browser (not server rendered).
@@ -20,8 +21,13 @@ import Game from "./components/Game";
 // work properly.
 
 export default function App() {
+
+  
   return (
+    
+
     <Router>
+      <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"/>
       <Navigation></Navigation>
       <div>
         {/*
@@ -38,8 +44,8 @@ export default function App() {
           <Route path="/game/:id">
             <Game />
           </Route>
-          <Route path="/user">
-            <User />
+          <Route path="/user/:name">
+            <Profile />
           </Route>
         </Switch>
       </div>

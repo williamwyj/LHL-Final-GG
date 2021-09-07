@@ -10,7 +10,7 @@ game published for a Nintendo home console.',
 '{NGC}',
 1000425600,
 'https://images.igdb.com/igdb/image/upload/t_original/co28hq.jpg',
-'{https://images.igdb.com/igdb/image/upload/t_original/sc8bwb.jpg, https://images.igdb.com/igdb/image/upload/t_original/sc8bwc.jpg}'
+'{https://images.igdb.com/igdb/image/upload/t_screenshot_big/sc8bwb.jpg, https://images.igdb.com/igdb/image/upload/t_screenshot_big/sc8bwc.jpg}'
 ),
 (2928, 
 'Super Monkey Ball 2', 
@@ -18,7 +18,7 @@ game published for a Nintendo home console.',
 '{NGC}',
 1037664000,
 'https://images.igdb.com/igdb/image/upload/t_original/co2f3o.jpg',
-'{https://images.igdb.com/igdb/image/upload/t_original/sq2gsfh2bhm1glp8braj.jpg, https://images.igdb.com/igdb/image/upload/t_original/rd1jeshbk7aup7b2vlq2.jpg}'
+'{https://images.igdb.com/igdb/image/upload/t_screenshot_big/sq2gsfh2bhm1glp8braj.jpg, https://images.igdb.com/igdb/image/upload/t_original/rd1jeshbk7aup7b2vlq2.jpg}'
 ),
 (115,
 'League of Legends',
@@ -28,7 +28,7 @@ game published for a Nintendo home console.',
  '{PC, Mac}',
  1256601600,
  'https://images.igdb.com/igdb/image/upload/t_original/co254s.jpg',
- '{https://images.igdb.com/igdb/image/upload/t_original/aujhj4buodogepfhpovb.jpg, https://images.igdb.com/igdb/image/upload/t_original/dg0yrobaqpnlgmypujaw.jpg, https://images.igdb.com/igdb/image/upload/t_original/mxijcstlc25nv8vfhidl.jpg}'
+ '{https://images.igdb.com/igdb/image/upload/t_screenshot_big/aujhj4buodogepfhpovb.jpg, https://images.igdb.com/igdb/image/upload/t_screenshot_big/dg0yrobaqpnlgmypujaw.jpg, https://images.igdb.com/igdb/image/upload/t_screenshot_big/mxijcstlc25nv8vfhidl.jpg}'
 ),
 (11208,
 'Nier: Automata',
@@ -38,7 +38,7 @@ game published for a Nintendo home console.',
  '{PC, PS4}',
  1487808000,
  'https://images.igdb.com/igdb/image/upload/t_original/co2g3r.jpg',
- '{https://images.igdb.com/igdb/image/upload/t_original/sc61jf.jpg, https://images.igdb.com/igdb/image/upload/t_original/sc61je.jpg, https://images.igdb.com/igdb/image/upload/t_original/sc9442.jpg}'
+ '{https://images.igdb.com/igdb/image/upload/t_screenshot_big/sc61jf.jpg, https://images.igdb.com/igdb/image/upload/t_screenshot_big/sc61je.jpg, https://images.igdb.com/igdb/image/upload/t_original/sc9442.jpg}'
 ),
 (1067,
 'Super Mario Bros. 2',
@@ -46,7 +46,7 @@ game published for a Nintendo home console.',
  '{Wii, NES, 3DS, WiiU, Switch}',
  592358400,
  'https://images.igdb.com/igdb/image/upload/t_original/co1wos.jpg',
- '{https://images.igdb.com/igdb/image/upload/t_original/sc85bz.jpg, https://images.igdb.com/igdb/image/upload/t_original/sc85c1.jpg, https://images.igdb.com/igdb/image/upload/t_original/sc85c2.jpg, https://images.igdb.com/igdb/image/upload/t_original/sc85c3.jpg}'
+ '{https://images.igdb.com/igdb/image/upload/t_screenshot_big/sc85bz.jpg, https://images.igdb.com/igdb/image/upload/t_screenshot_big/sc85c1.jpg, https://images.igdb.com/igdb/image/upload/t_screenshot_big/sc85c2.jpg, https://images.igdb.com/igdb/image/upload/t_screenshot_big/sc85c3.jpg}'
 ),
 (2579,
 'Dragon Ball Z: Legends',
@@ -54,5 +54,5 @@ game published for a Nintendo home console.',
  '{PS1, Saturn}',
  780796800,
  'https://images.igdb.com/igdb/image/upload/t_original/co22lm.jpg',
- '{https://images.igdb.com/igdb/image/upload/t_original/jvolp5luzq5gwzakjrbd.jpg, https://images.igdb.com/igdb/image/upload/t_original/sc835c.jpg, https://images.igdb.com/igdb/image/upload/t_original/sc835e.jpg}')
-
+ '{https://images.igdb.com/igdb/image/upload/t_screenshot_big/jvolp5luzq5gwzakjrbd.jpg, https://images.igdb.com/igdb/image/upload/t_screenshot_big/sc835c.jpg, https://images.igdb.com/igdb/image/upload/t_screenshot_big/sc835e.jpg}'
+);

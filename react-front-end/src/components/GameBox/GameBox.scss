@@ -1,0 +1,54 @@
+@import "../../../public/scss_styles/style";
+
+div.gameBox {
+  @include game-cover-feature;
+  display: flex;
+  position: relative;
+  padding: 2 vw;
+  transition: .3s ease; 
+  img.gameBox {
+    @include game-cover-feature
+  }
+  
+  div.overlay {
+    display: flex;
+    justify-content: center;
+    transition: .5s ease;
+    opacity: 0;
+    div.gameStats {
+      border: 0.3em solid black;
+      background-color: black;
+      color: white;
+      font-size: 1.3em;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 2vw;
+      flex-direction: column;
+      justify-content: center;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      text-align: center;
+      opacity: 1;
+    }
+  }
+}
+
+div.gameBox:hover{
+  transform: scale(1.1);
+  transition: .3s ease;
+  div.overlay{
+    opacity: 0.7;
+    transition: 0.7s ease;
+  }
+}
+
+
+
+
+
+p {
+  white-space: nowrap;
+}
+

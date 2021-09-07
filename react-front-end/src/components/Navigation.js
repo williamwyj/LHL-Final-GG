@@ -1,16 +1,52 @@
-import React, {useState} from 'react';
-import { Navbar, Container, Nav, NavDropdown, Modal } from 'react-bootstrap'
+import React, {useState, useContext, useEffect } from 'react';
+import { authContext } from "../providers/AuthProvider"
+
+import { Navbar, Container, Nav, Modal } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-import FormControl from 'react-bootstrap/FormControl'
 
-import logoName from './image/Logo-removebg-preview.png'
-import logoController from './image/controller.png'
+import logoName from "./image/Logo-removebg-preview.png";
+import logoController from "./image/controller.png";
+import './Navigation.scss'
 import Axios from 'axios';
 
 
-  
+//helper functions
+import { searchGame } from "../helpers/dbHelpers";
+
+//React components
+import Results from "./SearchPage/Results";
+import SearchBar from "./SearchBar/SearchBar";
+
+//custom hooks to toggle login/register and logout/Profile buttons
+import useToken from './hooks/useToken'
+import useLogin from './hooks/useLogin'
+
+//Login and Logout components
+import Login from './Login'
+import Logout from './Logout'
+
 export default function Navigation() {
+
+  //Code for livesearch
+  const [term, setTerm] = useState("");
+  const [results, setResults] = useState([]);
+
+  useEffect(() => {
+    if (term != "") {
+      searchGame(term)
+      .then((games) => {
+        console.log('Navigation', games)
+        setResults(games)
+      });
+    };
+  }, [term]);
+
+  /* Code for user Auth */
+  const { login, logout } = useContext(authContext);
+  
+  const {token, username} = useToken();
+
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
   const [user, setUser] = useState();
@@ -19,25 +55,28 @@ export default function Navigation() {
   const onPasswordInput = ({target}) => setPassword(target.value);
   const onLoginSubmit = event => {
     event.preventDefault();
-    Axios.get("/api/login", {
-      params: {
-        user,
-        password
-      }
-    })
-    .catch(err => {
-      console.log(err);
-    })
+    if(user) {
+      login(user, password).then((message)=>{
+        if(message === "Wrong credentials!"){
+          setShowLogin(true)
+        } else if (!message){
+        transition("Logout")
+        }
+      })
+    }
     setUser();
     setPassword();
   }
   const onRegisterSubmit = event => {
     event.preventDefault();
-    Axios.get("/api/register", {
+    Axios.post("/api/register", {
       params: {
         user,
         password
       }
+    })
+    .then((token)=>{
+      login(user,password).then(()=>transition("Logout"))
     })
     .catch(err => {
       console.log(err);
@@ -45,9 +84,18 @@ export default function Navigation() {
     setUser();
     setPassword();
   }
+  //custom hook to toggle login/register and logout/Profile buttons
+  const {mode, transition} = useLogin(token ? "Login" : "Logout")
+  useEffect(()=>{
+    if(!token) {
+      transition("Login")
+    } else if (token) {
+      transition("Logout")
+    }
+  },[token])
 
   return (
-    <div >
+    <div>
       <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="#home">
@@ -57,43 +105,39 @@ export default function Navigation() {
               width="60"
               height="30"
               className="d-inline-block align-top"
-            />{' '}
+            />{" "}
             <img
               alt="logo"
               src={logoController}
               width="30"
               height="30"
               className="d-inline-block align-top"
-            />{' '}
-          Good Games
+            />{" "}
+            Good Games
           </Navbar.Brand>
           <Form className="d-flex">
-            <FormControl
+            <SearchBar onSearch={(term) => setTerm(term)}
+            />
+            {/* <FormControl
               type="search"
               placeholder="Search"
               className="mr-2"
               aria-label="Search"
+              // onSearch={(term) => setTerm(term)}
+              onChange={(event) => setTerm(event.target.value)}
             />
-            <Button variant="outline-secondary" id="button-addon2">Search</Button>
+            <Button variant="outline-secondary" id="button-addon2">
+              Search
+            </Button> */}
           </Form>
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/game">Games</Nav.Link>
-            <Nav.Link href="/user">Members</Nav.Link>  
+            <Nav.Link href="/user">Members</Nav.Link>
           </Nav>
           <Nav className="me-auto">
-          <Button variant="primary" onClick={() => setShowLogin(!showLogin)}>
-              Login
-            </Button>
-          <Button variant="primary" onClick={() => setShowRegister(!showRegister)}>
-              Sign up
-            </Button>
-            <NavDropdown title="Profile" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">User Page</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">Settings</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">Logo Out</NavDropdown.Item>
-            </NavDropdown>  
+          {mode === "Login" && (<Login Login={()=>setShowLogin(!showLogin)} Signup={()=>setShowRegister(!showRegister)} />)}
+          {mode === "Logout" && (<Logout Logout={()=>logout(username, token).then(()=>transition("Login"))}/>)}
           </Nav>
         </Container>
       </Navbar>
