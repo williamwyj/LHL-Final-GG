@@ -129,10 +129,10 @@ export default function Navigation() {
             <NavDropdown.Item href="#action4">PS2</NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <Nav className="me-auto">
+      
           {mode === "Login" && (<Login Login={()=>setShowLogin(!showLogin)} Signup={()=>setShowRegister(!showRegister)} />)}
           {mode === "Logout" && (<Logout Logout={()=>logout(username, token).then(()=>transition("Login"))}/>)}
-          </Nav>
+      
         </Container>
       </Navbar>
 

@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button'
 export default function Login(props) {
   
   return (
-    <span>
+    <span id='userButtons'>
       <Button variant="primary" onClick={props.Login}>
         Login
       </Button>

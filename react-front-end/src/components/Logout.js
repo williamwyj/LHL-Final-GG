@@ -8,7 +8,7 @@ export default function Logout(props) {
   const {username} = useToken();
   
   return (
-    <span className="userButtons">
+    <span id="userButtons">
       <Link to={'/'}>
         <Button variant="primary" onClick={props.Logout}>
           Logout

@@ -1,5 +1,22 @@
-div.userButtons {
+@import "../../public/scss_styles/style";
+
+div.container {
+  display: flex;
+  div.dropdown-menu {
+    max-height: 128px;
+    overflow-y: scroll;
+  }
+  div.userButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  };
+  
+}
+
+span #userButtons{
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-end;
 }
+
