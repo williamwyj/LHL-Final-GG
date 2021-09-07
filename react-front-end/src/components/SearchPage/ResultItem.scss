@@ -1,41 +1,47 @@
-.gameResult {
+@import '../../../public/scss_styles/style';
+
+article.gameResult {
+  @include box($dark);
   display: flex;
   width: 90%;
   flex-direction: row;
+  border: 4px solid $dark;
   justify-content: flex_start;
-  border-radius: 6px;
-  border: 2px solid #56638A;
   margin: 3vh;
-  background-color: #56638A;
-  color: whitesmoke
+  color: $text-color;
+  div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  div.information{
+    article{
+      @include box($light);
+      padding: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    width: 100%;
+    @include box($grey);
+    border: 4px solid $grey
+  }
 }
 
-.gameResult div{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
 
-.tweet-container :hover{
-  box-shadow: 5px 4px #483A58;
-}
 
 .cover {
+  @include game-cover;
   width: 16vw;
   height: fit-content;
-  margin-right: 1vw;
+  margin: 1vw;
 }
 
 
-.writeup article{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
 
 #platforms {
   display: flex;
-  border-top: 1px solid #E9D2F4;
-  color: whitesmoke;  
+  @include box($light);
+  padding: 3px;
   justify-self: flex-end;
 }

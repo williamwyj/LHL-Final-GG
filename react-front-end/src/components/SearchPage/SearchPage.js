@@ -31,7 +31,7 @@ export default function SearchPage(props){
   return (
     <section className="results_page">
     <SearchBar id="searchPageSearchBar" onSearch={(term) => setTerm(term)}/>
-    <h2>Results</h2>
+
       <Results
         game={results}
       />
