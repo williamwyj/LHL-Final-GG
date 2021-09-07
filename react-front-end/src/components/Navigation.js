@@ -98,7 +98,7 @@ export default function Navigation() {
     <div>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="/">
             <img
               alt="logo"
               src={logoName}
