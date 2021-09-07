@@ -1,0 +1,9 @@
+@import "../../public/scss_styles/style";
+
+span#userButtons{
+  display: flex;
+  flex-direction: row;
+  .btn{
+    margin: 5px
+  }
+}
