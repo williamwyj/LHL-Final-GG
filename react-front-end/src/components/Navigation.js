@@ -115,7 +115,7 @@ export default function Navigation() {
             />{" "}
             Good Games
           </Navbar.Brand>
-          <Form className="d-flex">
+          
             <SearchBar onSearch={(term) => setTerm(term)}
             />
             {/* <FormControl
@@ -129,7 +129,7 @@ export default function Navigation() {
             <Button variant="outline-secondary" id="button-addon2">
               Search
             </Button> */}
-          </Form>
+          
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/game">Games</Nav.Link>
