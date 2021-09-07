@@ -1,6 +1,14 @@
 const axios = require('axios');
 require("dotenv").config();
-const corsProxy = require('cors-anywhere')
+
+const cors_proxy = require('cors-anywhere');
+cors_proxy.createServer({
+    originWhitelist: [], // Allow all origins
+    requireHeader: ['origin', 'x-requested-with'],
+    removeHeaders: ['cookie', 'cookie2']
+}).listen(process.env.PORT, process.env.HOST, function() {
+    console.log('Running CORS Anywhere on ' + process.env.HOST + ':' + process.env.PORT);
+});
 
 //to grab the access token from twitch
 const getToken = function() {
@@ -47,14 +55,14 @@ const getImage = function(image_id, size) {
 //pass in search input for a game
 const searchGame = function(input) {
     return axios({
-      url: "https://api.igdb.com/v4/games",
+      url: "https://cors-anywhere.herokuapp.com/https://api.igdb.com/v4/games",
       method: "POST",
       headers: {
         Accept: "application/json",
         'Client-ID': process.env.CLIENT_ID,
         Authorization: `Bearer ${process.env.TOKEN}`,
       },
-      data: `search "${input}"; fields name, summary, platforms.abbreviation, cover.*, screenshots.*; limit 5;`,
+      data: `search "${input}"; fields name, summary, platforms.abbreviation, cover.*, screenshots.*; limit 20;`,
     })
       .then((response) => response.data)
       .catch((err) => err.message);
@@ -79,4 +87,4 @@ const grabGameById = function(id) {
   });
 } 
 
-// export { getImage, searchGame, grabGameById };
+export { getImage, searchGame, grabGameById };

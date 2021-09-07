@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import './SearchPage.scss'
 
-import { searchGame } from '../../helpers/dbHelpers';
+import { searchGame } from '../../helpers/apiHelpers';
 
 export default function SearchPage(props){
   const passProp = () => {
