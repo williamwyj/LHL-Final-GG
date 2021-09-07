@@ -4,6 +4,7 @@ import Results from './Results';
 import SearchBar from '../SearchBar/SearchBar';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import './SearchPage.scss'
 
 import { searchGame } from '../../helpers/dbHelpers';
 
@@ -28,7 +29,7 @@ export default function SearchPage(props){
 
   // const results = props.results
   return (
-  <section className="results_page">
+    <section className="results_page">
     <SearchBar id="searchPageSearchBar" onSearch={(term) => setTerm(term)}/>
     <h2>Results</h2>
       <Results
