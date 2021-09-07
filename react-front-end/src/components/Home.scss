@@ -28,6 +28,8 @@ div.home-body {
     @include box($dark);
     width: 20%;
     height: auto;
+    list-style-position: inside;
+    padding-left: 0;
     @include margin-ratio;
   }
   .topReviewsUsers {
