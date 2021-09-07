@@ -8,7 +8,7 @@ export default function Logout(props) {
   const {username} = useToken();
   
   return (
-    <div className="userButtons">
+    <span className="userButtons">
       <Link to={'/'}>
         <Button variant="primary" onClick={props.Logout}>
           Logout
@@ -18,6 +18,6 @@ export default function Logout(props) {
       <NavDropdown.Item href={`/user/${username}`} >User Page</NavDropdown.Item>
       <NavDropdown.Item href="#action4">Settings</NavDropdown.Item>
       </NavDropdown>
-    </div>
+    </span>
   )
 }

@@ -37,15 +37,6 @@ export default function SearchBar(props) {
           onChange={event => setValue(event.target.value)}
           autoComplete="off"
         />
-        <Nav.Link as={Link}
-        to={{
-          pathname: '/search',
-          state: value
-      }} 
-      innerRef={refCallback}
-        >
-          🔍
-          </Nav.Link>
       </form>
     </section>
   );
