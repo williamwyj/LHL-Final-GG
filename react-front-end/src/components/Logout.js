@@ -3,6 +3,7 @@ import useToken from './hooks/useToken'
 import Button from 'react-bootstrap/Button'
 import { NavDropdown} from 'react-bootstrap'
 import { Link } from 'react-router-dom';
+import './Logout.scss'
 
 export default function Logout(props) {
   const {username} = useToken();

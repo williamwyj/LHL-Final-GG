@@ -1,22 +1,35 @@
 @import "../../public/scss_styles/style";
 
-div.container {
+nav.navbar{
+  height: 52px;
   display: flex;
-  div.dropdown-menu {
-    max-height: 128px;
-    overflow-y: scroll;
+  div.container {
+    display: flex;
+    div.dropdown-menu {
+      max-height: 128px;
+      overflow-y: scroll;
+    }
+    div.userButtons {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    };
   }
-  div.userButtons {
+  
+  span #userButtons{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-  };
-  
+    justify-content: flex-start;
+    display: flex;
+    flex-wrap: nowrap;
+    .btn{
+      margin: 5px;
+    }
+    div.nav-item.dropdown{
+      background-color: burlywood;
+    }
+  }
 }
 
-span #userButtons{
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
+
 
