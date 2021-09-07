@@ -4,7 +4,7 @@ import React, { useState } from "react"
 import "./TopUsers.scss"
 
 export default function TopUsers(props) {
-  const userLink = `/user/${props.userId}`;
+  const userLink = `/user/${props.username}`;
   const [reviews, setReviews] = useState(0);
   const [icon, setIcon] = useState();
   Axios.get("/api/user/reviewStats", {
