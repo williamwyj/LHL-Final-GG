@@ -6,6 +6,7 @@ import "./TopUsers.scss"
 export default function TopUsers(props) {
   const userLink = `/user/${props.userId}`;
   const [reviews, setReviews] = useState(0);
+  const [icon, setIcon] = useState();
   Axios.get("/api/user/reviewStats", {
     params: {
       userId : props.userId
@@ -17,10 +18,17 @@ export default function TopUsers(props) {
   .catch(err => {
     console.log(err);
   })
-
+  Axios.get("/api/user", {
+    params: {
+      userId : props.userId
+    }
+  })
+  .then(res => {
+    setIcon(res.data[0].thumbnail);
+  })
   return (
   <li className="homePageTopUsers">
-    <img src ={props.thumbnail} alt="userimg"/>
+    <img id="usericon" src ={icon} alt="userimg"/>
     <a href={userLink}> {props.username}</a>
     <div> Reviews: {reviews} </div>
     <div> Followers: {props.followers} </div>
