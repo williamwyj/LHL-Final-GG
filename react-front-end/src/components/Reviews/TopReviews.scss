@@ -3,7 +3,9 @@
 .allReviewsBox {
     @include box($dark);
     width: 60%;
-    height: fit-content;    
+    height: fit-content;
+    margin:auto;
+    padding-bottom: 1em;    
     .singleReviewBox {
         @include box($grey);
         padding: 1em 2em;
