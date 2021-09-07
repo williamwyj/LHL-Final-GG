@@ -42,6 +42,9 @@ div.game-info {
     Button.btn{
       @include flex-article-footer;
     }
+    p.user-game-interaction-text {
+      white-space: pre-line
+    }
   }
 }
 

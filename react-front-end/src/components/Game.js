@@ -112,6 +112,7 @@ export default function Game(props) {
             userLiked={game.userGameData.liked}
             userPlayed={game.userGameData.played}
           />}
+          {!username && <p className="user-game-interaction-text">Login to review and Like a Game</p>}
         </div>
       </div>
       </div>
