@@ -39,12 +39,12 @@ div.game-info {
     }
   }
   div.user-game-interactions {
-    @include flex-article;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     @include box;
     width: 10%;
-    Button.btn{
-      @include flex-article-footer;
-    }
+    margin-left: 0%;
     p.user-game-interaction-text {
       white-space: pre-line
     }

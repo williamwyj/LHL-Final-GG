@@ -163,15 +163,15 @@ export default function Game(props) {
                   <div className="summary">
                     <GameDescription gameDescription={game.gameData.summary} />
                   </div>
-                  <div className="bottom">
+                  {/* <div className="bottom">
                     <footer id="platforms">{putInPlace(game.gameData.platforms)}</footer>
-                  </div>
+                  </div> */}
                 </>
               )}
             </div>
             {username && (
               <div className="user-game-interactions">
-                <div className="UserButtons">
+                
                   <UserButtons
                     token={token}
                     userId={game.userGameData.user_id}
@@ -183,7 +183,7 @@ export default function Game(props) {
                     userLiked={game.userGameData.liked}
                     userPlayed={game.userGameData.played}
                   />
-                </div>
+                
               </div>
             )}
             {!username && <></>}
