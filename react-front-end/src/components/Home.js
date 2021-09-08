@@ -8,6 +8,7 @@ import TopUsers from "./HomePage/TopUsers";
 import useApplicationData from "./hooks/useApplicationData";
 import TopReviews from "./Reviews/TopReviews";
 import SplashHeader from "./SplashPage/SplashHeader";
+import Spinner from 'react-bootstrap/Spinner'
 
 export default function Home() {
   const { state } = useApplicationData();
@@ -21,6 +22,15 @@ export default function Home() {
 
   return (
     <div className="App">
+      {state.load && 
+      <div className="loadingSpinner">
+        <Spinner animation="border" role="status" variant="light" >
+          <span className="visually-hidden">Loading...</span>
+        </Spinner> 
+      </div>  
+      }
+      {!state.load &&
+      <>
       <SplashHeader/>
       <div className="home-body">
         <div className="homePageGamesTitle">What's Hot This Week</div>
@@ -41,7 +51,7 @@ export default function Home() {
             })}
           </ul>
         </div>
-      </div>
+      </div></>}
     </div>
   );
 }

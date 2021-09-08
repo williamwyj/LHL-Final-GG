@@ -6,6 +6,9 @@ body{
   background-attachment: fixed;
 }
 div.main-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 3vw;
   background-color: $dark;
   border-radius: 1.5vw;
@@ -42,6 +45,9 @@ div.game-info {
     Button.btn{
       @include flex-article-footer;
     }
+    p.user-game-interaction-text {
+      white-space: pre-line
+    }
   }
 }
 
@@ -56,5 +62,7 @@ div.carousel{
   }
   img{
     border-radius: 1.5vw;
+    width:900px;
+    height:500px;
   }
 }

@@ -125,4 +125,18 @@ const playedNotPlayedGame = function(userId, gameId, playedNotPlayed) {
     });
 }
 
-  export { searchGame, getImage, grabGameById, grabTopReviewsById, getUserId, submitReview, grabUserGameLikeFollow, likeUnlikeGame, playedNotPlayedGame }
+const grabUserFollowed = function(userId) {
+  return axios.get('/api/user/followed', {
+    params: {
+      userId
+    }
+  })
+  .then((res => {
+    return res.data
+  }))
+  .catch(err => {
+    console.log("ERROR", err.message)// .json({ error: err.message });
+  });
+}
+
+  export { searchGame, getImage, grabGameById, grabTopReviewsById, getUserId, submitReview, grabUserGameLikeFollow, likeUnlikeGame, playedNotPlayedGame, grabUserFollowed }

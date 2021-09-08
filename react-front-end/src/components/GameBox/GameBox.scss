@@ -1,13 +1,13 @@
 @import "../../../public/scss_styles/style";
 
 div.gameBox {
-  @include game-cover-feature;
+  @include game-cover(20vw);
   display: flex;
   position: relative;
-  padding: 2 vw;
   transition: .3s ease; 
+  margin: 2 vw;
   img.gameBox {
-    @include game-cover-feature
+    @include game-cover-feature;
   }
   
   div.overlay {
