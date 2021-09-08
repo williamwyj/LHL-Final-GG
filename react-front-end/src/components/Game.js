@@ -23,6 +23,10 @@ import Screenshots from "./GamePageComponents/Screenshots";
 
 import TopReviews from "./Reviews/TopReviews";
 
+const putInPlace = function (array) {
+  return array.map((value) => `${value} `);
+};
+
 export default function Game(props) {
   //import context
   const { username, token } = useContext(authContext);
@@ -155,9 +159,15 @@ export default function Game(props) {
                 <Review gameId={id} setReviewInputMode={setReviewInputMode} />
               )}
               {reviewInputMode === "GameDescription" && (
-                <GameDescription gameDescription={game.gameData.summary} platforms={game.gameData.platforms} />
+                <>
+                  <div className="summary">
+                    <GameDescription gameDescription={game.gameData.summary} />
+                  </div>
+                  <div className="bottom">
+                    <footer id="platforms">{putInPlace(game.gameData.platforms)}</footer>
+                  </div>
+                </>
               )}
-              <div className="bottom"></div>
             </div>
             {username && (
               <div className="user-game-interactions">
