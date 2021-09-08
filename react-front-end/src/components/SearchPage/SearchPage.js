@@ -1,5 +1,6 @@
 import React from 'react';
 import {  } from 'react-bootstrap';
+import Spinner from 'react-bootstrap/Spinner'
 import Results from './Results';
 import SearchBar from '../SearchBar/SearchBar';
 import { useState, useEffect } from 'react';
@@ -14,14 +15,19 @@ export default function SearchPage(props){
   }
 
   const [term, setTerm] = useState('')//passProp());
-  const [results, setResults] = useState([]);
-
+  const [results, setResults] = useState(
+    {
+      load:false,
+      games:[]
+    });
+    
   useEffect(() => {
     if (term !== "") {
+      setResults({...results, load:true})
       searchGame(term)
       .then((games) => {
         console.log('Navigation', games)
-        setResults(games)
+        setResults({games, load:false})
       });
     };
   }, [term]);
@@ -31,9 +37,18 @@ export default function SearchPage(props){
   <section className="results_page">
     <SearchBar id="searchPageSearchBar" onSearch={(term) => setTerm(term)}/>
     <h2>Results</h2>
-      <Results
-        game={results}
-      />
+      {results.load && 
+        <div className="loadingSpinner">
+          <Spinner animation="border" role="status" variant="light" >
+            <span className="visually-hidden">Loading...</span>
+          </Spinner> 
+        </div>  
+      }
+      {!results.load &&
+        <Results
+          game={results.games}
+        />
+      }
   </section>
 
   );
