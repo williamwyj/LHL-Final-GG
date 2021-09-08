@@ -1,21 +1,40 @@
+@import "../../../public/scss_styles/style";
+
 section.container.userprofile {
   width: 75%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-top: 2.5%;
-}
-
-img.profileimg {
-  width: 150px;
-  height:auto;
-  border-radius: 50%;
-}
-
-div.profilestats {
+  align-items: flex-end;
+  margin-top: 5vh;
+  border-bottom: solid 1px $line;
+  
+  div.profileimgname{
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  width: 30%;
+  align-items: flex-end;
+  div.userName{
+    color: $light;
+    margin: 2%;
+    // font
+  }
+  img.profileimg {
+    display: flex;
+    width: 10vw;
+    height:auto;
+    border-radius: 50%;
+    margin-bottom: 4%;
+  }
 }
+  div.profilestats {
+    p{
+      margin-bottom: 0px;
+    }
+    @include box($light);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 30%;
+  }
+}
+
