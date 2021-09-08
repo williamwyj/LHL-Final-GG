@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import "./Game.scss"
 import { useParams } from 'react-router-dom';
 import { Button, Carousel } from 'react-bootstrap'
-import { getUserId, grabGameById, grabTopReviewsById, grabUserGameLikeFollow } from '../helpers/dbHelpers';
+import { getUserId, grabGameById, grabTopReviewsById, grabUserGameLikeFollow, grabUserFollowed } from '../helpers/dbHelpers';
 
 //import context
 import { authContext } from "../providers/AuthProvider";
@@ -35,6 +35,24 @@ export default function Game(props) {
   const [reviewInputMode, setReviewInputMode] = useState("GameDescription")
   // let game = ''
   // state of star rating
+
+  //Reorder reviews to have user followed user's reviews ontop
+  const orderReviews = function(userFollowedId, allReviews){
+    const userFollowedReviews = []
+    const otherReviews = []
+
+    for (const review of allReviews) {
+      if (userFollowedId.includes(review.user_id)) {
+        userFollowedReviews.push(review)
+      } else if(!userFollowedId.includes(review.user_id)) {
+        otherReviews.push(review)
+      }
+    }
+
+    const result = userFollowedReviews.concat(otherReviews)
+
+    return result
+  }
   
   useEffect(() => {
 
@@ -45,10 +63,26 @@ export default function Game(props) {
           grabGameById(id),
           grabTopReviewsById(id),
           grabUserGameLikeFollow(userId,id),
+          grabUserFollowed(userId)
         ]).then((all)=>{
           const gameData = all[0][0]
-          const reviewsData = all[1]
+          const reviews = all[1]
           const {liked, played, user_id} = all[2][0] ? all[2][0] : {liked:false, played:false, user_id : userId}
+          const userFollowedId = all[3][0].user_id ? all[3].map(followed=>followed.user_id) : []
+
+          let reviewsData=[]
+          if (userFollowedId[0] && reviews) {
+            reviewsData = orderReviews(userFollowedId, reviews)
+          } else if(!userFollowedId[0]) {
+            reviewsData = reviews
+          }
+
+
+
+          console.log(userFollowedId)
+          console.log("reviews data", reviewsData)
+
+        
           const date = new Date(all[0][0].first_release_date * 1000)
           const year = date.getFullYear()
           setDate(year)
