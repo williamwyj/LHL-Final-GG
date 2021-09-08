@@ -186,6 +186,25 @@ module.exports = (db) => {
       });
   })
 
+  //route to get names of all followed users
+  router.get('/followedNames', (req, res) => {
+    db.query(`
+      SELECT users.username
+      FROM users
+      INNER JOIN followers
+      ON users.id=followers.user_id
+      WHERE followers.follower_id = ${req.query.userId}
+    `)
+    .then((data => {
+      res.json(data.rows);
+    }))
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    })
+  })
+
   //search
   //easy refactor later on
   router.get('/search', (req, res) => {

@@ -1,0 +1,20 @@
+.reviews-and-following {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  .following {
+    width: 15em;
+    border-radius: 1.5vw;
+    margin: 1%;
+    background-color: #2B2D42;
+    height: auto;
+    list-style-position: inside;
+    padding-left: 0;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+  }
+}
+
