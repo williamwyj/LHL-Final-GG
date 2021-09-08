@@ -7,14 +7,15 @@ export default function useApplicationData() {
   const [state, setState] = useState({
     games: [],
     reviews: [],
-    users: []
+    users: [],
+    load: true
   })
 
   const setHomeData = function(homePageGames, homepageReviews, homepageUsers) {
     const games = homePageGames;
     const reviews = homepageReviews
     const users = homepageUsers
-    return {...state, games, reviews, users}
+    return {...state, games, reviews, users, load:false}
   }
 
   useEffect(()=>{
@@ -34,7 +35,7 @@ export default function useApplicationData() {
       const homepageUsers = all[2].data.slice(0,3)
       setState(setHomeData(homepageGames, homepageReviews, homepageUsers))
     })
-  }, [])
+  }, [state.load])
 
   return { state }
 }
