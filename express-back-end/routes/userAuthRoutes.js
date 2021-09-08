@@ -47,7 +47,7 @@ module.exports = (db) => {
   router.post('/register', (req, res) => {
     const username = req.body.params.user;
     const password = req.body.params.password;
-    db.query(`INSERT INTO users (username, password) VALUES ('${username}', '${password}')`)
+    db.query(`INSERT INTO users (username, password, thumbnail) VALUES ('${username}', '${password}', 'http://www.newdesignfile.com/postpic/2014/07/generic-user-icon-windows_352871.png')`)
       .then(token => {
         res.json(token.rows)
       })
