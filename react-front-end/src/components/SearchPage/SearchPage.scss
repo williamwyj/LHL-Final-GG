@@ -1,5 +1,21 @@
 @import '../../../public/scss_styles/style';
 
+section.results_page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  a.nav-link{
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+}
+div.results{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #searchPageSearchBar{
   form{
   background-color: chocolate;

@@ -31,10 +31,11 @@ export default function SearchPage(props){
   return (
     <section className="results_page">
     <SearchBar id="searchPageSearchBar" onSearch={(term) => setTerm(term)}/>
-
+    <div className="results">
       <Results
         game={results}
       />
+      </div>
   </section>
 
   );
