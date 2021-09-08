@@ -11,15 +11,6 @@ import Spinner from 'react-bootstrap/Spinner'
 import "./Profile.scss"
 import { useParams } from 'react-router-dom';
 
-import UserProfile from "./ProfilePage/UserProfile";
-import FeaturedGame from "./GameBox/FeaturedGames";
-import TopReviews from "./Reviews/TopReviews";
-
-import useUserInfo from "./hooks/useUserInfo";
-
-import "./Profile.scss";
-import { useParams } from "react-router-dom";
-
 export default function Profile() {
   //get the id from url
   const { name } = useParams();
