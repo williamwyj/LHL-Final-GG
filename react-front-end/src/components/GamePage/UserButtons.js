@@ -15,6 +15,9 @@ import UnlikeButton from "./UnlikeButton"
 import PlayedButton from './PlayedButton'
 import NotPlayedButton from './NotPlayedButton'
 
+//style
+import './UserButtons.scss'
+
 export default function UserButtons(props) {
   const [state, setState] = useState({
     writeReview: "WriteReview",
@@ -66,7 +69,7 @@ export default function UserButtons(props) {
   }
 
   return (
-    <div className="UserButtons" >
+    <div className="userButtons" >
       {props.token && state.writeReview === "WriteReview" && <WriteReviewButton writeReviewState={writeReviewState} />}
       {props.token && state.writeReview === "HideWriteReview" && <HideWriteReviewButton hideWriteReview={hideWriteReviewState}/>}
 
