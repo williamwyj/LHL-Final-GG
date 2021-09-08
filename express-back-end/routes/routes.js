@@ -85,7 +85,7 @@ module.exports = (db) => {
         const reviewId = data.rows.map(element => element.review_id).toString()
         data.rows[0] && 
           db.query(
-            `SELECT reviews.id, reviews.game_id AS game_id, reviews.content, reviews.rating, users.username AS username, games.name AS name, games.cover AS cover, COALESCE(tab.like, 0) AS like, COALESCE(tab.hmm, 0) AS hmm, COALESCE(tab.haha, 0) AS haha, COALESCE(tab.like+tab.hmm+tab.haha, 0) AS total
+            `SELECT reviews.id, reviews.game_id AS game_id, reviews.content, reviews.rating, users.username AS username, reviews.user_id AS user_id, games.name AS name, games.cover AS cover, COALESCE(tab.like, 0) AS like, COALESCE(tab.hmm, 0) AS hmm, COALESCE(tab.haha, 0) AS haha, COALESCE(tab.like+tab.hmm+tab.haha, 0) AS total
               FROM reviews
               LEFT JOIN (
               SELECT review_id,
@@ -548,5 +548,21 @@ module.exports = (db) => {
           });
       
   })
+
+router.get('/user/followed', (req, res) => {
+  const userId = req.query.userId
+  db.query(`
+    SELECT user_id FROM followers WHERE follower_id = ${userId}
+  `)
+  .then((data => {
+    res.json(data.rows);
+  }))
+  .catch(err => {
+    res
+      .status(500)
+      .json({ error: err.message });
+  });
+})
+
   return router  
 }
