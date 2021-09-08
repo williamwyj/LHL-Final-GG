@@ -45,10 +45,12 @@ export default function Profile() {
       <FeaturedGame state={state} />  
       <div class="reviews-and-following">
         <div class="reviews">
+          <div class="headers">{state.username}'s reviews</div>
           {state.topReviews && <TopReviews reviews={state.topReviews} />}
           {!state.topReviews[0] && <p>You have not written any reviews! Write a review to feature on your profile page!</p>}
         </div>
         <div class="following">
+          <div class="headers">{state.username}'s follows</div>
           {followings.map(following => <FollowingUsers follower={following.username}/>)}
         </div>
       

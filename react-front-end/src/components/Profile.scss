@@ -1,21 +1,39 @@
+@import "../../public/scss_styles/style";
+
 .reviews-and-following {
   display: flex;
   flex-direction: row;
   justify-content: center;
   .reviews {
+    @include box($dark);
     width: 70%;
+    height: auto;
+    @include margin-ratio;
   }
   .following {
+    @include box($dark);
     width: 15em;
     border-radius: 1.5vw;
     background-color: #2B2D42;
     height: auto;
     list-style-position: inside;
-    padding-left: 0;
-
+    display: flex;
+    flex-direction: column;
+    @include margin-ratio;
+    .headers {
+      padding-left: 24%;
+    }
+  }
+  .headers {
+    margin-top: 0.8em;
+    margin-bottom: 0.8em;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Black Ops One', cursive;
+    color: gold;
   }
 }
-@import '../../public/scss_styles/style';
 
 div.userPageReviews{
   display: flex;

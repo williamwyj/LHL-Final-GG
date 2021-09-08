@@ -36,9 +36,13 @@ export default function Home() {
         <div className="homePageGamesTitle">What's Hot This Week</div>
         <FeaturedGame state={state} />
         <div className="topReviewsUsers">
-          <TopReviews reviews={state.reviews} />
+          <ul class="topReviews">
+            <div class="headers">Top reviews</div>
+            <TopReviews reviews={state.reviews} />
+          </ul>
 
           <ul className="topUsers">
+          <div class="headers">Top users</div>
             {state.users.map((user) => {
               return (
                 <TopUsers
