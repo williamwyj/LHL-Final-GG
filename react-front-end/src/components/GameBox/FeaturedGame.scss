@@ -1,9 +1,10 @@
 div {
   .featured {
-    display:flex;
+    display:flex; 
     justify-content: space-around;
     align-items: center;
     padding: 3vw;
+    height: fit-content;
     a {
       padding-left: 1vw;
       padding-right: 1vw;
