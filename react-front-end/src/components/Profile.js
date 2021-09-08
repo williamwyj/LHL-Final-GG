@@ -33,7 +33,15 @@ export default function Profile() {
     }
     {!state.load &&
     <div>
-      <UserProfile thumbnail={state.thumbnail} id={state.id} username={state.username} followers={state.followers} followerNames={state.followerNames} followed={state.followed} reviews={state.reviews}/>
+      <UserProfile
+        thumbnail={state.thumbnail}
+        id={state.id}
+        username={state.username}
+        followers={state.followers}
+        followerNames={state.followerNames}
+        followed={state.followed}
+        reviews={state.reviews}
+      />
       <FeaturedGame state={state} />  
       <div class="reviews-and-following">
         <div class="reviews">
@@ -43,6 +51,7 @@ export default function Profile() {
         <div class="following">
           {followings.map(following => <FollowingUsers follower={following.username}/>)}
         </div>
+      
       </div>
     </div>
     }

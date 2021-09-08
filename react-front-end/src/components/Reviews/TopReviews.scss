@@ -1,10 +1,12 @@
 @import "../../../public/scss_styles/style";
 
 .allReviewsBox {
+    display: flex;
+    flex-direction: column;
+    
     @include box($dark);
     height: fit-content;
-    margin:auto;
-    padding: 0.5em 1em;    
+    padding: .2em 1em;    
     .singleReviewBox {
         @include box($grey);
         padding: 1em 2em;
