@@ -30,7 +30,6 @@ export default function TopReviews(props) {
           <div className="reviewContent"> 
             {review.content}
           </div>
-          <hr />
           <div className="ratings"> 
             <div className="ratingStars">
               {ratingStars.map(isFilled => {

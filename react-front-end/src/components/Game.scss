@@ -6,6 +6,9 @@ body{
   background-attachment: fixed;
 }
 div.main-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 3vw;
   background-color: $dark;
   border-radius: 1.5vw;
