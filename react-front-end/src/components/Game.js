@@ -155,7 +155,7 @@ export default function Game(props) {
                 <Review gameId={id} setReviewInputMode={setReviewInputMode} />
               )}
               {reviewInputMode === "GameDescription" && (
-                <GameDescription gameDescription={game.gameData.summary} />
+                <GameDescription gameDescription={game.gameData.summary} platforms={game.gameData.platforms} />
               )}
               <div className="bottom"></div>
             </div>

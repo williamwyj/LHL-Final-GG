@@ -10,7 +10,7 @@ export default function ResultItem(props) {
   const putInPlace = function(array){
     return array.map(value => `${value} `)
   }
-  console.log('RESULT ITEM props.name:', props.name);
+ 
 
   return (
       <Nav.Link href={`/game/${props.id}`}>
