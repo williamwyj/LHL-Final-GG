@@ -1,5 +1,5 @@
 @import "../../../public/scss_styles/style";
-
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
 @keyframes going {
   from {transform: translateY(0%)}
   to {transform: translateY(-130%)}
@@ -11,6 +11,9 @@
 }
 
 div.home-intro-heading{
+  font-family: 'Black Ops One', cursive;
+  color: gold;
+  margin: 0em 2em;
   display: flex;
   flex-direction: column;
   // height: 66vh;
@@ -19,7 +22,7 @@ div.home-intro-heading{
     display: flex;
     width: 100%;
     .word-holder{
-      font-size: 10em;
+      font-size: 5em;
     }
   }
   .title-line-right{
@@ -37,7 +40,7 @@ div.home-intro-heading{
       animation-duration: 3s;
     }
     .word-holder{
-    font-size: 10em;
+      font-size: 5em;
     }
   }
 }
