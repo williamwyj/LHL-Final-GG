@@ -6,7 +6,6 @@ export default function FeaturedGame(props) {
   return (
     <div className="featured">
       {props.state.games.map((game) => {
-        if (game.name !== "noGame")
           return (
             <GameBox
               key={game.id}
