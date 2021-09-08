@@ -12,7 +12,8 @@ export default function useUserInfo(username) {
     followerNames: [],
     followed: 0,
     games: [],
-    topReviews: []
+    topReviews: [],
+    load:true
   })
   useEffect(()=>{
     axios.get('/api/userId', {
@@ -73,12 +74,12 @@ export default function useUserInfo(username) {
             });
           }
         }
-        setState({...state, id, thumbnail, reviews, followers, followed, games, followerNames, topReviews})
+        setState({...state, id, thumbnail, reviews, followers, followed, games, followerNames, topReviews, load:false})
       }).catch(err => {
         console.log(err);
       })
     }) 
-  }, [])
+  }, [state.loading])
 
   return { state }
 }

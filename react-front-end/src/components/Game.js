@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import "./Game.scss"
 import { useParams } from 'react-router-dom';
 import { Button, Carousel } from 'react-bootstrap'
+import Spinner from 'react-bootstrap/Spinner'
 import { getUserId, grabGameById, grabTopReviewsById, grabUserGameLikeFollow } from '../helpers/dbHelpers';
 
 //import context
@@ -24,8 +25,8 @@ export default function Game(props) {
   const [game, setGame] = useState({
     gameData : {},
     reviewsData: [],
-    userGameData : {}
-
+    userGameData : {},
+    load: true
   })
   
   const [date, setDate] = useState('')
@@ -53,7 +54,7 @@ export default function Game(props) {
           const year = date.getFullYear()
           setDate(year)
           setShots(all[0][0].screenshots)
-          setGame({gameData, reviewsData, userGameData : {liked, played, user_id}})
+          setGame({gameData, reviewsData, userGameData : {liked, played, user_id}, load:false})
         }).catch(err => {
           console.log("ERROR", err.message)// .json({ error: err.message });
         });
@@ -71,13 +72,13 @@ export default function Game(props) {
         const year = date.getFullYear()
         setDate(year)
         setShots(all[0][0].screenshots)
-        setGame({gameData, reviewsData})
+        setGame({gameData, reviewsData, load:false})
       }).catch(err => {
         console.log("ERROR", err.message)// .json({ error: err.message });
       });
     }
 
-  }, [reviewInputMode]);
+  }, [reviewInputMode, game.load]);
 
 
   if(typeof game != 'object'){
@@ -85,7 +86,15 @@ export default function Game(props) {
   }
 
   return (
-
+    <>
+    {game.load && 
+      <div className="loadingSpinner">
+        <Spinner animation="border" role="status" variant="light" >
+          <span className="visually-hidden">Loading...</span>
+        </Spinner> 
+      </div>  
+    }
+    {!game.load && 
     <div className="main-container">
       <div className="game-info">
         <div className="cover">
@@ -141,8 +150,10 @@ export default function Game(props) {
       {!game.reviewsData[0] && <p>No reviews for this game have been made yet</p>}
       {game.reviewsData[0] && <TopReviews reviews={game.reviewsData} />}
       
-      
+    
     </div>
+    }
+    </>
   )
 }
 
