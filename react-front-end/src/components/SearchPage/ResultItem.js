@@ -19,7 +19,7 @@ export default function ResultItem(props) {
       className="cover"
       src={props.cover}
       />
-      <div>
+      <div className="information">
       <article classname="writeup">
         <h4>{props.name}</h4>
         {props.summary}

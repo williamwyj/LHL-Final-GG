@@ -3,8 +3,9 @@ import { useState, useCallback, useEffect } from 'react';
 import { Button, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-import useDebounce from '../hooks/useDebounce'
+import useDebounce from '../hooks/useDebounce';
 import { searchGame } from '../../helpers/dbHelpers';
+import './SearchBar.scss';
 
 export default function SearchBar(props) {
   const [value, setValue] = useState('')
@@ -25,7 +26,7 @@ export default function SearchBar(props) {
   }, [term, onSearch]);
 
   return (
-    <section className={"search" + "d-flex"}>
+    <section className="search">
       <form className="search__form" onSubmit={event  => event.preventDefault()}>
         <input
           className="radius"
