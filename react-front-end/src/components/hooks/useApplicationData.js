@@ -29,10 +29,10 @@ export default function useApplicationData() {
     ]).then((all) => {
       // get only first 4 games for home page display
       const homepageGames = all[0].data.slice(0,4)
-      // get only first 3 top reviews for home page display
-      const homepageReviews = all[1].data.slice(0,3)
-      // get only first 3 most followed users for home page display
-      const homepageUsers = all[2].data.slice(0,3)
+      // get only first 5 top reviews for home page display
+      const homepageReviews = all[1].data.slice(0,5)
+      // get only first 13 most followed users for home page display
+      const homepageUsers = all[2].data.slice(0,13)
       setState(setHomeData(homepageGames, homepageReviews, homepageUsers))
     })
   }, [state.load])
