@@ -1,4 +1,15 @@
-import React from "react";
+import React from 'react';
+
+import UserProfile from './ProfilePage/UserProfile'
+import FeaturedGame from './GameBox/FeaturedGames';
+import TopReviews from './Reviews/TopReviews'
+
+import useUserInfo from './hooks/useUserInfo';
+
+import Spinner from 'react-bootstrap/Spinner'
+
+import "./Profile.scss"
+import { useParams } from 'react-router-dom';
 
 import UserProfile from "./ProfilePage/UserProfile";
 import FeaturedGame from "./GameBox/FeaturedGames";
@@ -12,9 +23,17 @@ import { useParams } from "react-router-dom";
 export default function Profile() {
   //get the id from url
   const { name } = useParams();
-  const { state } = useUserInfo(name);
-
+  const {state} = useUserInfo(name);
   return (
+    <>
+    {state.load && 
+      <div className="loadingSpinner">
+        <Spinner animation="border" role="status" variant="light" >
+          <span className="visually-hidden">Loading...</span>
+        </Spinner> 
+      </div>  
+    }
+    {!state.load &&
     <div>
       <UserProfile
         thumbnail={state.thumbnail}
@@ -36,5 +55,7 @@ export default function Profile() {
         )}
       </div>
     </div>
+    }
+    </>
   );
 }
