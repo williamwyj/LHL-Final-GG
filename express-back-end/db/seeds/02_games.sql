@@ -38,7 +38,7 @@ In addition to the main game options, numerous party games are also included. Th
     1441065600,
     'https://images.igdb.com/igdb/image/upload/t_original/co1v85.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/m2o6ajjbm3l8k2yzvhi5.png,https://images.igdb.com/igdb/image/upload/t_original/okca57zrnwpmnljhd9zn.png,https://images.igdb.com/igdb/image/upload/t_original/llt6qnrgesxn4nua2krm.png,https://images.igdb.com/igdb/image/upload/t_original/qow1pblrdlffrenzylrq.png,https://images.igdb.com/igdb/image/upload/t_original/dympqfdvudhslrvtbfeq.png}'
-      )
+      ),
 (
     5600,
     'Metal Gear Solid: Ghost Babel',
@@ -49,7 +49,7 @@ Ghost Babel is not a port of said game but an original game made specifically fo
     956534400,
     'https://images.igdb.com/igdb/image/upload/t_original/co1wyd.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/sc7k1f.png,https://images.igdb.com/igdb/image/upload/t_original/sc7k1g.png,https://images.igdb.com/igdb/image/upload/t_original/sc7k1h.png,https://images.igdb.com/igdb/image/upload/t_original/sc7k1i.png}'
-      )
+      ),
 (
     21073,
     'Metal Gear Solid: Snake Eater 3D',
@@ -58,7 +58,7 @@ Ghost Babel is not a port of said game but an original game made specifically fo
     1329782400,
     'https://images.igdb.com/igdb/image/upload/t_original/co26m4.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/sv17vu51rrtuk6bq7onq.png,https://images.igdb.com/igdb/image/upload/t_original/hsinpqlneqcedzv5q4j3.png,https://images.igdb.com/igdb/image/upload/t_original/zs6d5bsflzxjgcc9shei.png,https://images.igdb.com/igdb/image/upload/t_original/qojdyc6ibztv6xte04rh.png,https://images.igdb.com/igdb/image/upload/t_original/q9reoo10c2ronk6ztfjs.png,https://images.igdb.com/igdb/image/upload/t_original/ypfjmue2g7xixawfgk7f.png,https://images.igdb.com/igdb/image/upload/t_original/jokmqnv22qc0uzyumr3v.png,https://images.igdb.com/igdb/image/upload/t_original/stuswo4vhsxlcdxhosmn.png,https://images.igdb.com/igdb/image/upload/t_original/r468tzcd9noiviho29cb.png,https://images.igdb.com/igdb/image/upload/t_original/qetklmu69m91y9meqj4z.png,https://images.igdb.com/igdb/image/upload/t_original/gvrroentuqfocarjsgvg.png,https://images.igdb.com/igdb/image/upload/t_original/mr5vqdf0dwqmug4kljoy.png}'
-      )
+      ),
 (
     18683,
     'Metal Gear Solid VR Missions',
@@ -70,7 +70,7 @@ Released in Europe as Metal Gear Solid: Special Missions, where it was released 
     938649600,
     'https://images.igdb.com/igdb/image/upload/t_original/co2s8n.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/d3yeb2kyvi2pweptfcpl.png,https://images.igdb.com/igdb/image/upload/t_original/aicsdjckwphmdsmbqovt.png,https://images.igdb.com/igdb/image/upload/t_original/sc7mi2.png,https://images.igdb.com/igdb/image/upload/t_original/sc7mi3.png,https://images.igdb.com/igdb/image/upload/t_original/sc7mi4.png,https://images.igdb.com/igdb/image/upload/t_original/sc7mi5.png}'
-      )
+      ),
 (
     474,
     'Metal Gear Solid 2: Substance',
@@ -83,7 +83,7 @@ Also included are various alternative missions, ranging from the protagonist sne
     1036454400,
     'https://images.igdb.com/igdb/image/upload/t_original/co1ox3.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/pyywfqgkxbinzuplokkb.png,https://images.igdb.com/igdb/image/upload/t_original/iztcck1fstvkbfmijrkp.png,https://images.igdb.com/igdb/image/upload/t_original/ja8x6zeybzjj3t54xdng.png,https://images.igdb.com/igdb/image/upload/t_original/b2lic9svlyqq1kzb8zck.png}'
-      )
+      ),
 (
     25637,
     'Metal Gear Solid V: The Definitive Experience',
@@ -92,7 +92,7 @@ Also included are various alternative missions, ranging from the protagonist sne
     1476144000,
     'https://images.igdb.com/igdb/image/upload/t_original/co2ats.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/pbs4j8wu5qx1gnvz00ga.png}'
-      )
+      ),
 (
     136811,
     'METAL GEAR SOLID HD EDITION: 2 & 3',
@@ -101,7 +101,7 @@ Also included are various alternative missions, ranging from the protagonist sne
     1320710400,
     'https://images.igdb.com/igdb/image/upload/t_original/co2le8.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/sc8sof.png,https://images.igdb.com/igdb/image/upload/t_original/sc8sog.png,https://images.igdb.com/igdb/image/upload/t_original/sc8soh.png,https://images.igdb.com/igdb/image/upload/t_original/sc8soi.png,https://images.igdb.com/igdb/image/upload/t_original/sc8soj.png,https://images.igdb.com/igdb/image/upload/t_original/sc8sok.png,https://images.igdb.com/igdb/image/upload/t_original/sc8sol.png,https://images.igdb.com/igdb/image/upload/t_original/sc8som.png,https://images.igdb.com/igdb/image/upload/t_original/sc8son.png,https://images.igdb.com/igdb/image/upload/t_original/sc8soo.png,https://images.igdb.com/igdb/image/upload/t_original/sc8sop.png,https://images.igdb.com/igdb/image/upload/t_original/sc8soq.png}'
-      )
+      ),
 (
     380,
     'Metal Gear Solid 4: Guns of the Patriots',
@@ -110,7 +110,7 @@ Also included are various alternative missions, ranging from the protagonist sne
     1213228800,
     'https://images.igdb.com/igdb/image/upload/t_original/co3qsv.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/xvxsun2a7aoiexmuvftz.png,https://images.igdb.com/igdb/image/upload/t_original/dt2ywhn5yeii7fxjcmcs.png,https://images.igdb.com/igdb/image/upload/t_original/bl1z3pkvjzgirsqbohs3.png,https://images.igdb.com/igdb/image/upload/t_original/k626vvmukurztyilpd3d.png,https://images.igdb.com/igdb/image/upload/t_original/tihqqsqahiu9tfrmiel9.png}'
-      )
+      ),
 (
     375,
     'Metal Gear Solid',
@@ -119,7 +119,7 @@ Also included are various alternative missions, ranging from the protagonist sne
     904780800,
     'https://images.igdb.com/igdb/image/upload/t_original/co3rbc.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/ntq8azanvq64jukyuinw.png,https://images.igdb.com/igdb/image/upload/t_original/cmelhcrwgclzcpxer7ko.png,https://images.igdb.com/igdb/image/upload/t_original/qmkw67hxfar1mfhymep0.png,https://images.igdb.com/igdb/image/upload/t_original/exmnnu0toj608ppee4kq.png,https://images.igdb.com/igdb/image/upload/t_original/kglno9tznolyxjcov1dr.png}'
-      )
+      ),
 (
     43264,
     'Metal Gear Solid 3: Limited Metal Edition',
@@ -128,7 +128,7 @@ Also included are various alternative missions, ranging from the protagonist sne
     1103241600,
     'https://images.igdb.com/igdb/image/upload/t_original/co3dmv.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/vhgq4edagu2ekqe5bg0o.png,https://images.igdb.com/igdb/image/upload/t_original/sc79cl.png,https://images.igdb.com/igdb/image/upload/t_original/sc79cm.png,https://images.igdb.com/igdb/image/upload/t_original/sc79cn.png}'
-      )
+      ),
 (
     12212,
     'Metal Gear Solid Touch',
@@ -141,7 +141,7 @@ The player plays as Solid Snake, who is also known as Old Snake in Metal Gear So
     1237334400,
     'https://images.igdb.com/igdb/image/upload/t_original/co3dmi.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/w0drdb0e2sp3fkuxbc8y.png,https://images.igdb.com/igdb/image/upload/t_original/y1wihaighu71pkuzs8lb.png,https://images.igdb.com/igdb/image/upload/t_original/cz7lnltdcjamfxgpl1lz.png}'
-      )
+      ),
 (
     2707,
     'Mario & Sonic at the Olympic Winter Games',
@@ -150,7 +150,7 @@ The player plays as Solid Snake, who is also known as Old Snake in Metal Gear So
     1255392000,
     'https://images.igdb.com/igdb/image/upload/t_original/co1wvr.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/sc837j.png,https://images.igdb.com/igdb/image/upload/t_original/sc837k.png,https://images.igdb.com/igdb/image/upload/t_original/sc837l.png,https://images.igdb.com/igdb/image/upload/t_original/sc837m.png,https://images.igdb.com/igdb/image/upload/t_original/sc837n.png,https://images.igdb.com/igdb/image/upload/t_original/sc837o.png}'
-      )
+      ),
 (
     84920,
     'Super Mario All-Stars: Limited Edition',
@@ -159,7 +159,7 @@ The player plays as Solid Snake, who is also known as Old Snake in Metal Gear So
     1287619200,
     'https://images.igdb.com/igdb/image/upload/t_original/co2vvc.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/my7nwjoctieawedg5igp.png,https://images.igdb.com/igdb/image/upload/t_original/n2uloeuonwvmltc4dj7z.png,https://images.igdb.com/igdb/image/upload/t_original/v079t9ipvtonqhffcman.png,https://images.igdb.com/igdb/image/upload/t_original/dkzlbedi5bh0mwj5iaai.png,https://images.igdb.com/igdb/image/upload/t_original/nwpqrams6okqpknth3x1.png,https://images.igdb.com/igdb/image/upload/t_original/amwl40imnlqwfnknkhzk.png,https://images.igdb.com/igdb/image/upload/t_original/cobtx90ywqruvibcy8fc.png,https://images.igdb.com/igdb/image/upload/t_original/spf3k5vhy9udtqokoey2.png,https://images.igdb.com/igdb/image/upload/t_original/nxytfdrqqvsujaqdlmpk.png,https://images.igdb.com/igdb/image/upload/t_original/ijuprhbodhqdazwhjst9.png,https://images.igdb.com/igdb/image/upload/t_original/pgdzphmiyd3hsnhroae5.png,https://images.igdb.com/igdb/image/upload/t_original/kz0vl1fbqsfv4seu6hl5.png}'
-      )
+      ),
 (
     132109,
     'Mario & Sonic at the Olympic Winter Games',
@@ -168,7 +168,7 @@ The player plays as Solid Snake, who is also known as Old Snake in Metal Gear So
     1255392000,
     'https://images.igdb.com/igdb/image/upload/t_original/co22wg.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/sc837p.png,https://images.igdb.com/igdb/image/upload/t_original/sc837q.png,https://images.igdb.com/igdb/image/upload/t_original/sc837r.png,https://images.igdb.com/igdb/image/upload/t_original/sc837s.png,https://images.igdb.com/igdb/image/upload/t_original/sc837t.png,https://images.igdb.com/igdb/image/upload/t_original/sc837u.png,https://images.igdb.com/igdb/image/upload/t_original/sc837v.png}'
-      )
+      ),
 (
     3365,
     'Mario & Luigi: Dream Team',
@@ -177,7 +177,7 @@ The player plays as Solid Snake, who is also known as Old Snake in Metal Gear So
     1373587200,
     'https://images.igdb.com/igdb/image/upload/t_original/co1rm4.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/v3vyfnlqbni50tu6jinx.png,https://images.igdb.com/igdb/image/upload/t_original/kl1xyye6zssw7mpo3ist.png,https://images.igdb.com/igdb/image/upload/t_original/lonrhr2qpam8z4neholl.png,https://images.igdb.com/igdb/image/upload/t_original/vm4dicqltliwnalltmdh.png,https://images.igdb.com/igdb/image/upload/t_original/enbqfts2ikk0ecwvjy9n.png,https://images.igdb.com/igdb/image/upload/t_original/pwwmkwkyxenjq8i3zoty.png,https://images.igdb.com/igdb/image/upload/t_original/jruu2mlgwvuhwjesuzev.png,https://images.igdb.com/igdb/image/upload/t_original/zt6gcjqceuzbjqnldokx.png,https://images.igdb.com/igdb/image/upload/t_original/wjltjxfrnhtigkyusac5.png,https://images.igdb.com/igdb/image/upload/t_original/bu58w5gyxfjmtnjoiogn.png,https://images.igdb.com/igdb/image/upload/t_original/ofurihfz9ed2mowumkkx.png,https://images.igdb.com/igdb/image/upload/t_original/jra75nxwyy9t63yxtnva.png}'
-      )
+      ),
 (
     116795,
     'Mario & Sonic at the Olympic Games Tokyo 2020',
@@ -186,7 +186,7 @@ The player plays as Solid Snake, who is also known as Old Snake in Metal Gear So
     1572566400,
     'https://images.igdb.com/igdb/image/upload/t_original/co22wl.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/sc6cxq.png,https://images.igdb.com/igdb/image/upload/t_original/sc6cxr.png,https://images.igdb.com/igdb/image/upload/t_original/sc6t21.png,https://images.igdb.com/igdb/image/upload/t_original/sc6t22.png,https://images.igdb.com/igdb/image/upload/t_original/sc6t23.png,https://images.igdb.com/igdb/image/upload/t_original/sc6t26.png,https://images.igdb.com/igdb/image/upload/t_original/sc6t27.png}'
-      )
+      ),
 (
     132110,
     'Mario & Sonic at the London 2012 Olympic Games',
@@ -195,7 +195,7 @@ The player plays as Solid Snake, who is also known as Old Snake in Metal Gear So
     1328745600,
     'https://images.igdb.com/igdb/image/upload/t_original/co22wi.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/sc8381.png,https://images.igdb.com/igdb/image/upload/t_original/sc8382.png,https://images.igdb.com/igdb/image/upload/t_original/sc8383.png,https://images.igdb.com/igdb/image/upload/t_original/sc8384.png,https://images.igdb.com/igdb/image/upload/t_original/sc8385.png,https://images.igdb.com/igdb/image/upload/t_original/sc8386.png,https://images.igdb.com/igdb/image/upload/t_original/sc8387.png,https://images.igdb.com/igdb/image/upload/t_original/sc8388.png}'
-      )
+      ),
 (
     2708,
     'Mario & Sonic at the London 2012 Olympic Games',
@@ -204,7 +204,7 @@ The player plays as Solid Snake, who is also known as Old Snake in Metal Gear So
     1321315200,
     'https://images.igdb.com/igdb/image/upload/t_original/co1zye.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/sc837w.png,https://images.igdb.com/igdb/image/upload/t_original/sc837x.png,https://images.igdb.com/igdb/image/upload/t_original/sc837y.png,https://images.igdb.com/igdb/image/upload/t_original/sc837z.png,https://images.igdb.com/igdb/image/upload/t_original/sc8380.png}'
-      )
+      ),
 (
     3990,
     'Mario & Sonic at the Sochi 2014 Olympic Winter Games',
@@ -213,7 +213,7 @@ The player plays as Solid Snake, who is also known as Old Snake in Metal Gear So
     1383868800,
     'https://images.igdb.com/igdb/image/upload/t_original/co1ww7.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/iaup8m1elgjauurx0kwd.png,https://images.igdb.com/igdb/image/upload/t_original/phh07nh6crn3ltl5wh8e.png,https://images.igdb.com/igdb/image/upload/t_original/ff2sojvpimcc1vuiteix.png,https://images.igdb.com/igdb/image/upload/t_original/yuywudchwlxzipiwweir.png,https://images.igdb.com/igdb/image/upload/t_original/y5ggbwwkuhwpc9eg0jpx.png,https://images.igdb.com/igdb/image/upload/t_original/egqggawobyexfgh8dit3.png}'
-      )
+      ),
 (
     11195,
     'Mario & Luigi: Paper Jam',
@@ -222,7 +222,7 @@ The player plays as Solid Snake, who is also known as Old Snake in Metal Gear So
     1449100800,
     'https://images.igdb.com/igdb/image/upload/t_original/co21vo.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/nnsq9ekljds1fhpufixv.png,https://images.igdb.com/igdb/image/upload/t_original/xrkgldomtgtmmc64ahmf.png,https://images.igdb.com/igdb/image/upload/t_original/zn1kjgn38rtelunj4cgo.png,https://images.igdb.com/igdb/image/upload/t_original/krpafaboxcpjjmwhlgwe.png,https://images.igdb.com/igdb/image/upload/t_original/q5vt8ra8klukcgvwewzl.png,https://images.igdb.com/igdb/image/upload/t_original/oarhz7plfltvyf4lj92d.png,https://images.igdb.com/igdb/image/upload/t_original/wgqtp8a2mvywpnyf42cp.png,https://images.igdb.com/igdb/image/upload/t_original/kam9tig3nb8jfnbnauks.png,https://images.igdb.com/igdb/image/upload/t_original/ippsowh3d7d4ta8jqrvt.png,https://images.igdb.com/igdb/image/upload/t_original/frg65tinde33n4awscxd.png,https://images.igdb.com/igdb/image/upload/t_original/c3wcgkilx58rczvbkh3m.png,https://images.igdb.com/igdb/image/upload/t_original/h60cccqf3sug5gn25w0k.png}'
-      )
+      ),
 (
     132108,
     'Mario & Sonic at the Olympic Games',
@@ -231,7 +231,7 @@ The player plays as Solid Snake, who is also known as Old Snake in Metal Gear So
     1200528000,
     'https://images.igdb.com/igdb/image/upload/t_original/co22wf.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/sc8370.png,https://images.igdb.com/igdb/image/upload/t_original/sc8371.png,https://images.igdb.com/igdb/image/upload/t_original/sc8372.png,https://images.igdb.com/igdb/image/upload/t_original/sc8373.png}'
-      )
+      ),
 (
     2706,
     'Mario & Sonic at the Olympic Games',
@@ -240,7 +240,7 @@ The player plays as Solid Snake, who is also known as Old Snake in Metal Gear So
     1194307200,
     'https://images.igdb.com/igdb/image/upload/t_original/co1wvp.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/sc8374.png,https://images.igdb.com/igdb/image/upload/t_original/sc8375.png,https://images.igdb.com/igdb/image/upload/t_original/sc8376.png,https://images.igdb.com/igdb/image/upload/t_original/sc8377.png,https://images.igdb.com/igdb/image/upload/t_original/sc8378.png,https://images.igdb.com/igdb/image/upload/t_original/sc8379.png,https://images.igdb.com/igdb/image/upload/t_original/sc837a.png,https://images.igdb.com/igdb/image/upload/t_original/sc837b.png,https://images.igdb.com/igdb/image/upload/t_original/sc837c.png}'
-      )
+      ),
 (
     11258,
     'Mario & Sonic at the Rio 2016 Olympic Games',
@@ -249,7 +249,7 @@ The player plays as Solid Snake, who is also known as Old Snake in Metal Gear So
     1466640000,
     'https://images.igdb.com/igdb/image/upload/t_original/co20e7.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/mn0elganypxy0mk3nrp0.png,https://images.igdb.com/igdb/image/upload/t_original/i3lqlxz0rhuqeusgeoyb.png,https://images.igdb.com/igdb/image/upload/t_original/c2q4kcbdfgqptvueefua.png,https://images.igdb.com/igdb/image/upload/t_original/yhczpiiknpowznuxyjig.png}'
-      )
+      ),
 (
     132111,
     'Mario & Sonic at the Rio 2016 Olympic Games',
@@ -258,27 +258,16 @@ The player plays as Solid Snake, who is also known as Old Snake in Metal Gear So
     1455753600,
     'https://images.igdb.com/igdb/image/upload/t_original/co22wj.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/sc838h.png,https://images.igdb.com/igdb/image/upload/t_original/sc838i.png,https://images.igdb.com/igdb/image/upload/t_original/sc838j.png,https://images.igdb.com/igdb/image/upload/t_original/sc838k.png}'
-      )
-(
-    47847,
-    'Dr. Mario Express',
-    'Dr. Mario Express, known in Japan and PAL regions as A Little Bit of... Dr. Mario (ちょっとDr. MARIO Chotto Dr. Mario?),[5] is a Mario action puzzle video game published by Nintendo. The game was released exclusively as a DSiWare title for the Nintendo DSi platform. Dr. Mario Express was first released as a launch title for the DSiWare service in Japan on December 24, 2008, and was released in both North America and PAL regions in 2009. The game was developed by Arika, which had also created Dr. Mario Online Rx for WiiWare. 
- 
-Dr. Mario Express features the general gameplay of earlier Dr. Mario puzzle games, which focus on eliminating colored viruses from the playing field by matching them with colored capsules. Dr. Mario Express received generally positive reviews, but was criticized for offering fewer playable game modes than earlier Dr. Mario titles.',
-    '{}',
-    1230076800,
-    'https://images.igdb.com/igdb/image/upload/t_original/co21te.png',
-    '{https://images.igdb.com/igdb/image/upload/t_original/ptwianbq1wyvzirshyls.png,https://images.igdb.com/igdb/image/upload/t_original/nmyuexoakluq35sbjvjd.png,https://images.igdb.com/igdb/image/upload/t_original/intg8kcotq1ijb00pbgh.png}'
-      )
+      ),
 (
     1070,
     'Super Mario World',
     'A 2D platformer and first entry on the SNES in the Super Mario franchise, Super Mario World follows Mario as he attempts to defeat Bowser''s underlings and rescue Princess Peach from his clutches. The game features a save system, a less linear world map, an expanded movement arsenal and numerous new items for Mario, alongside new approaches to level design and art direction.',
-    '{Wii, SNES, 3DS, WiiU, Switch, }',
+    '{Wii, SNES, 3DS, WiiU, Switch }',
     659145600,
     'https://images.igdb.com/igdb/image/upload/t_original/co2v5y.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/sc8e1y.png,https://images.igdb.com/igdb/image/upload/t_original/sc8e1z.png,https://images.igdb.com/igdb/image/upload/t_original/sc8e20.png,https://images.igdb.com/igdb/image/upload/t_original/sc8e21.png,https://images.igdb.com/igdb/image/upload/t_original/sc8e22.png,https://images.igdb.com/igdb/image/upload/t_original/sc8e23.png}'
-      )
+      ),
 (
     1709,
     'Mario & Wario',
@@ -287,7 +276,7 @@ Dr. Mario Express features the general gameplay of earlier Dr. Mario puzzle game
     746409600,
     'https://images.igdb.com/igdb/image/upload/t_original/co244d.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/sc85oc.png,https://images.igdb.com/igdb/image/upload/t_original/sc85od.png,https://images.igdb.com/igdb/image/upload/t_original/sc85oe.png,https://images.igdb.com/igdb/image/upload/t_original/sc85of.png,https://images.igdb.com/igdb/image/upload/t_original/sc85og.png}'
-      )
+      ),
 (
     2255,
     'Mario Strikers Charged',
@@ -296,7 +285,7 @@ Dr. Mario Express features the general gameplay of earlier Dr. Mario puzzle game
     1180051200,
     'https://images.igdb.com/igdb/image/upload/t_original/co220c.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/sc88gq.png,https://images.igdb.com/igdb/image/upload/t_original/sc88gr.png,https://images.igdb.com/igdb/image/upload/t_original/sc88gs.png,https://images.igdb.com/igdb/image/upload/t_original/sc88gt.png,https://images.igdb.com/igdb/image/upload/t_original/sc88gu.png}'
-      )
+      ),
 (
     3349,
     'Paper Mario: The Thousand-Year Door',
@@ -315,7 +304,7 @@ Stay on your toes! Stamp foes, swing your hammer, and use timely button presses 
     1090454400,
     'https://images.igdb.com/igdb/image/upload/t_original/co25us.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/t0c2nwyytglaaaxcique.png,https://images.igdb.com/igdb/image/upload/t_original/fmtjzidhkbulqfj4ckg1.png,https://images.igdb.com/igdb/image/upload/t_original/jxvcm3xvg1pf9cprec6p.png,https://images.igdb.com/igdb/image/upload/t_original/qzfm3ttoba62crc5pyad.png,https://images.igdb.com/igdb/image/upload/t_original/u1vc1kpujr4cks3asfol.png,https://images.igdb.com/igdb/image/upload/t_original/gwbhi4mgfp0irqtirmul.png,https://images.igdb.com/igdb/image/upload/t_original/juxexutt9xi32isjnjgf.png,https://images.igdb.com/igdb/image/upload/t_original/r76g63n0xnv2cvtdiosu.png,https://images.igdb.com/igdb/image/upload/t_original/v3cgoh1mxdojgcochjgd.png,https://images.igdb.com/igdb/image/upload/t_original/ghx1qpaanoowvxtdmart.png,https://images.igdb.com/igdb/image/upload/t_original/opbieprqjtsb6x07rj0t.png}'
-      )
+      ),
 (
     1074,
     'Super Mario 64',
@@ -324,7 +313,7 @@ Stay on your toes! Stamp foes, swing your hammer, and use timely button presses 
     835488000,
     'https://images.igdb.com/igdb/image/upload/t_original/co21mm.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/sc8e2k.png,https://images.igdb.com/igdb/image/upload/t_original/sc8e2l.png,https://images.igdb.com/igdb/image/upload/t_original/sc8e2m.png,https://images.igdb.com/igdb/image/upload/t_original/sc8e2n.png,https://images.igdb.com/igdb/image/upload/t_original/sc8e2o.png,https://images.igdb.com/igdb/image/upload/t_original/sc8e2p.png,https://images.igdb.com/igdb/image/upload/t_original/sc8e2q.png}'
-      )
+      ),
 (
     3988,
     'Mario Hoops 3-on-3',
@@ -333,7 +322,7 @@ Stay on your toes! Stamp foes, swing your hammer, and use timely button presses 
     1153958400,
     'https://images.igdb.com/igdb/image/upload/t_original/co2206.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/agi7kf24owr7tmd8jviz.png,https://images.igdb.com/igdb/image/upload/t_original/pjlyerfxtrdtd4h8dk3y.png,https://images.igdb.com/igdb/image/upload/t_original/h6rslrg8eu9y406hpryo.png,https://images.igdb.com/igdb/image/upload/t_original/yqne1toybdpd7ztk6s4r.png,https://images.igdb.com/igdb/image/upload/t_original/cipzenmyo8sbl1hfqc6n.png,https://images.igdb.com/igdb/image/upload/t_original/czyqzeqondcaouvtel1b.png,https://images.igdb.com/igdb/image/upload/t_original/woewjkamv6rlh2rlawgy.png,https://images.igdb.com/igdb/image/upload/t_original/nuyorbcucenclm17cohq.png,https://images.igdb.com/igdb/image/upload/t_original/lu0nbgqospuifargifdw.png,https://images.igdb.com/igdb/image/upload/t_original/ucflw426vm6c56ulbnuz.png,https://images.igdb.com/igdb/image/upload/t_original/ck6ftl2pb72wvn2s4jlb.png,https://images.igdb.com/igdb/image/upload/t_original/exdo2u8qdvqm9kg30zkf.png}'
-      )
+      ),
 (
     132654,
     'Kaizo Mario World',
@@ -342,16 +331,7 @@ Stay on your toes! Stamp foes, swing your hammer, and use timely button presses 
     1199059200,
     'https://images.igdb.com/igdb/image/upload/t_original/co2mqu.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/sc89im.png,https://images.igdb.com/igdb/image/upload/t_original/sc89in.png,https://images.igdb.com/igdb/image/upload/t_original/sc89io.png,https://images.igdb.com/igdb/image/upload/t_original/sc89ip.png}'
-      )
-(
-    1067,
-    'Super Mario Bros. 2',
-    'Super Mario Bros. 2, 2D platformer and sequel to Super Mario Bros. (1985), features 4 selectable characters (Mario, Luigi, Princess Peach, Toad) as they navigate the dream world of Subcon to defeat the evil toad king Wart. Super Mario Bros. 2 features different ways interacting with enemies and the world, including an object carrying mechanic and more intricate level designs.',
-    '{Wii, NES, 3DS, WiiU, Switch}',
-    592358400,
-    'https://images.igdb.com/igdb/image/upload/t_original/co1wos.png',
-    '{https://images.igdb.com/igdb/image/upload/t_original/sc85bz.png,https://images.igdb.com/igdb/image/upload/t_original/sc85c0.png,https://images.igdb.com/igdb/image/upload/t_original/sc85c1.png,https://images.igdb.com/igdb/image/upload/t_original/sc85c2.png,https://images.igdb.com/igdb/image/upload/t_original/sc85c3.png}'
-      )
+      ),
 (
     3351,
     'Mario & Luigi: Superstar Saga',
@@ -360,7 +340,7 @@ Stay on your toes! Stamp foes, swing your hammer, and use timely button presses 
     1069027200,
     'https://images.igdb.com/igdb/image/upload/t_original/co21rg.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/duwjlbpjchp6ybhqqfti.png,https://images.igdb.com/igdb/image/upload/t_original/exkk90waecmqglugvkwz.png,https://images.igdb.com/igdb/image/upload/t_original/qqkt5zz5jzivlmz6gtac.png,https://images.igdb.com/igdb/image/upload/t_original/v799jrjymy6o62xl5wnl.png,https://images.igdb.com/igdb/image/upload/t_original/anxthatzgvnegsvsprr1.png,https://images.igdb.com/igdb/image/upload/t_original/juumblmli6u3drri9mi4.png,https://images.igdb.com/igdb/image/upload/t_original/w3scn6bdwic0aoo7xt01.png,https://images.igdb.com/igdb/image/upload/t_original/jkqzvcmc2cueczu0vjij.png,https://images.igdb.com/igdb/image/upload/t_original/m9mwi2blqzisw9zkuuzy.png,https://images.igdb.com/igdb/image/upload/t_original/ezzkis8j1m3z8wdhrfxs.png,https://images.igdb.com/igdb/image/upload/t_original/cxw9a4ajvvblbtpca7bk.png,https://images.igdb.com/igdb/image/upload/t_original/jsgbd34zu4sogrs7lybl.png}'
-      )
+      ),
 (
     3364,
     'Mario & Luigi: Partners in Time',
@@ -369,7 +349,7 @@ Stay on your toes! Stamp foes, swing your hammer, and use timely button presses 
     1133136000,
     'https://images.igdb.com/igdb/image/upload/t_original/co21rk.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/fpedlxnuaimeakoubzps.png,https://images.igdb.com/igdb/image/upload/t_original/fvbiepcaj1lnmxovv8j3.png,https://images.igdb.com/igdb/image/upload/t_original/dyjjs2egvaqjnkkprwdc.png,https://images.igdb.com/igdb/image/upload/t_original/nvq4lvkbrjzvbgqkzpxw.png,https://images.igdb.com/igdb/image/upload/t_original/ht5jg94gbew2jlyoowfr.png,https://images.igdb.com/igdb/image/upload/t_original/zstxzewog6hih07szfca.png,https://images.igdb.com/igdb/image/upload/t_original/dnduifl8kqwr7hi80m7s.png,https://images.igdb.com/igdb/image/upload/t_original/ziphico0urbqc6jkkuyy.png,https://images.igdb.com/igdb/image/upload/t_original/j6k2vtbpzxqaqnwapxvd.png,https://images.igdb.com/igdb/image/upload/t_original/miqewuwqtxybtijjxyt4.png,https://images.igdb.com/igdb/image/upload/t_original/gwrtil6m22bklkfkhsxy.png,https://images.igdb.com/igdb/image/upload/t_original/fkhhfxkppixkyijx64bj.png}'
-      )
+      ),
 (
     1071,
     'Super Mario Land 2: 6 Golden Coins',
@@ -378,7 +358,7 @@ Stay on your toes! Stamp foes, swing your hammer, and use timely button presses 
     719625600,
     'https://images.igdb.com/igdb/image/upload/t_original/co23eg.png',
     '{https://images.igdb.com/igdb/image/upload/t_original/sc85lu.png,https://images.igdb.com/igdb/image/upload/t_original/sc85lv.png,https://images.igdb.com/igdb/image/upload/t_original/sc85lw.png,https://images.igdb.com/igdb/image/upload/t_original/sc85lx.png,https://images.igdb.com/igdb/image/upload/t_original/sc85ly.png,https://images.igdb.com/igdb/image/upload/t_original/sc85lz.png,https://images.igdb.com/igdb/image/upload/t_original/sc85m0.png,https://images.igdb.com/igdb/image/upload/t_original/sc85m1.png}'
-      )
+      ),
 
 (
     4238,
