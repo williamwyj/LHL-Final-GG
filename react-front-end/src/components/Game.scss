@@ -33,10 +33,16 @@ div.game-info {
       display: flex;
       justify-content: space-between;
       border-bottom: 4px solid $grey;
+      h2{
+        font-family: $title-font;
+      }
       h4{
         align-self: flex-end;
         margin-bottom: 0;
       }
+    }
+    div.summary{
+      font-family: $body-font;
     }
   }
   div.user-game-interactions {
