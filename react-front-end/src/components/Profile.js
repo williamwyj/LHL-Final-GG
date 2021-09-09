@@ -50,7 +50,7 @@ export default function Profile() {
           {!state.topReviews[0] && <p id="nullReview">You have not written any reviews! Write a review to feature on your profile page!</p>}
         </div>
         <div class="following">
-          <h3 className="headers">followers</h3>
+          <h3 className="headers">Following</h3>
         {state.following.map(following => <FollowingUsers follower={following.username}/>)}
         </div>
       

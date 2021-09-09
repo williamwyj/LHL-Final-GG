@@ -1,5 +1,19 @@
 @import "../../../public/scss_styles/style";
 
+ul.topUsers{
+    div.headers {
+      font-family: $heading-font;
+      color: gold;
+      margin: 0.8em 1%;
+      font-size: 30px;
+      display: flex;
+      justify-content: flex-start;
+      border-bottom: 1px solid $primary-grey;
+      margin-right: 15px;
+      margin-left: 19px;
+    }
+}
+
 div.homePageTopUsers {
   margin: 15px 15px;
   background-color: $grey;

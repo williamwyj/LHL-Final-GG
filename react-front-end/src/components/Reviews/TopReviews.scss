@@ -1,5 +1,31 @@
 @import "../../../public/scss_styles/style";
 
+ul.topReviews {
+  div.headers {
+    font-family: $heading-font;
+    color: gold;
+    margin: 0.8em 1%;
+    font-size: 30px;
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 1px solid $primary-grey;
+    margin-right: 6.5vw;
+    margin-left: 1.5vw
+  }
+}
+div.reviews {
+  display: flex;
+  div.headers {
+    width: 87%;
+    font-family: $heading-font;
+    color: gold;
+    font-size: 30px;
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 1px solid $primary-grey;
+  }
+}
+
 .allReviewsBox {
   display: flex;
   flex-direction: column;
@@ -27,20 +53,12 @@
   width: 75%;
   @include flex-article;
   justify-content: space-between;
-  div.userName{
+  div.userName {
     font-family: $user-font;
-    a{
-    text-decoration: none;
-    color: $light-blue;
-    }
-  }
-  .review-info-top {
-    .username {
-      @include box($light-blue);
-      border: 0.5vw solid $light-blue;
+    a {
+      transform: scale(3);
       text-decoration: none;
-      color: $text-color;
-      margin: 0;
+      color: $light-blue;
     }
   }
 }
