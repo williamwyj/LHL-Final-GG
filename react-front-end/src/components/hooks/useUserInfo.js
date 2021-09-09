@@ -13,6 +13,7 @@ export default function useUserInfo(username) {
     followed: 0,
     games: [],
     topReviews: [],
+    following:[],
     load:true
   })
   useEffect(()=>{
@@ -55,6 +56,11 @@ export default function useUserInfo(username) {
           params: {
             userId
           }
+        }),
+        axios.get("/api/followedNames", {
+          params: {
+            userId
+          }
         })
       ]).then((all)=>{
         const {id, thumbnail} = all[0].data[0]
@@ -64,6 +70,7 @@ export default function useUserInfo(username) {
         const followerNames = all[3].data[0] ? all[3].data : [];
         const {reviews} = all[4].data[0] ? all[4].data[0] : {reviews : 0};
         const topReviews = all[5].data
+        const following = all[6].data
         if (games.length < 4) {
           //if user liked less than 4 games, fill in with prompt to add games
           for (let i = games.length; i < 4 ; i++) {
@@ -74,7 +81,7 @@ export default function useUserInfo(username) {
             });
           }
         }
-        setState({...state, id, thumbnail, reviews, followers, followed, games, followerNames, topReviews, load:false})
+        setState({...state, id, thumbnail, reviews, followers, followed, games, followerNames, topReviews, following, load:false})
       }).catch(err => {
         console.log(err);
       })

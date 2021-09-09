@@ -18,10 +18,10 @@ export default function Profile() {
   //get the id from url
   const { name } = useParams();
   const {state} = useUserInfo(name);
-  const [followings, setFollowing] = useState([]);
-  Axios.get("/api/followedNames", {params: {userId: state.id}})
-  .then(res => {setFollowing(res.data)})
-
+  // const [followings, setFollowing] = useState([]);
+  // Axios.get("/api/followedNames", {params: {userId: state.id}})
+  // .then(res => {setFollowing(res.data)})
+  console.log("Render Render Render Render Render Render Render Render Render Render Render Render Render Render Render Render Render ")
   return (
     <>
     {state.load && 
@@ -50,7 +50,6 @@ export default function Profile() {
           {!state.topReviews[0] && <p>You have not written any reviews! Write a review to feature on your profile page!</p>}
         </div>
         <div class="following">
-          <div class="headers">{state.username}'s follows</div>
           {followings.map(following => <FollowingUsers follower={following.username}/>)}
         </div>
       
