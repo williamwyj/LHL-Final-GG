@@ -37,7 +37,6 @@ export default function SearchPage(props){
   return (
     <section className="results_page">
     <SearchBar id="searchPageSearchBar" onSearch={(term) => setTerm(term)}/>
-    <h2>Results</h2>
       {results.load && 
         <div className="loadingSpinner">
           <Spinner animation="border" role="status" variant="light" >
