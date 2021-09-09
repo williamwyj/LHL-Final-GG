@@ -15,6 +15,7 @@ div.main-container{
 }
 div.game-info {
   @include flex-spaced-row;
+  width: 100%;
   div {
     @include margin-ratio;
   }
