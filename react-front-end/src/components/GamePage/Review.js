@@ -45,9 +45,11 @@ export default function Review(props) {
       </Form.Group>
     
       <StarRating count={10} rating={rating} onRating={rate => setRating(rate)} color={color}/>
+      <div>
       <Button variant="primary" type="submit" >
             Submit Review
       </Button>
+      </div>
     </Form>
   )
 }
