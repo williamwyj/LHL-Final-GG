@@ -6,11 +6,11 @@
     
     @include box($dark);
     height: fit-content;
-    padding: .2em 1em;    
+      
     .singleReviewBox {
         @include box($grey);
         padding: 1em 2em;
-        @include margin-ratio;
+        margin-bottom: 1em;
         display: flex;
         flex-direction: row;
         justify-content: space-between;   
