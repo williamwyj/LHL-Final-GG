@@ -29,7 +29,7 @@ export default function TopUsers(props) {
   return (
   <div className="homePageTopUsers">
     <img id="usericon" src ={icon} alt="userimg"/>
-    <a href={userLink}> {props.username}</a>
+    <a className="userName" href={userLink}> {props.username}</a>
     <div> Reviews: {reviews} </div>
     <div> Followers: {props.followers} </div>
   </div>

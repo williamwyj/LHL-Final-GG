@@ -1,6 +1,8 @@
+@import "../../../public/scss_styles/style";
+
 .homePageTopUsers {
   margin: 15px 15px;
-  background-color: yellowgreen;
+  background-color: $grey;
   padding: 0.5em 1em;
   border-radius: 1.5vw;
 }
@@ -10,4 +12,10 @@
   width: 30px;
   height:auto;
   border-radius: 50%;
+}
+
+.userName{
+  text-decoration: none;
+  font-family: $user-font;
+  color: $light-blue;
 }

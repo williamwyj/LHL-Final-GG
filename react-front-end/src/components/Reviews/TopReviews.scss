@@ -27,6 +27,13 @@
   width: 75%;
   @include flex-article;
   justify-content: space-between;
+  div.userName{
+    font-family: $user-font;
+    a{
+    text-decoration: none;
+    color: $light-blue;
+    }
+  }
   .review-info-top {
     .username {
       @include box($light-blue);

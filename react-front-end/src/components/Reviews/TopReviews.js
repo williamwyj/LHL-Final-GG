@@ -23,7 +23,7 @@ export default function TopReviews(props) {
       return (
         <div className="singleReviewBox">
         <div className="reviewInfo">
-          <div> 
+          <div className="userName"> 
             <a href={userLink}> {review.username}</a>
           </div>
           
