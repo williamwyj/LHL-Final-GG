@@ -47,9 +47,10 @@ export default function Profile() {
         <div class="reviews">
           <div class="headers">{state.username}'s reviews</div>
           {state.topReviews && <TopReviews reviews={state.topReviews} />}
-          {!state.topReviews[0] && <p>You have not written any reviews! Write a review to feature on your profile page!</p>}
+          {!state.topReviews[0] && <p id="nullReview">You have not written any reviews! Write a review to feature on your profile page!</p>}
         </div>
         <div class="following">
+          <h3 className="headers">followers</h3>
         {state.following.map(following => <FollowingUsers follower={following.username}/>)}
         </div>
       
