@@ -56,7 +56,7 @@ export default function UserProfile(props) {
       <div className="profilestats">
         <p>Reviews: {props.reviews}</p>
         <p>Followers: {props.followers}</p>
-        <p>Followed by:{props.followed}</p>
+        <p>Following: {props.followed}</p>
       </div>
     </section>
   );
