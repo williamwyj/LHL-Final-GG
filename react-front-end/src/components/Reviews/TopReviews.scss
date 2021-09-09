@@ -1,77 +1,80 @@
 @import "../../../public/scss_styles/style";
 
 .allReviewsBox {
-    display: flex;
-    flex-direction: column;
-    
-    @include box($dark);
-    height: fit-content;
-      
-    .singleReviewBox {
-        @include box($grey);
-        padding: 1em 2em;
-        margin-bottom: 1em;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;   
-        .reviewContent {
-            @include box ($light);
-            padding: 1em;
-            margin: 1em 0em;
-        }
-    }
-}
+  display: flex;
+  flex-direction: column;
 
+  @include box($dark);
+  height: fit-content;
+
+  .singleReviewBox {
+    @include box($grey);
+    padding: 1em 2em;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .reviewContent {
+      @include box($light);
+      font-family: $body-font;
+      padding: 1em;
+      margin: 1em 0em;
+    }
+  }
+}
 
 .reviewInfo {
-    width: 75%;
-    @include flex-article;
-    justify-content: space-between;
-    .review-info-top{
-        .username{
-            @include box($light-blue);
-            border: 0.5vw solid $light-blue;
-            text-decoration: none;
-            color: $text-color;
-            margin: 0;
-        }
+  width: 75%;
+  @include flex-article;
+  justify-content: space-between;
+  .review-info-top {
+    .username {
+      @include box($light-blue);
+      border: 0.5vw solid $light-blue;
+      text-decoration: none;
+      color: $text-color;
+      margin: 0;
     }
-
+  }
 }
 
-
 .gameDisplay {
-    width: 25%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: space-around;
-    img.homePageReviewGameCover {
-        @include game-cover(9.5vw);
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+  img.homePageReviewGameCover {
+    @include game-cover(9.5vw);
+  }
+  div {
+    a {
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      color: $text-color;
+      text-decoration: none;
     }
-    div{
-        a{
-            display: flex;
-            flex-direction: column;
-            align-self:center;
-            color: $text-color;
-            text-decoration: none;
-        }
-    }
+  }
 }
 
 .ratings {
-    border-top: solid 1px $line;
-    padding-top: 1vh;
-    display: flex;
-    flex-direction: row;
+  border-top: solid 1px $line;
+  padding-top: 1vh;
+  display: flex;
+  flex-direction: row;
 }
 
 .rating {
-    margin-right: 1.5em;
+  margin-right: 1.5em;
 }
 
 .ratingStars {
-    margin-right: 1.5em;
-    color: $apricot;
+  margin-right: 1.5em;
+  color: $apricot;
+}
+
+.titleOfReviewedGame {
+  font-family: $title-font;
+  display: flex;
 }

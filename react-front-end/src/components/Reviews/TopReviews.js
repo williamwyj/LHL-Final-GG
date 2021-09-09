@@ -59,8 +59,8 @@ export default function TopReviews(props) {
                   />
                 </a>
               </div>
-              <div>
-                <a href={gameLink}> {review.name} </a>
+              <div className="titleOfReviewedGame">
+                <a  href={gameLink}> {review.name} </a>
               </div>
             </div>
           </div>
