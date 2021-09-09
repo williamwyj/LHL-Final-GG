@@ -1,11 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Glory:wght@500;620&family=Open+Sans+Condensed:wght@300;700&family=Raleway:wght@300&display=swap');
-@import '../fonts/C&C Red Alert [INET].ttf';
+// @import '../fonts/C&C Red Alert [INET].ttf';
+
+$font-path: "../fonts" !default;
+@font-face {
+  font-family: 'C&C Red Alert';
+  src: url(/../fonts/C&CRedAlert.ttf) format('truetype')
+}
+
 
 
 $title-font: 'Glory', sans-serif;
 $body-font: 'Raleway', sans-serif;
-$user-font: 'Audiowide', cursive;
-$heading-font: 'Open Sans Condensed', sans-serif;
+$user-font: 'C&C Red Alert', sans-serif;
+$heading-font:'Open Sans', sans-serif;
 
 $text-color: #13212A;
 $primary-grey: #56638A;
