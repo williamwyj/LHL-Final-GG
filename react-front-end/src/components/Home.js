@@ -33,7 +33,7 @@ export default function Home() {
       <>
       <SplashHeader/>
       <div className="home-body">
-        <div className="homePageGamesTitle">What's Hot This Week</div>
+        <div className="homePageGamesTitle"></div>
         <FeaturedGame state={state} />
         <div className="topReviewsUsers">
           <ul class="topReviews">

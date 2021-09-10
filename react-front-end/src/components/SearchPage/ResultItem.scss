@@ -16,7 +16,13 @@ article.gameResult {
   }
   div.information{
     article{
+      font-family: $body-font;
+      h4{
+        font-family: $title-font;
+        font-weight: 620;
+      }
       @include box($light);
+      
       padding: 5px;
       display: flex;
       flex-direction: column;

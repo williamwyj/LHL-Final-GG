@@ -23,8 +23,8 @@ export default function TopReviews(props) {
       return (
         <div className="singleReviewBox">
         <div className="reviewInfo">
-          <div> 
-            <a href={userLink}> {review.username}</a>
+          <div className="userName"> 
+            <a href={userLink}> <h5>{review.username}</h5></a>
           </div>
           
           <div className="reviewContent"> 
@@ -59,8 +59,8 @@ export default function TopReviews(props) {
                   />
                 </a>
               </div>
-              <div>
-                <a href={gameLink}> {review.name} </a>
+              <div className="titleOfReviewedGame">
+                <a  href={gameLink}> {review.name} </a>
               </div>
             </div>
           </div>

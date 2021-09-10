@@ -27,11 +27,11 @@ export default function TopUsers(props) {
     setIcon(res.data[0].thumbnail);
   })
   return (
-  <li className="homePageTopUsers">
+  <div className="homePageTopUsers">
     <img id="usericon" src ={icon} alt="userimg"/>
-    <a href={userLink}> {props.username}</a>
+    <a className="userName" href={userLink}> {props.username}</a>
     <div> Reviews: {reviews} </div>
     <div> Followers: {props.followers} </div>
-  </li>
+  </div>
   )
 }

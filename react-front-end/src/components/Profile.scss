@@ -9,6 +9,9 @@
     width: 70%;
     height: auto;
     @include margin-ratio;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .following {
     @include box($dark);
@@ -21,7 +24,21 @@
     flex-direction: column;
     @include margin-ratio;
     .headers {
-      padding-left: 24%;
+      font-family: $heading-font;
+      color: gold;
+      margin: 0.8em 15px;
+      padding-bottom: 2.17vh;
+      font-size: 30px;
+      display: flex;
+      justify-content: flex-start;
+      border-bottom: 1px solid $primary-grey;
+    }
+    div.homePageTopUsers{
+      a{
+        text-decoration: none;
+        font-family: $user-font;
+        color: $light-blue;
+      }
     }
   }
   .headers {

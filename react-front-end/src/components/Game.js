@@ -81,7 +81,7 @@ export default function Game(props) {
               const { liked, played, user_id } = all[2][0]
                 ? all[2][0]
                 : { liked: false, played: false, user_id: userId };
-              const userFollowedId = all[3][0].user_id
+              const userFollowedId = all[3][0]
                 ? all[3].map((followed) => followed.user_id)
                 : [];
 

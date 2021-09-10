@@ -9,11 +9,11 @@ export default function FollowingUsers(props) {
   const {state} = useUserInfo(props.follower)
 
   return (
-  <li className="homePageTopUsers">
+  <div className="homePageTopUsers">
     <img id="usericon" src ={state.thumbnail} alt="userimg"/>
     <a href={`/user/${props.follower}`}> {props.follower}</a>
     <div> Reviews: {state.reviews} </div>
     <div> Followers: {state.followers} </div>
-  </li>
+  </div>
   )
 }
