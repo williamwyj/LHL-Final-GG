@@ -21,7 +21,6 @@ export default function Profile() {
   // const [followings, setFollowing] = useState([]);
   // Axios.get("/api/followedNames", {params: {userId: state.id}})
   // .then(res => {setFollowing(res.data)})
-  console.log("Render Render Render Render Render Render Render Render Render Render Render Render Render Render Render Render Render ")
   return (
     <>
     {state.load && 
